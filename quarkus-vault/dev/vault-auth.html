@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Working with HashiCorp Vault’s Authentication :: Quarkiverse Documentation</title>
+    <link rel="canonical" href="https://quarkiverse.github.io/quarkiverse-docs/quarkus-vault/dev/vault-auth.html">
+    <meta name="generator" content="Antora 3.0.1">
+    <link rel="stylesheet" href="../../_/css/site.css">
+    <link rel="stylesheet" href="../../_/css/site-extra.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <script>var uiRootPath = '../../_'</script>
+  </head>
+  <body class="article">
+<header class="header" role="banner">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <div class="navbar-item">
+        <a href="../..">Quarkiverse</a>
+        <span class="separator">//</span>
+        <a href="https://quarkiverse.github.io/quarkiverse-docs">Docs</a>
+      </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item has-dropdown is-hoverable">
+          <div class="navbar-link">Projects</div>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Index</a>
+            <a class="navbar-item" href="#">Quarkus - Java Embedded Framework</a>
+            <a class="navbar-item" href="#">Quarkus Amazon Alexa</a>
+            <a class="navbar-item" href="#">Quarkus Amazon Services</a>
+            <a class="navbar-item" href="#">Quarkus Artemis</a>
+            <a class="navbar-item" href="#">Quarkus Config Extensions</a>
+            <a class="navbar-item" href="#">Quarkus Cucumber</a>
+            <a class="navbar-item" href="#">Quarkus CXF</a>
+            <a class="navbar-item" href="#">Quarkus Dapr</a>
+            <a class="navbar-item" href="#">Quarkus File Vault</a>
+            <a class="navbar-item" href="#">Quarkus Freemarker</a>
+            <a class="navbar-item" href="#">Quarkus GitHub Action</a>
+            <a class="navbar-item" href="#">Quarkus GitHub App</a>
+            <a class="navbar-item" href="#">Quarkus Google Cloud Services</a>
+            <a class="navbar-item" href="#">Quarkus Helm</a>
+            <a class="navbar-item" href="#">Quarkus Hibernate Search Extras</a>
+            <a class="navbar-item" href="#">Quarkus Hibernate types</a>
+            <a class="navbar-item" href="#">Quarkus HiveMQ Client</a>
+            <a class="navbar-item" href="#">Quarkus JDBC Sqlite</a>
+            <a class="navbar-item" href="#">Quarkus JGit</a>
+            <a class="navbar-item" href="#">Quarkus JGraphT</a>
+            <a class="navbar-item" href="#">Quarkus JSch</a>
+            <a class="navbar-item" href="#">Quarkus Kerberos</a>
+            <a class="navbar-item" href="#">Quarkus Logging JSON</a>
+            <a class="navbar-item" href="#">Quarkus Logging Logback</a>
+            <a class="navbar-item" href="#">Quarkus Logging Sentry</a>
+            <a class="navbar-item" href="#">Quarkus Logging Splunk</a>
+            <a class="navbar-item" href="#">Quarkus Micrometer Registry extensions</a>
+            <a class="navbar-item" href="#">Quarkus Mockk</a>
+            <a class="navbar-item" href="#">Quarkus MyBatis</a>
+            <a class="navbar-item" href="#">Quarkus Neo4j</a>
+            <a class="navbar-item" href="#">Quarkus Operator SDK</a>
+            <a class="navbar-item" href="#">Quarkus Prettytime</a>
+            <a class="navbar-item" href="#">Quarkus Quinoa</a>
+            <a class="navbar-item" href="#">Quarkus RabbitMQ Client</a>
+            <a class="navbar-item" href="#">Quarkus Reactive Messaging HTTP</a>
+            <a class="navbar-item" href="#">Quarkus Renarde</a>
+            <a class="navbar-item" href="#">Quarkus Tika</a>
+            <a class="navbar-item" href="#">Quarkus Unleash</a>
+            <a class="navbar-item" href="#">Quarkus Vault</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <div class="navbar-link">Community</div>
+          <div class="navbar-dropdown is-right">
+            <a class="navbar-item" href="https://quarkusio.zulipchat.com">Chat</a>
+          </div>
+        </div>
+        <a class="navbar-item" href="https://twitter.com/quarkusio">
+          <span class="icon">
+            <svg aria-hidden="true" data-icon="twitter" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+              <path fill="#57aaee" d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path>
+            </svg>
+          </span>
+        </a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="quarkus-vault" data-version="dev">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="index.html">Quarkus Vault</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="index.html">Quarkus Vault</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="vault-auth.html">Vault Authentication guide</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="vault-transit.html">Vault Transit Secret Engine Guide</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="vault-pki.html">Vault PKI Secret Engine Guide</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="vault-datasource.html">Vault Datasource Guide</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Quarkus Vault</span>
+    <span class="version">dev</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <a class="title" href="../../index/index/index.html">Index</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../index/index/index.html">index</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-java-embedded-framework/dev/index.html">Quarkus - Java Embedded Framework</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-java-embedded-framework/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-amazon-alexa/dev/index.html">Quarkus Amazon Alexa</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-amazon-alexa/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-amazon-services/dev/index.html">Quarkus Amazon Services</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-amazon-services/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-artemis/dev/index.html">Quarkus Artemis</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-artemis/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-config-extensions/dev/index.html">Quarkus Config Extensions</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-config-extensions/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-cucumber/dev/index.html">Quarkus Cucumber</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-cucumber/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-cxf/dev/index.html">Quarkus CXF</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-cxf/dev/index.html">dev</a>
+        </li>
+        <li class="version">
+          <a href="../../quarkus-cxf/v1.x/index.html">v1.x</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-dapr/dev/index.html">Quarkus Dapr</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-dapr/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-file-vault/dev/index.html">Quarkus File Vault</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-file-vault/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-freemarker/dev/index.html">Quarkus Freemarker</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-freemarker/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-github-action/dev/index.html">Quarkus GitHub Action</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-github-action/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-github-app/dev/index.html">Quarkus GitHub App</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-github-app/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-google-cloud-services/main/index.html">Quarkus Google Cloud Services</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-google-cloud-services/main/index.html">main</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-helm/dev/index.html">Quarkus Helm</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-helm/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-hibernate-search-extras/dev/index.html">Quarkus Hibernate Search Extras</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-hibernate-search-extras/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-hibernate-types/dev/index.html">Quarkus Hibernate types</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-hibernate-types/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-hivemq-client/dev/index.html">Quarkus HiveMQ Client</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-hivemq-client/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-JDBC-Sqlite/dev/index.html">Quarkus JDBC Sqlite</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-JDBC-Sqlite/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-jgit/dev/index.html">Quarkus JGit</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-jgit/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-jgrapht/dev/index.html">Quarkus JGraphT</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-jgrapht/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-jsch/dev/index.html">Quarkus JSch</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-jsch/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-kerberos/dev/index.html">Quarkus Kerberos</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-kerberos/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-logging-json/dev/index.html">Quarkus Logging JSON</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-logging-json/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-logging-logback/dev/index.html">Quarkus Logging Logback</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-logging-logback/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-logging-sentry/dev/index.html">Quarkus Logging Sentry</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-logging-sentry/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-logging-splunk/dev/index.html">Quarkus Logging Splunk</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-logging-splunk/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-micrometer-registry/dev/index.html">Quarkus Micrometer Registry extensions</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-micrometer-registry/dev/index.html">dev</a>
+        </li>
+        <li class="version">
+          <a href="../../quarkus-micrometer-registry/1.x/index.html">1.x</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-mockk/dev/index.html">Quarkus Mockk</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-mockk/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-mybatis/dev/index.html">Quarkus MyBatis</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-mybatis/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-neo4j/dev/index.html">Quarkus Neo4j</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-neo4j/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-operator-sdk/dev/index.html">Quarkus Operator SDK</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-operator-sdk/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-prettytime/dev/index.html">Quarkus Prettytime</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-prettytime/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-quinoa/dev/index.html">Quarkus Quinoa</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-quinoa/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-rabbitmq-client/0.1.0/index.html">Quarkus RabbitMQ Client</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-rabbitmq-client/0.1.0/index.html">0.1.0</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-reactive-messaging-http/dev/index.html">Quarkus Reactive Messaging HTTP</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-reactive-messaging-http/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-renarde/dev/index.html">Quarkus Renarde</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-renarde/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-tika/dev/index.html">Quarkus Tika</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-tika/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-unleash/dev/index.html">Quarkus Unleash</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-unleash/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <a class="title" href="index.html">Quarkus Vault</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../index/index/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Quarkus Vault</a></li>
+    <li><a href="vault-auth.html">Vault Authentication guide</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/quarkiverse/quarkus-vault/edit/main/docs/modules/ROOT/pages/vault-auth.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Working with HashiCorp Vault’s Authentication</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Working with Vault is typically a 2 step process:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Logging in, which returns a client token</p>
+</li>
+<li>
+<p>Start using Vault using the client token, within the limits of what is allowed by the policies associated with the token</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>There are several Vault authentication methods supported in Quarkus today, namely:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://www.vaultproject.io/docs/auth/token">Token</a>: whenever you already have a token</p>
+</li>
+<li>
+<p><a href="https://www.vaultproject.io/docs/auth/userpass">Userpass</a>: authenticate with a username and a password</p>
+</li>
+<li>
+<p><a href="https://www.vaultproject.io/docs/auth/approle">AppRole</a>: authenticate with a role id and a secret id (which can
+be seen as a <em>Userpass</em> for automated workflows - machines and services)</p>
+</li>
+<li>
+<p><a href="https://www.vaultproject.io/docs/auth/kubernetes">Kubernetes</a>, which is applicable to workloads deployed into Kubernetes</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This guide aims at providing examples for each of those authentication methods.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_prerequisites"><a class="anchor" href="#_prerequisites"></a>Prerequisites</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To complete this guide, you need:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>to complete the <a href="#vault.adoc" class="xref unresolved">Vault guide</a></p>
+</li>
+<li>
+<p>roughly 30 minutes</p>
+</li>
+<li>
+<p>an IDE</p>
+</li>
+<li>
+<p>JDK 11+ installed with <code>JAVA_HOME</code> configured appropriately</p>
+</li>
+<li>
+<p>Apache Maven 3.8.1+</p>
+</li>
+<li>
+<p>Docker installed</p>
+</li>
+<li>
+<p>For the Kubernetes authentication: A Kubernetes distribution to deploy the Quarkus application (Minishift, K3s, Docker Desktop, …​)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_token_authentication"><a class="anchor" href="#_token_authentication"></a>Token Authentication</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We assume there is a Vault container and a PostgreSQL container running from the <a href="#vault.adoc" class="xref unresolved">Vault guide</a>, and the root token is known.</p>
+</div>
+<div class="paragraph">
+<p>First, create a new shell, <code>docker exec</code> into the container and set the root token:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">docker exec -it dev-vault sh
+/ # export VAULT_TOKEN=s.5VUS8pte13RqekCB2fmMT3u2</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Create a token for the <code>vault-quickstart-policy</code> policy:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">/ # vault token create -policy=vault-quickstart-policy
+Key                  Value
+---                  -----
+token                s.JqMeE1UEyUb19F6zmMW0SWx6
+token_accessor       q1ynY9T7FDgbMKd3uST7RzLy
+token_duration       768h
+token_renewable      true
+token_policies       ["default" "vault-quickstart-policy"]
+identity_policies    []
+policies             ["default" "vault-quickstart-policy"]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now use the generated client token in the application configuration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties">quarkus.vault.authentication.client-token=s.JqMeE1UEyUb19F6zmMW0SWx6</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Compile and start the application:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">./mvnw clean install
+java -jar target/quarkus-app/quarkus-run.jar</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Finally test the application endpoint:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">curl http://localhost:8080/hello/private-key</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You should see: <code>123456</code>.</p>
+</div>
+<div class="sect2">
+<h3 id="_client_token_using_response_wrapping"><a class="anchor" href="#_client_token_using_response_wrapping"></a>Client Token using Response Wrapping</h3>
+<div class="paragraph">
+<p>One drawback of this approach is that you expose a secret piece of information (i.e. the token) that can give access
+to sensitive data in Vault. This requires ensuring that the application’s configuration stays secure at all time.
+If an intruder was to access the client token, it would be able to start calling Vault on all endpoints permitted
+by the policy.</p>
+</div>
+<div class="paragraph">
+<p>This risk can be mitigated using an approach called
+<a href="https://www.vaultproject.io/docs/concepts/response-wrapping">Response Wrapping</a> (which used to be known as
+<em>Cubbyhole Authentication</em> in older versions of Vault). This principle is simple: instead of configuring the
+client token itself, we hide it inside a <em>Wrapping Token</em>, which we provide to the application. Upon startup,
+the application will unwrap the <em>Wrapping Token</em>, and fetch the real token from within. The additional level of
+security comes from the fact that the <em>Wrapping Token</em> is short lived (from a few seconds to a few minutes;
+basically just enough to start and unwrap the token), and can be unwrapped <strong>only once</strong>.
+If the <em>Wrapping Token</em> gets stolen and unwrapped, we will notice immediately because the legitimate application
+will get an error saying that the token is invalid.</p>
+</div>
+<div class="paragraph">
+<p>With that in mind, let’s create a new token and wrap it inside a <em>Wrapping Token</em> with a TTL of 1 minute:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">/ # vault token create -wrap-ttl=60s -policy=vault-quickstart-policy
+Key                              Value
+---                              -----
+wrapping_token:                  s.2cLMBoKhelDK6W3uAFT2umXu
+wrapping_accessor:               ojvbOtmLzB5D47SzXGo9b3sR
+wrapping_token_ttl:              1m
+wrapping_token_creation_time:    2020-04-14 16:05:20.990240428 +0000 UTC
+wrapping_token_creation_path:    auth/token/create
+wrapped_accessor:                a4ITYQNnQtwCOUmV5DJMpCiG</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now let’s use this wrapping token in the configuration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties">quarkus.vault.authentication.client-token-wrapping-token=s.2cLMBoKhelDK6W3uAFT2umXu</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Compile and run the application <strong>without the tests</strong>, you should be able now to curl the private key <code>123456</code> as before.</p>
+</div>
+<div class="paragraph">
+<p>Stop the application, and execute tests with <code>./mvnw test</code>. They should fail with the following error:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">ERROR: Failed to start application
+io.quarkus.vault.VaultException: wrapping token is not valid or does not exist; this means that the token has already expired (if so you can increase the TTL on the wrapping token) or has been consumed by somebody else (potentially indicating that the wrapping token has been stolen)</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_userpass_authentication"><a class="anchor" href="#_userpass_authentication"></a>Userpass Authentication</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Normally the <code>userpass</code> auth method should already be enabled from the <a href="#vault.adoc" class="xref unresolved">Vault guide</a>. If not, execute the following
+commands now:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">vault auth enable userpass
+vault write auth/userpass/users/bob password=sinclair policies=vault-quickstart-policy</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And simply specify the username and password for this user in the application configuration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties">quarkus.vault.authentication.userpass.username=bob
+quarkus.vault.authentication.userpass.password=sinclair</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Test the application endpoint after compiling and starting the application again:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">curl http://localhost:8080/hello/private-key</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You should see: <code>123456</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Userpass supports response wrapping as well for the <code>password</code> property, although it is more
+unusual to use this approach as response wrapping typically involves a technical workflow,
+which is better suited for <code>approle</code>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_approle_authentication"><a class="anchor" href="#_approle_authentication"></a>Approle Authentication</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><em>Approle</em> is an authentication method suited for technical workflows. It relies on 2 pieces of information:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>role id can be compared to the user name in <em>Userpass</em></p>
+</li>
+<li>
+<p>secret id plays the role of the <code>password</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>To set up <em>Approle</em> you need to enable the <code>approle</code> auth method, create an app role,
+and generate a role id and secret id:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">/ # vault auth enable approle
+/ # vault write auth/approle/role/myapprole policies=vault-quickstart-policy
+
+/ # vault read auth/approle/role/myapprole/role-id
+Key        Value
+---        -----
+role_id    b15460ff-fea0-43fc-1002-a045fb60dfc4
+
+/ # vault write -f auth/approle/role/myapprole/secret-id
+Key                   Value
+---                   -----
+secret_id             d2f13e1f-f32a-f60a-86d8-0b5cdaeb821b
+secret_id_accessor    2acff656-d049-c4b3-a752-6125e69210ba</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Add the appropriate properties:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties">quarkus.vault.authentication.app-role.role-id=b15460ff-fea0-43fc-1002-a045fb60dfc4
+quarkus.vault.authentication.app-role.secret-id=d2f13e1f-f32a-f60a-86d8-0b5cdaeb821b</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>After compiling and running the application you should be able to curl it on the
+<code>private-key</code> endpoint to see the secret information <code>123456</code> as usual.</p>
+</div>
+<div class="sect2">
+<h3 id="_approle_using_response_wrapping"><a class="anchor" href="#_approle_using_response_wrapping"></a>Approle using Response Wrapping</h3>
+<div class="paragraph">
+<p>Similarly to direct client token authentication, it is possible to wrap the <code>secret-id</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">/ # vault write -wrap-ttl=60s -f auth/approle/role/myapprole/secret-id
+Key                              Value
+---                              -----
+wrapping_token:                  s.aSq7tcRqfeboZqLMPfa5gkXJ
+wrapping_accessor:               u5EPZOnqyIJN8mT44od67WMS
+wrapping_token_ttl:              1m
+wrapping_token_creation_time:    2020-04-14 16:59:25.482352967 +0000 UTC
+wrapping_token_creation_path:    auth/approle/role/myapprole/secret-id</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Replace the <code>secret-id</code> property with <code>secret-id-wrapping-token</code> in the configuration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties">quarkus.vault.authentication.app-role.secret-id-wrapping-token=s.aSq7tcRqfeboZqLMPfa5gkXJ</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Finally, recompile the application without tests (otherwise you are going to consume the wrapping token),
+launch it and curl the <code>private-key</code> endpoint. As usual, you should see <code>123456</code>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_kubernetes_authentication"><a class="anchor" href="#_kubernetes_authentication"></a>Kubernetes Authentication</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Vault provides an integration with Kubernetes to allow containers to authenticate with Vault using their
+Kubernetes JWT token located in <code>/var/run/secrets/kubernetes.io/serviceaccount</code>.</p>
+</div>
+<div class="paragraph">
+<p>The setup is more involved than with the other auth methods because we need to allow Vault to talk
+to the master API to be able to validate the JWT token that the application will authenticate with.</p>
+</div>
+<div class="sect2">
+<h3 id="_auth_delegator"><a class="anchor" href="#_auth_delegator"></a>auth-delegator</h3>
+<div class="paragraph">
+<p>The first step involves creating a <code>vault-auth-sa</code> service account with <code>auth-delegator</code>
+role that Vault will use to communicate with the master API.</p>
+</div>
+<div class="paragraph">
+<p>First create file <code>vault-auth-k8s.yml</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+name: vault-auth-sa
+---
+kind: ClusterRoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+name: vault-auth-delegator
+subjects:
+- kind: User
+name: vault-auth-sa
+namespace: default
+roleRef:
+kind: ClusterRole
+name: system:auth-delegator
+apiGroup: rbac.authorization.k8s.io</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And apply it: <code>kubectl apply -f vault-auth-k8s.yml</code>.</p>
+</div>
+<div class="paragraph">
+<p>Once the objects are created, we need to capture the JWT token of this service account,
+and grab the public certificate of the cluster:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">secret_name=$(kubectl get sa vault-auth-sa -o json | jq -r '.secrets[0].name')
+token=$(kubectl get secret $secret_name -o json | jq -r '.data.token' | base64 --decode)
+echo token=$token
+kubectl get secret $secret_name -o json | jq -r '.data."ca.crt"' | base64 -D &gt; /tmp/ca.crt</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_vault"><a class="anchor" href="#_vault"></a>Vault</h3>
+<div class="paragraph">
+<p>The next step requires to exec interactively with the root token into the Vault container
+to configure the Kubernetes auth method:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">docker exec -it dev-vault sh
+export VAULT_TOKEN=s.5VUS8pte13RqekCB2fmMT3u2</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Once inside the pod, set the token variable to the value that was just printed in the console before, and
+recreate <code>ca.crt</code> with the same content as <code>/tmp/ca.crt</code> outside the container. Finally use <code>kubectl config view</code>
+to assess the url of your Kubernetes cluster:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">token=...       =&gt; set the value printed in the console just before
+vi ca.crt       =&gt; copy/paste /tmp/ca.crt from outside the container
+kubernetes_host =&gt; url from the kubectl config view (e.g. https://kubernetes.docker.internal:6443)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now we have all the information we need to configure Vault:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">vault auth enable kubernetes
+
+# configure master API access from Vault
+vault write auth/kubernetes/config \
+    token_reviewer_jwt=$token \
+    kubernetes_host=$kubernetes_host \
+    kubernetes_ca_cert=@ca.crt
+
+# create vault-quickstart-role role
+vault write auth/kubernetes/role/vault-quickstart-role \
+    bound_service_account_names=vault-quickstart-sa \
+    bound_service_account_namespaces=default \
+    policies=vault-quickstart-policy \
+    ttl=1h</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_deploy_the_application"><a class="anchor" href="#_deploy_the_application"></a>Deploy the application</h3>
+<div class="paragraph">
+<p>Add the following properties to the application (and remove any other authentication Vault property,
+plus replace <code>&lt;host&gt;</code> by the ip or name of the local host that is running the Vault and PostgreSQL containers,
+such that they will be accessible from the pod):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties">quarkus.vault.url=http://&lt;host&gt;:8200
+quarkus.datasource.db-kind=postgresql
+quarkus.datasource.username=&lt;your username&gt;
+quarkus.datasource.password=&lt;your password&gt;
+quarkus.datasource.jdbc.url = jdbc:postgresql://&lt;host&gt;:5432/mydatabase
+
+quarkus.vault.authentication.kubernetes.role=vault-quickstart-role
+
+quarkus.log.category."io.quarkus.vault".level=DEBUG</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now build the application:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">./mvnw package -DskipTests
+docker build -f src/main/docker/Dockerfile.jvm -t quarkus/vault-quickstart-jvm .</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Create a <code>vault-quickstart-k8s.yml</code> file with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: vault-quickstart-sa
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: vaultapp
+  name: vaultapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: vaultapp
+  template:
+    metadata:
+      labels:
+        app: vaultapp
+    spec:
+      serviceAccountName: vault-quickstart-sa
+      containers:
+      - image: quarkus/vault-quickstart-jvm
+        imagePullPolicy: Never
+        name: vaultapp
+        ports:
+        - containerPort: 8080
+          name: vaultport
+          protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: vaultapp
+  labels:
+    app: vaultapp
+spec:
+  type: NodePort
+  ports:
+    - name: vault
+      port: 8080
+      nodePort: 30400
+  selector:
+    app: vaultapp</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And apply it: <code>kubectl apply -f vault-quickstart-k8s.yml</code>.</p>
+</div>
+<div class="paragraph">
+<p>This will deploy the application, and make it available on port <code>30400</code> of the Kubernetes host.</p>
+</div>
+<div class="paragraph">
+<p>You can check that the application has started from the logs:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">kubectl get pods
+pod=$(kubectl get pod -l app=vaultapp -o json | jq -r '.items[0].metadata.name')
+kubectl logs $pod</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You should see:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-text hljs" data-lang="text">exec java -Dquarkus.http.host=0.0.0.0 -Djava.util.logging.manager=org.jboss.logmanager.LogManager -XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -XX:MinHeapFreeRatio=20 -XX:MaxHeapFreeRatio=40 -XX:+ExitOnOutOfMemoryError -cp . -jar /deployments/app.jar
+__  ____  __  _____   ___  __ ____  ______
+ --/ __ \/ / / / _ | / _ \/ //_/ / / / __/
+ -/ /_/ / /_/ / __ |/ , _/ ,&lt; / /_/ /\ \
+--\___\_\____/_/ |_/_/|_/_/|_|\____/___/
+2020-04-15 18:30:00,983 DEBUG [io.qua.vau.run.con.VaultConfigSource] (main) loaded vault runtime config VaultRuntimeConfig{url=Optional[http://&lt;host&gt;:8200], kubernetesAuthenticationRole=vault-quickstart-role, kubernetesJwtTokenPath='/var/run/secrets/kubernetes.io/serviceaccount/token', userpassUsername='', userpassPassword='***', appRoleRoleId='', appRoleSecretId='***', appRoleSecretIdWrappingToken='***', clientToken=***, clientTokenWrappingToken=***, renewGracePeriod=PT1H, cachePeriod=PT10M, logConfidentialityLevel=MEDIUM, kvSecretEngineVersion=2, kvSecretEngineMountPath='secret', tlsSkipVerify=false, tlsCaCert=Optional.empty, connectTimeout=PT5S, readTimeout=PT1S}
+2020-04-15 18:30:00,985 DEBUG [io.qua.vau.run.con.VaultConfigSource] (main) loaded vault buildtime config io.quarkus.vault.runtime.config.VaultBuildTimeConfig@4163f1cd
+2020-04-15 18:30:01,310 DEBUG [io.qua.vau.run.cli.OkHttpClientFactory] (main) create SSLSocketFactory with tls /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+2020-04-15 18:30:01,559 DEBUG [io.qua.vau.run.VaultAuthManager] (main) authenticate with jwt at: /var/run/secrets/kubernetes.io/serviceaccount/token =&gt; ***
+2020-04-15 18:30:01,779 DEBUG [io.qua.vau.run.VaultAuthManager] (main) created new login token: {clientToken: ***, renewable: true, leaseDuration: 3600s, valid_until: Wed Apr 15 19:30:01 GMT 2020}
+2020-04-15 18:30:01,802 DEBUG [io.qua.vau.run.con.VaultConfigSource] (main) loaded 1 properties from vault
+2020-04-15 18:30:02,722 DEBUG [io.qua.vau.run.VaultAuthManager] (Agroal_7305849841) extended login token: {clientToken: ***, renewable: true, leaseDuration: 3600s, valid_until: Wed Apr 15 19:30:02 GMT 2020}
+2020-04-15 18:30:03,274 INFO  [io.quarkus] (main) vault-quickstart 1.0.0-SNAPSHOT (powered by Quarkus 999-SNAPSHOT) started in 4.255s. Listening on: http://0.0.0.0:8080
+2020-04-15 18:30:03,276 INFO  [io.quarkus] (main) Profile prod activated.
+2020-04-15 18:30:03,276 INFO  [io.quarkus] (main) Installed features: [agroal, cdi, hibernate-orm, jdbc-postgresql, narayana-jta, resteasy, vault]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Notice in particular the following log line:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">authenticate with jwt at: /var/run/secrets/kubernetes.io/serviceaccount/token =&gt; ***</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Finally curl the <code>private-key</code> endpoint to make sure you can retrieve your secret:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">curl http://localhost:30400/hello/private-key</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You should see <code>123456</code>.</p>
+</div>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>Copyright (C) 2020-2022 <a href="https://www.redhat.com">Red Hat</a> and individual contributors to <a href="https://github.com/quarkiverse/quarkiverse-docs">Quarkiverse</a>.</p>
+</footer>
+<script src="../../_/js/site.js"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

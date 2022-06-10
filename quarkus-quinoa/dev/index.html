@@ -1,0 +1,1247 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Quarkus - Quinoa :: Quarkiverse Documentation</title>
+    <link rel="canonical" href="https://quarkiverse.github.io/quarkiverse-docs/quarkus-quinoa/dev/index.html">
+    <meta name="generator" content="Antora 3.0.1">
+    <link rel="stylesheet" href="../../_/css/site.css">
+    <link rel="stylesheet" href="../../_/css/site-extra.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <script>var uiRootPath = '../../_'</script>
+  </head>
+  <body class="article">
+<header class="header" role="banner">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <div class="navbar-item">
+        <a href="../..">Quarkiverse</a>
+        <span class="separator">//</span>
+        <a href="https://quarkiverse.github.io/quarkiverse-docs">Docs</a>
+      </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item has-dropdown is-hoverable">
+          <div class="navbar-link">Projects</div>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Index</a>
+            <a class="navbar-item" href="#">Quarkus - Java Embedded Framework</a>
+            <a class="navbar-item" href="#">Quarkus Amazon Alexa</a>
+            <a class="navbar-item" href="#">Quarkus Amazon Services</a>
+            <a class="navbar-item" href="#">Quarkus Artemis</a>
+            <a class="navbar-item" href="#">Quarkus Config Extensions</a>
+            <a class="navbar-item" href="#">Quarkus Cucumber</a>
+            <a class="navbar-item" href="#">Quarkus CXF</a>
+            <a class="navbar-item" href="#">Quarkus Dapr</a>
+            <a class="navbar-item" href="#">Quarkus File Vault</a>
+            <a class="navbar-item" href="#">Quarkus Freemarker</a>
+            <a class="navbar-item" href="#">Quarkus GitHub Action</a>
+            <a class="navbar-item" href="#">Quarkus GitHub App</a>
+            <a class="navbar-item" href="#">Quarkus Google Cloud Services</a>
+            <a class="navbar-item" href="#">Quarkus Helm</a>
+            <a class="navbar-item" href="#">Quarkus Hibernate Search Extras</a>
+            <a class="navbar-item" href="#">Quarkus Hibernate types</a>
+            <a class="navbar-item" href="#">Quarkus HiveMQ Client</a>
+            <a class="navbar-item" href="#">Quarkus JDBC Sqlite</a>
+            <a class="navbar-item" href="#">Quarkus JGit</a>
+            <a class="navbar-item" href="#">Quarkus JGraphT</a>
+            <a class="navbar-item" href="#">Quarkus JSch</a>
+            <a class="navbar-item" href="#">Quarkus Kerberos</a>
+            <a class="navbar-item" href="#">Quarkus Logging JSON</a>
+            <a class="navbar-item" href="#">Quarkus Logging Logback</a>
+            <a class="navbar-item" href="#">Quarkus Logging Sentry</a>
+            <a class="navbar-item" href="#">Quarkus Logging Splunk</a>
+            <a class="navbar-item" href="#">Quarkus Micrometer Registry extensions</a>
+            <a class="navbar-item" href="#">Quarkus Mockk</a>
+            <a class="navbar-item" href="#">Quarkus MyBatis</a>
+            <a class="navbar-item" href="#">Quarkus Neo4j</a>
+            <a class="navbar-item" href="#">Quarkus Operator SDK</a>
+            <a class="navbar-item" href="#">Quarkus Prettytime</a>
+            <a class="navbar-item" href="#">Quarkus Quinoa</a>
+            <a class="navbar-item" href="#">Quarkus RabbitMQ Client</a>
+            <a class="navbar-item" href="#">Quarkus Reactive Messaging HTTP</a>
+            <a class="navbar-item" href="#">Quarkus Renarde</a>
+            <a class="navbar-item" href="#">Quarkus Tika</a>
+            <a class="navbar-item" href="#">Quarkus Unleash</a>
+            <a class="navbar-item" href="#">Quarkus Vault</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <div class="navbar-link">Community</div>
+          <div class="navbar-dropdown is-right">
+            <a class="navbar-item" href="https://quarkusio.zulipchat.com">Chat</a>
+          </div>
+        </div>
+        <a class="navbar-item" href="https://twitter.com/quarkusio">
+          <span class="icon">
+            <svg aria-hidden="true" data-icon="twitter" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+              <path fill="#57aaee" d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path>
+            </svg>
+          </span>
+        </a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="quarkus-quinoa" data-version="dev">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="index.html">Quarkus Quinoa</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="index.html">Quarkus - Quinoa</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Quarkus Quinoa</span>
+    <span class="version">dev</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <a class="title" href="../../index/index/index.html">Index</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../index/index/index.html">index</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-java-embedded-framework/dev/index.html">Quarkus - Java Embedded Framework</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-java-embedded-framework/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-amazon-alexa/dev/index.html">Quarkus Amazon Alexa</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-amazon-alexa/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-amazon-services/dev/index.html">Quarkus Amazon Services</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-amazon-services/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-artemis/dev/index.html">Quarkus Artemis</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-artemis/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-config-extensions/dev/index.html">Quarkus Config Extensions</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-config-extensions/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-cucumber/dev/index.html">Quarkus Cucumber</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-cucumber/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-cxf/dev/index.html">Quarkus CXF</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-cxf/dev/index.html">dev</a>
+        </li>
+        <li class="version">
+          <a href="../../quarkus-cxf/v1.x/index.html">v1.x</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-dapr/dev/index.html">Quarkus Dapr</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-dapr/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-file-vault/dev/index.html">Quarkus File Vault</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-file-vault/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-freemarker/dev/index.html">Quarkus Freemarker</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-freemarker/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-github-action/dev/index.html">Quarkus GitHub Action</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-github-action/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-github-app/dev/index.html">Quarkus GitHub App</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-github-app/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-google-cloud-services/main/index.html">Quarkus Google Cloud Services</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-google-cloud-services/main/index.html">main</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-helm/dev/index.html">Quarkus Helm</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-helm/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-hibernate-search-extras/dev/index.html">Quarkus Hibernate Search Extras</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-hibernate-search-extras/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-hibernate-types/dev/index.html">Quarkus Hibernate types</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-hibernate-types/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-hivemq-client/dev/index.html">Quarkus HiveMQ Client</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-hivemq-client/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-JDBC-Sqlite/dev/index.html">Quarkus JDBC Sqlite</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-JDBC-Sqlite/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-jgit/dev/index.html">Quarkus JGit</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-jgit/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-jgrapht/dev/index.html">Quarkus JGraphT</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-jgrapht/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-jsch/dev/index.html">Quarkus JSch</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-jsch/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-kerberos/dev/index.html">Quarkus Kerberos</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-kerberos/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-logging-json/dev/index.html">Quarkus Logging JSON</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-logging-json/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-logging-logback/dev/index.html">Quarkus Logging Logback</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-logging-logback/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-logging-sentry/dev/index.html">Quarkus Logging Sentry</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-logging-sentry/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-logging-splunk/dev/index.html">Quarkus Logging Splunk</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-logging-splunk/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-micrometer-registry/dev/index.html">Quarkus Micrometer Registry extensions</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-micrometer-registry/dev/index.html">dev</a>
+        </li>
+        <li class="version">
+          <a href="../../quarkus-micrometer-registry/1.x/index.html">1.x</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-mockk/dev/index.html">Quarkus Mockk</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-mockk/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-mybatis/dev/index.html">Quarkus MyBatis</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-mybatis/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-neo4j/dev/index.html">Quarkus Neo4j</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-neo4j/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-operator-sdk/dev/index.html">Quarkus Operator SDK</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-operator-sdk/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-prettytime/dev/index.html">Quarkus Prettytime</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-prettytime/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <a class="title" href="index.html">Quarkus Quinoa</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-rabbitmq-client/0.1.0/index.html">Quarkus RabbitMQ Client</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-rabbitmq-client/0.1.0/index.html">0.1.0</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-reactive-messaging-http/dev/index.html">Quarkus Reactive Messaging HTTP</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-reactive-messaging-http/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-renarde/dev/index.html">Quarkus Renarde</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-renarde/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-tika/dev/index.html">Quarkus Tika</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-tika/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-unleash/dev/index.html">Quarkus Unleash</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-unleash/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-vault/dev/index.html">Quarkus Vault</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-vault/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../index/index/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Quarkus Quinoa</a></li>
+    <li><a href="index.html">Quarkus - Quinoa</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/quarkiverse/quarkus-quinoa/edit/main/docs/modules/ROOT/pages/index.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Quarkus - Quinoa</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Quinoa is a Quarkus extension which eases the development, the build and serving single page apps or web components (built with NodeJS: React, Angular, Vue, Lit, …) alongside other Quarkus services (REST, GraphQL, Security, Events, &#8230;&#8203;).</p>
+</div>
+<div class="paragraph">
+<p>Live code the backend and frontend together with close to no configuration. When enabled in development mode, Quinoa will start the UI live coding server provided by the target framework and forward relevant requests to it. In production mode, Quinoa will run the build and process the generated files to serve them at runtime.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_how_it_works"><a class="anchor" href="#_how_it_works"></a>How it works</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_the_quinoa_build_using_npm"><a class="anchor" href="#_the_quinoa_build_using_npm"></a>The Quinoa build (using npm)</h3>
+<div class="imageblock">
+<div class="content">
+<img src="_images/quinoa-build.png" alt="Quinoa Build">
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+packages are installed by Quinoa before the build when needed (i.e <code>npm install</code>). See <a href="#install-packages">Packages installation</a>. Quinoa is pre-configured to work with your favorite <a href="#package-manager">package manager</a> (npm, yarn or pnpm).
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_runtime_for_production_mode"><a class="anchor" href="#_runtime_for_production_mode"></a>Runtime for production mode</h3>
+<div class="imageblock kroki">
+<div class="content">
+<img src="_images/diag-1f2f28dc33bae2cddaf56958f1fc6e6b2b81a7d6.svg" alt="Diagram">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_runtime_for_full_quarkus_live_coding"><a class="anchor" href="#_runtime_for_full_quarkus_live_coding"></a>Runtime for full Quarkus live-coding</h3>
+<div class="paragraph">
+<p>Quinoa (using Quarkus live-coding watch feature) will watch the Web UI directory and trigger a new build on changes. It works the same as the production mode. This option is perfect for small/fast builds.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+You can differentiate the build for <a href="#build-mode">dev mode</a>. e.g to disable minification.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="how-dev-server"><a class="anchor" href="#how-dev-server"></a>Runtime for proxied live-coding (e.g on port 3000)</h3>
+<div class="imageblock kroki">
+<div class="content">
+<img src="_images/diag-766e0e96500d4e6fe5712bf86ca836254e9e5ee4.svg" alt="Diagram">
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Quarkus live-coding will keep watching for the backend changes as usual.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>See <a href="#dev-server">Enable the proxied live coding</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_prerequisite"><a class="anchor" href="#_prerequisite"></a>Prerequisite</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Install NodeJS (<a href="https://nodejs.org/" class="bare">https://nodejs.org/</a>)</p>
+</li>
+<li>
+<p>Create or use an existing Quarkus application</p>
+</li>
+<li>
+<p>Add the Quinoa extension</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="installation"><a class="anchor" href="#installation"></a>Installation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To use this, you need the <code>io.quarkiverse.quinoa:quarkus-quinoa</code> extension first.</p>
+</div>
+<div class="paragraph">
+<p>Create a new Quinoa project (with a base Quinoa starter code):</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>With <a href="https://code.quarkus.io/?a=quinoa-bowl&amp;j=17&amp;e=io.quarkiverse.quinoa%3Aquarkus-quinoa">code.quarkus.io</a></p>
+</li>
+<li>
+<p>With the <a href="https://quarkus.io/guides/cli-tooling">Quarkus CLI</a>:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>quarkus create app quinoa-app -x=io.quarkiverse.quinoa:quarkus-quinoa</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then start the live-coding:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">quarkus dev</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And navigate to <a href="http://0.0.0.0:8080/quinoa.html" class="bare">http://0.0.0.0:8080/quinoa.html</a></p>
+</div>
+<div class="paragraph">
+<p>You could also just add the extension (but you won&#8217;t get the starter code):</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>With the <a href="https://quarkus.io/guides/cli-tooling">Quarkus CLI</a>:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>quarkus ext add io.quarkiverse.quinoa:quarkus-quinoa</pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>In your <code>pom.xml</code> file, add this dependency:</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+    &lt;groupId&gt;io.quarkiverse.quinoa&lt;/groupId&gt;
+    &lt;artifactId&gt;quarkus-quinoa&lt;/artifactId&gt;
+    &lt;version&gt;1.0.5&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="getting-started"><a class="anchor" href="#getting-started"></a>Getting Started</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Create a Web UI directory in <code>src/main/webui</code>. This directory will contain your NodeJS Web application code with a <code>package.json</code>. The location is configurable, the directory could be outside the Quarkus project as soon as the file are available at build time.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties">quarkus.quinoa.ui-dir=../my-webui</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>From here, copy your existing Web UI or generate an application from any existing Node based Web UI framework such as <a href="#react">React</a>, <a href="#angular">Angular</a>, Lit, Webpack, Rollup, &#8230;&#8203; or your own. Example:</p>
+</div>
+<div class="paragraph">
+<p>The key points are the <code>package.json</code> scripts (<code>build</code> and optionally <code>test</code>) and the directory where the web files (index.html, scripts, &#8230;&#8203;) are generated (by default, it will use <code>build/</code> relative to the <code>ui-dir</code>).</p>
+</div>
+<div class="paragraph">
+<p>Quinoa provides two options for live-coding:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Delegate to the <a href="#dev-server">UI live-coding dev server (proxy mode)</a>. To enable it, configure the port of the UI server. By convention Quinoa will call the <code>start</code> script from the <code>package.json</code> to start the UI server process. Then it will transparently proxy relevant requests to the given port.</p>
+</li>
+<li>
+<p>Quarkus watches the files and Quinoa triggers a new Web UI build on changes (you can configure different builds for dev and prod).</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Start the Quarkus live coding:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ quarkus dev</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>It&#8217;s done!</strong> The web application is now built alongside Quarkus, dev-mode is available, and the generated files will be automatically copied to the right place and be served by Quinoa if you hit <a href="http://localhost:8080" class="bare">http://localhost:8080</a></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">2022-03-28 09:24:46,739 INFO  [io.qua.qui.dep.QuinoaProcessor] (build-25) Quinoa target directory: 'xxx/target/quinoa-build'
+2022-03-28 09:24:46,739 INFO  [io.qua.qui.dep.QuinoaProcessor] (build-25) Quinoa generated resource: '/favicon.ico'
+2022-03-28 09:24:46,740 INFO  [io.qua.qui.dep.QuinoaProcessor] (build-25) Quinoa generated resource: '/index.html'
+2022-03-28 09:24:46,741 INFO  [io.qua.qui.dep.QuinoaProcessor] (build-25) Quinoa generated resource: '/simple-greeting.js'</code></pre>
+</div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+With Quinoa, you don&#8217;t need to manually copy the files to <code>META-INF/resources</code>. Quinoa has its own system and will provide another Vert.x route for it. <strong>If you have conflicting files with <code>META-INF/resources</code>, Quinoa will have priority over them.</strong>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="how-to"><a class="anchor" href="#how-to"></a>How to use the extension.</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_configure_the_build"><a class="anchor" href="#_configure_the_build"></a>Configure the build</h3>
+<div class="paragraph">
+<p>Add a <code>build</code> script in the <code>package.json</code> to generate your web application index.html, scripts and media (styles, images, &#8230;&#8203;) in the <code>./build</code> directory (can be changed in the config):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json"> "scripts": {
+    "start": "[start the Web UI live coding server]",
+    "build": "[build the Web UI]",
+    "test": "[test the Web UI]"
+  },</code></pre>
+</div>
+</div>
+<div id="build-mode" class="paragraph">
+<p>You can differentiate dev from production builds using the <code>MODE</code> environment variable (<code>dev</code>, <code>prod</code>, <code>test</code>):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json"> "scripts": {
+        "build": "if [[ $MODE == \"dev\" ]]; then webpack --mode=development; else webpack --mode=production; fi",
+  },</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="package-manager"><a class="anchor" href="#package-manager"></a>Package manager</h3>
+<div class="paragraph">
+<p>It is not necessary (but possible) to configure the package manager (NPM, Yarn or PNPM), it will be auto-detected depending on the project lockfile, NPM is the fallback:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Use <code>quarkus.quinoa.package-manager</code> if present</p>
+</li>
+<li>
+<p>Else if <code>yarn.lock</code> then <strong>Yarn</strong></p>
+</li>
+<li>
+<p>Else if <code>pnpm-lock.yaml</code> then <strong>PNPM</strong></p>
+</li>
+<li>
+<p>Else <strong>NPM</strong></p>
+</li>
+</ul>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Quinoa is configured with the commands to call depending on the chosen package manager (to always keep the same behavior and make it easy to switch).
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="install-packages"><a class="anchor" href="#install-packages"></a>Node packages installation (node_modules)</h3>
+<div class="paragraph">
+<p>By default, Quinoa will call the appropriate package manager install command (before building or starting) <strong>only if</strong> the <code>node_modules</code> directory doesn&#8217;t exist.</p>
+</div>
+<div class="paragraph">
+<p>You may force a new installation using <code>-Dquarkus.quinoa.always-install=true</code>.</p>
+</div>
+<div id="frozen-lockfile" class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Quinoa will use the appropriate package manager frozen-lockfile command when installing, if the environment <code>CI=true</code>, or if <code>quarkus.quinoa.frozen-lockfile=true</code>. In this mode, the lockfile have to be present in the project.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="dev-server"><a class="anchor" href="#dev-server"></a>UI live-coding dev server (proxy mode)</h3>
+<div class="paragraph">
+<p>To enable the UI live-coding dev server, set a <code>start</code> script and set the port in the app config. Quinoa will transparently proxy relevant requests to the given port:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties">quarkus.quinoa.dev-server-port=3000</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Quinoa relies on the dev server returning a 404 when the file is not found (See <a href="#how-dev-server">How it works</a>). This is not the case on some dev servers configured with SPA routing. Make sure it is disabled in the dev server configuration (for React Create App, see <a href="https://github.com/quarkiverse/quarkus-quinoa/issues/91">#91</a>). Another option, when possible, is to use <a href="#quarkus-quinoa_quarkus.quinoa.ignored-path-prefixes">[quarkus-quinoa_quarkus.quinoa.ignored-path-prefixes]</a>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="react"><a class="anchor" href="#react"></a>React</h3>
+<div class="paragraph">
+<p>App created by Create React App (<a href="https://create-react-app.dev/docs/getting-started" class="bare">https://create-react-app.dev/docs/getting-started</a>) are compatible without any change.</p>
+</div>
+<div class="paragraph">
+<p>To enable React live coding server:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties">quarkus.quinoa.dev-server-port=3000</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="angular"><a class="anchor" href="#angular"></a>Angular</h3>
+<div class="paragraph">
+<p>App created by <code>ng</code> (<a href="https://angular.io/guide/setup-local" class="bare">https://angular.io/guide/setup-local</a>) require a tiny bit of configuration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties">quarkus.quinoa.build-dir=dist/[your-app-name]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To enable Angular live coding server, you need to edit the package.json start script with <code>ng serve --host 0.0.0.0 --no-live-reload</code>, then add this configuration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties">quarkus.quinoa.dev-server-port=4200</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you want to use the Angular tests (instead of Playwright from the @QuarkusTest):</p>
+</div>
+<div class="paragraph">
+<p>Change the package.json test script:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json hljs" data-lang="json">  "scripts": {
+    ...
+    "test": "ng test -- --no-watch --no-progress --browsers=ChromeHeadlessCI"
+  },</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Edit the karma.conf.js:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-javascript hljs" data-lang="javascript">  browsers: ['Chrome', 'ChromeHeadless', 'ChromeHeadlessCI'],
+  customLaunchers: {
+    ChromeHeadlessCI: {
+      base: 'ChromeHeadless',
+      flags: ['--no-sandbox']
+    }
+},</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="spa-routing"><a class="anchor" href="#spa-routing"></a>Single Page application routing</h3>
+<div class="paragraph">
+<p>Client-side/Browser/SPA routing is the internal handling of a route from the javascript in the browser. It uses the <a href="https://developer.mozilla.org/en-US/docs/Web/API/History">HTML5 History API</a></p>
+</div>
+<div class="paragraph">
+<p>When enabled, to allow SPA routing, all relevant requests will be internally re-routed to index.html, this way the javascript can take care of the route inside the web-application.</p>
+</div>
+<div class="paragraph">
+<p>To enable Single Page application routing:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties">quarkus.quinoa.enable-spa-routing=true</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+By default, Quinoa will ignore <code>quarkus.rest.path</code>, <code>quarkus.resteasy.path</code> and <code>quarkus.http.non-application-root-path</code> path prefixes. You can specify different path prefixes to ignore using <code>quarkus.quinoa.ignored-path-prefixes</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Currently, for technical reasons, the Quinoa SPA routing configuration won&#8217;t work with RESTEasy Classic. Instead, you may use a workaround (if your app has all the rest resources under the same path prefix):
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@ApplicationScoped
+public class SPARouting {
+    private static final String[] PATH_PREFIXES = { "/api/", "/q/" };
+    private static final Predicate&lt;String&gt; FILE_NAME_PREDICATE = Pattern.compile(".*[.][a-zA-Z\\d]+").asMatchPredicate();
+
+    public void init(@Observes Router router) {
+        router.get("/*").handler(rc -&gt; {
+            final String path = rc.normalizedPath();
+            if (!path.equals("/")
+                    &amp;&amp; Stream.of(PATH_PREFIXES).noneMatch(path::startsWith)
+                    &amp;&amp; !FILE_NAME_PREDICATE.test(path)) {
+                rc.reroute("/");
+            } else {
+                rc.next();
+            }
+        });
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="headers"><a class="anchor" href="#headers"></a>Http Headers</h3>
+<div class="paragraph">
+<p>It&#8217;s very common to set up headers for caching on static resources, for example React proposes <a href="https://create-react-app.dev/docs/production-build/#static-file-caching">this configuration</a>:</p>
+</div>
+<div class="paragraph">
+<p>To configure Quarkus with those headers :</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties">quarkus.http.filter.others.header.Cache-Control=no-cache
+quarkus.http.filter.others.matches=/.*
+quarkus.http.filter.others.methods=GET
+quarkus.http.filter.others.order=0
+quarkus.http.filter.static.header.Cache-Control=max-age=31536000
+quarkus.http.filter.static.matches=/static/.+
+quarkus.http.filter.static.methods=GET
+quarkus.http.filter.static.order=1</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_testing"><a class="anchor" href="#_testing"></a>Testing</h3>
+<div class="paragraph">
+<p>By default, the Web UI is not build/served in <code>@QuarkusTest</code>. The goal is to be able to test your api without having to wait for the Web UI build.</p>
+</div>
+<div class="paragraph">
+<p>Quinoa features a testing library to make it easier to test your Web UI:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+    &lt;groupId&gt;io.quarkiverse.quinoa&lt;/groupId&gt;
+    &lt;artifactId&gt;quarkus-quinoa-testing&lt;/artifactId&gt;
+    &lt;version&gt;1.0.5&lt;/version&gt;
+    &lt;scope&gt;test&lt;/scope&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In order to enable the Web UI (build and serve) in a particular test, you can use the <code>Enable</code> test profile:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@QuarkusTest
+@TestProfile(QuinoaTestProfiles.Enable.class)
+public class MyWebUITest {
+    @Test
+    public void someTest() {
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you also want to run the tests included in your Web UI (i.e npm test) alongside this class, you can use the <code>EnableAndRunTests</code> test profile:</p>
+</div>
+<div class="paragraph">
+<p>The library also brings a very elegant way to do e2e testing using <a href="https://github.com/microsoft/playwright-java">Playright</a>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">import com.microsoft.playwright.BrowserContext;
+import com.microsoft.playwright.Page;
+import com.microsoft.playwright.Response;
+import io.quarkiverse.quinoa.testing.QuarkusPlaywrightManager;
+import io.quarkiverse.quinoa.testing.QuinoaTestProfiles;
+import io.quarkus.test.common.QuarkusTestResource;
+import io.quarkus.test.common.http.TestHTTPResource;
+import io.quarkus.test.junit.QuarkusTest;
+import io.quarkus.test.junit.TestProfile;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+
+import java.net.URL;
+
+@QuarkusTest
+@TestProfile(QuinoaTestProfiles.Enable.class)
+@QuarkusTestResource(QuarkusPlaywrightManager.class)
+public class MyWebUITest {
+    @QuarkusPlaywrightManager.InjectPlaywright
+    BrowserContext context;
+
+    @TestHTTPResource("/")
+    URL url;
+
+    @Test
+    void name() {
+        final Page page = context.newPage();
+        Response response = page.navigate(url.toString());
+        Assertions.assertEquals("OK", response.statusText());
+
+        page.waitForLoadState();
+
+        String title = page.title();
+        Assertions.assertEquals("My App", title);
+
+        // Make sure the app content is ok
+        String greeting = page.innerText(".quinoa");
+        Assertions.assertEquals("Hello World", greeting);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_ci"><a class="anchor" href="#_ci"></a>CI</h3>
+<div class="paragraph">
+<p>Most CI images already include NodeJS. if they don&#8217;t, just make sure to install it alongside Maven/Gradle (and Yarn/PNPM if needed). Then you can use it like any Maven/Gradle project.</p>
+</div>
+<div class="paragraph">
+<p>Quinoa can be configured to install packages with a <a href="#frozen-lockfile">frozen lockfile</a>.</p>
+</div>
+<div class="paragraph">
+<p>On compatible CIs, don&#8217;t forget to enable the Maven/Gradle and NPM/Yarn repository caching.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="extension-configuration-reference"><a class="anchor" href="#extension-configuration-reference"></a>Extension Configuration Reference</h2>
+<div class="sectionbody">
+<div class="paragraph configuration-legend">
+<p><span class="icon"><i class="fa fa-lock" title="Fixed at build time"></i></span> Configuration property fixed at build time - All other configuration properties are overridable at runtime</p>
+</div>
+<table class="tableblock frame-all grid-all stretch configuration-reference searchable">
+<colgroup>
+<col style="width: 80%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock"><a id="quarkus-quinoa_configuration"></a><a href="#quarkus-quinoa_configuration">Configuration property</a></p></th>
+<th class="tableblock halign-left valign-middle"><p class="tableblock">Type</p></th>
+<th class="tableblock halign-left valign-middle"><p class="tableblock">Default</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="icon"><i class="fa fa-lock" title="Fixed at build time"></i></span> <a id="quarkus-quinoa_quarkus.quinoa"></a><code><a href="#quarkus-quinoa_quarkus.quinoa">quarkus.quinoa</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Indicate if the extension should be enabled Default is true if the Web UI directory exists and dev and prod mode Default is false in test mode (to avoid building the Web UI during backend tests)</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="icon"><i class="fa fa-lock" title="Fixed at build time"></i></span> <a id="quarkus-quinoa_quarkus.quinoa.ui-dir"></a><code><a href="#quarkus-quinoa_quarkus.quinoa.ui-dir">quarkus.quinoa.ui-dir</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Path to the Web UI (node) root directory. If not set ${project.root}/src/main/webui/ will be used otherwise the path will be considered relative to the project root</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="icon"><i class="fa fa-lock" title="Fixed at build time"></i></span> <a id="quarkus-quinoa_quarkus.quinoa.build-dir"></a><code><a href="#quarkus-quinoa_quarkus.quinoa.build-dir">quarkus.quinoa.build-dir</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Path of the directory which contains the Web UI built files (generated during the build). After the build, Quinoa will take the files from this directory, copy them to the right location and serve them at runtime. The path is relative to the Web UI path If not set "build/" will be used</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="icon"><i class="fa fa-lock" title="Fixed at build time"></i></span> <a id="quarkus-quinoa_quarkus.quinoa.package-manager"></a><code><a href="#quarkus-quinoa_quarkus.quinoa.package-manager">quarkus.quinoa.package-manager</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Name of the package manager binary. If not set, it will be auto-detected depending on the lockfile falling back to "npm". Only npm, pnpm and yarn are supported for the moment</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="icon"><i class="fa fa-lock" title="Fixed at build time"></i></span> <a id="quarkus-quinoa_quarkus.quinoa.run-tests"></a><code><a href="#quarkus-quinoa_quarkus.quinoa.run-tests">quarkus.quinoa.run-tests</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Indicate if the Web UI should also be tested during the build phase (i.e: npm test) To be used in a <code>io.quarkus.test.junit.QuarkusTestProfile</code> to have Web UI test running during a <code>io.quarkus.test.junit.QuarkusTest</code> Default is false</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="icon"><i class="fa fa-lock" title="Fixed at build time"></i></span> <a id="quarkus-quinoa_quarkus.quinoa.frozen-lockfile"></a><code><a href="#quarkus-quinoa_quarkus.quinoa.frozen-lockfile">quarkus.quinoa.frozen-lockfile</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Install the packages using a frozen lockfile. Don’t generate a lockfile and fail if an update is needed (useful in CI). If not set it is true if environment CI=true, else it is false</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="icon"><i class="fa fa-lock" title="Fixed at build time"></i></span> <a id="quarkus-quinoa_quarkus.quinoa.always-install"></a><code><a href="#quarkus-quinoa_quarkus.quinoa.always-install">quarkus.quinoa.always-install</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Always install packages before building. If not set, it will install packages only if the node_modules directory is absent.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="icon"><i class="fa fa-lock" title="Fixed at build time"></i></span> <a id="quarkus-quinoa_quarkus.quinoa.enable-spa-routing"></a><code><a href="#quarkus-quinoa_quarkus.quinoa.enable-spa-routing">quarkus.quinoa.enable-spa-routing</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Enable SPA (Single Page Application) routing, all relevant requests will be re-routed to the index.html Currently, for technical reasons, the Quinoa SPA routing configuration won&#8217;t work with RESTEasy Classic. If not set, it is disabled.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="icon"><i class="fa fa-lock" title="Fixed at build time"></i></span> <a id="quarkus-quinoa_quarkus.quinoa.ignored-path-prefixes"></a><code><a href="#quarkus-quinoa_quarkus.quinoa.ignored-path-prefixes">quarkus.quinoa.ignored-path-prefixes</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>List of path prefixes to be ignored by Quinoa. If not set, "quarkus.rest.path", "quarkus.resteasy.path" and "quarkus.http.non-application-root-path" will be ignored.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">list of string</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="icon"><i class="fa fa-lock" title="Fixed at build time"></i></span> <a id="quarkus-quinoa_quarkus.quinoa.dev-server-port"></a><code><a href="#quarkus-quinoa_quarkus.quinoa.dev-server-port">quarkus.quinoa.dev-server-port</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Enable external server for dev (live coding). The dev server process (i.e npm start) is managed like a dev service by Quarkus. This defines the port of the server to forward requests to. If the external server responds with a 404, it is ignored by Quinoa and processed like any other backend request.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">int</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="icon"><i class="fa fa-lock" title="Fixed at build time"></i></span> <a id="quarkus-quinoa_quarkus.quinoa.dev-server-timeout"></a><code><a href="#quarkus-quinoa_quarkus.quinoa.dev-server-timeout">quarkus.quinoa.dev-server-timeout</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Timeout in ms for the dev server to be up and running. If not set the default is ~30000ms</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">int</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="icon"><i class="fa fa-lock" title="Fixed at build time"></i></span> <a id="quarkus-quinoa_quarkus.quinoa.enable-dev-server-logs"></a><code><a href="#quarkus-quinoa_quarkus.quinoa.enable-dev-server-logs">quarkus.quinoa.enable-dev-server-logs</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Enable external dev server live coding logs. This is not enabled by default because most dev servers display compilation errors directly in the browser. False if not set.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>Copyright (C) 2020-2022 <a href="https://www.redhat.com">Red Hat</a> and individual contributors to <a href="https://github.com/quarkiverse/quarkiverse-docs">Quarkiverse</a>.</p>
+</footer>
+<script src="../../_/js/site.js"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

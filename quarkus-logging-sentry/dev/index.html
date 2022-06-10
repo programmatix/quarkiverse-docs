@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Quarkus Logging Sentry :: Quarkiverse Documentation</title>
+    <link rel="canonical" href="https://quarkiverse.github.io/quarkiverse-docs/quarkus-logging-sentry/dev/index.html">
+    <meta name="generator" content="Antora 3.0.1">
+    <link rel="stylesheet" href="../../_/css/site.css">
+    <link rel="stylesheet" href="../../_/css/site-extra.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <script>var uiRootPath = '../../_'</script>
+  </head>
+  <body class="article">
+<header class="header" role="banner">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <div class="navbar-item">
+        <a href="../..">Quarkiverse</a>
+        <span class="separator">//</span>
+        <a href="https://quarkiverse.github.io/quarkiverse-docs">Docs</a>
+      </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item has-dropdown is-hoverable">
+          <div class="navbar-link">Projects</div>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Index</a>
+            <a class="navbar-item" href="#">Quarkus - Java Embedded Framework</a>
+            <a class="navbar-item" href="#">Quarkus Amazon Alexa</a>
+            <a class="navbar-item" href="#">Quarkus Amazon Services</a>
+            <a class="navbar-item" href="#">Quarkus Artemis</a>
+            <a class="navbar-item" href="#">Quarkus Config Extensions</a>
+            <a class="navbar-item" href="#">Quarkus Cucumber</a>
+            <a class="navbar-item" href="#">Quarkus CXF</a>
+            <a class="navbar-item" href="#">Quarkus Dapr</a>
+            <a class="navbar-item" href="#">Quarkus File Vault</a>
+            <a class="navbar-item" href="#">Quarkus Freemarker</a>
+            <a class="navbar-item" href="#">Quarkus GitHub Action</a>
+            <a class="navbar-item" href="#">Quarkus GitHub App</a>
+            <a class="navbar-item" href="#">Quarkus Google Cloud Services</a>
+            <a class="navbar-item" href="#">Quarkus Helm</a>
+            <a class="navbar-item" href="#">Quarkus Hibernate Search Extras</a>
+            <a class="navbar-item" href="#">Quarkus Hibernate types</a>
+            <a class="navbar-item" href="#">Quarkus HiveMQ Client</a>
+            <a class="navbar-item" href="#">Quarkus JDBC Sqlite</a>
+            <a class="navbar-item" href="#">Quarkus JGit</a>
+            <a class="navbar-item" href="#">Quarkus JGraphT</a>
+            <a class="navbar-item" href="#">Quarkus JSch</a>
+            <a class="navbar-item" href="#">Quarkus Kerberos</a>
+            <a class="navbar-item" href="#">Quarkus Logging JSON</a>
+            <a class="navbar-item" href="#">Quarkus Logging Logback</a>
+            <a class="navbar-item" href="#">Quarkus Logging Sentry</a>
+            <a class="navbar-item" href="#">Quarkus Logging Splunk</a>
+            <a class="navbar-item" href="#">Quarkus Micrometer Registry extensions</a>
+            <a class="navbar-item" href="#">Quarkus Mockk</a>
+            <a class="navbar-item" href="#">Quarkus MyBatis</a>
+            <a class="navbar-item" href="#">Quarkus Neo4j</a>
+            <a class="navbar-item" href="#">Quarkus Operator SDK</a>
+            <a class="navbar-item" href="#">Quarkus Prettytime</a>
+            <a class="navbar-item" href="#">Quarkus Quinoa</a>
+            <a class="navbar-item" href="#">Quarkus RabbitMQ Client</a>
+            <a class="navbar-item" href="#">Quarkus Reactive Messaging HTTP</a>
+            <a class="navbar-item" href="#">Quarkus Renarde</a>
+            <a class="navbar-item" href="#">Quarkus Tika</a>
+            <a class="navbar-item" href="#">Quarkus Unleash</a>
+            <a class="navbar-item" href="#">Quarkus Vault</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <div class="navbar-link">Community</div>
+          <div class="navbar-dropdown is-right">
+            <a class="navbar-item" href="https://quarkusio.zulipchat.com">Chat</a>
+          </div>
+        </div>
+        <a class="navbar-item" href="https://twitter.com/quarkusio">
+          <span class="icon">
+            <svg aria-hidden="true" data-icon="twitter" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+              <path fill="#57aaee" d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path>
+            </svg>
+          </span>
+        </a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="quarkus-logging-sentry" data-version="dev">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="index.html">Quarkus Logging Sentry</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="index.html">Quarkus - Logging Sentry</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Quarkus Logging Sentry</span>
+    <span class="version">dev</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <a class="title" href="../../index/index/index.html">Index</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../index/index/index.html">index</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-java-embedded-framework/dev/index.html">Quarkus - Java Embedded Framework</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-java-embedded-framework/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-amazon-alexa/dev/index.html">Quarkus Amazon Alexa</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-amazon-alexa/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-amazon-services/dev/index.html">Quarkus Amazon Services</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-amazon-services/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-artemis/dev/index.html">Quarkus Artemis</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-artemis/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-config-extensions/dev/index.html">Quarkus Config Extensions</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-config-extensions/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-cucumber/dev/index.html">Quarkus Cucumber</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-cucumber/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-cxf/dev/index.html">Quarkus CXF</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-cxf/dev/index.html">dev</a>
+        </li>
+        <li class="version">
+          <a href="../../quarkus-cxf/v1.x/index.html">v1.x</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-dapr/dev/index.html">Quarkus Dapr</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-dapr/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-file-vault/dev/index.html">Quarkus File Vault</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-file-vault/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-freemarker/dev/index.html">Quarkus Freemarker</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-freemarker/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-github-action/dev/index.html">Quarkus GitHub Action</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-github-action/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-github-app/dev/index.html">Quarkus GitHub App</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-github-app/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-google-cloud-services/main/index.html">Quarkus Google Cloud Services</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-google-cloud-services/main/index.html">main</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-helm/dev/index.html">Quarkus Helm</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-helm/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-hibernate-search-extras/dev/index.html">Quarkus Hibernate Search Extras</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-hibernate-search-extras/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-hibernate-types/dev/index.html">Quarkus Hibernate types</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-hibernate-types/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-hivemq-client/dev/index.html">Quarkus HiveMQ Client</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-hivemq-client/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-JDBC-Sqlite/dev/index.html">Quarkus JDBC Sqlite</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-JDBC-Sqlite/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-jgit/dev/index.html">Quarkus JGit</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-jgit/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-jgrapht/dev/index.html">Quarkus JGraphT</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-jgrapht/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-jsch/dev/index.html">Quarkus JSch</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-jsch/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-kerberos/dev/index.html">Quarkus Kerberos</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-kerberos/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-logging-json/dev/index.html">Quarkus Logging JSON</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-logging-json/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-logging-logback/dev/index.html">Quarkus Logging Logback</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-logging-logback/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <a class="title" href="index.html">Quarkus Logging Sentry</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-logging-splunk/dev/index.html">Quarkus Logging Splunk</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-logging-splunk/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-micrometer-registry/dev/index.html">Quarkus Micrometer Registry extensions</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-micrometer-registry/dev/index.html">dev</a>
+        </li>
+        <li class="version">
+          <a href="../../quarkus-micrometer-registry/1.x/index.html">1.x</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-mockk/dev/index.html">Quarkus Mockk</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-mockk/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-mybatis/dev/index.html">Quarkus MyBatis</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-mybatis/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-neo4j/dev/index.html">Quarkus Neo4j</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-neo4j/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-operator-sdk/dev/index.html">Quarkus Operator SDK</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-operator-sdk/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-prettytime/dev/index.html">Quarkus Prettytime</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-prettytime/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-quinoa/dev/index.html">Quarkus Quinoa</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-quinoa/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-rabbitmq-client/0.1.0/index.html">Quarkus RabbitMQ Client</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-rabbitmq-client/0.1.0/index.html">0.1.0</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-reactive-messaging-http/dev/index.html">Quarkus Reactive Messaging HTTP</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-reactive-messaging-http/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-renarde/dev/index.html">Quarkus Renarde</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-renarde/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-tika/dev/index.html">Quarkus Tika</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-tika/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-unleash/dev/index.html">Quarkus Unleash</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-unleash/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-vault/dev/index.html">Quarkus Vault</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-vault/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../index/index/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Quarkus Logging Sentry</a></li>
+    <li><a href="index.html">Quarkus - Logging Sentry</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/quarkiverse/quarkus-logging-sentry/edit/main/docs/modules/ROOT/pages/index.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Quarkus Logging Sentry</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>This guide explains how to configure Quarkus to log to Sentry.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description"><a class="anchor" href="#_description"></a>Description</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Sentry is a really easy way to be notified of errors happening in your Quarkus application.</p>
+</div>
+<div class="paragraph">
+<p>It is a self-hosted and cloud-based error monitoring that helps software teams discover, triage, and prioritize errors in real-time.</p>
+</div>
+<div class="paragraph">
+<p>They offer a free starter price for cloud-based or you can self host it for free.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+Sentry&#8217;s Java SDK is open source, but recently sentry.io <a href="https://blog.sentry.io/2019/11/06/relicensing-sentry">changed the license</a> for their backend to the non-open source <a href="https://github.com/getsentry/sentry/blob/master/LICENSE">BSL license</a>. This might or might not be an issue for your project and product.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_configuration"><a class="anchor" href="#_configuration"></a>Configuration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To start with, you need to get a Sentry DSN either by <a href="https://sentry.io/signup/">creating a Sentry account</a> or <a href="https://docs.sentry.io/server/">installing your own self-hosted Sentry</a>.</p>
+</div>
+<div class="paragraph">
+<p>In order to configure Sentry logging, add the <code>logging-sentry</code> extension
+to your project by running the following command in your project base directory:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">./mvnw quarkus:add-extension -Dextensions="logging-sentry"</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This will add the following to your <code>pom.xml</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+    &lt;groupId&gt;io.quarkiverse.loggingsentry&lt;/groupId&gt;
+    &lt;artifactId&gt;quarkus-logging-sentry&lt;/artifactId&gt;
+    &lt;version&gt;1.1.1&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="in-app-packages"><a class="anchor" href="#in-app-packages"></a>“In Application” Stack Frames</h3>
+<div class="paragraph">
+<p>Sentry differentiates stack frames that are directly related to your application (“in application”) from stack frames that come from other packages such as the standard library, frameworks, or other dependencies. The difference is visible in the Sentry web interface where only the “in application” frames are displayed by default.</p>
+</div>
+<div class="paragraph">
+<p>You can configure which package prefixes your application uses with the <code>in-app-packages</code> option, which takes a comma separated list of packages:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties">quarkus.log.sentry.in-app-packages=com.mycompany,com.other.name</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you don’t want to use this feature but want to disable the warning, simply set it to <code>*</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties">quarkus.log.sentry.in-app-packages=*</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_example"><a class="anchor" href="#_example"></a>Example</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="title">All errors and warnings occurring in any of the packages will be sent to Sentry with DSN <code><a href="https://abcd@sentry.io/1234" class="bare">https://abcd@sentry.io/1234</a></code></div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties">quarkus.log.sentry=true
+quarkus.log.sentry.dsn=https://abcd@sentry.io/1234
+quarkus.log.sentry.in-app-packages=*</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">All errors occurring in the package <code>org.example</code> will be sent to Sentry with DSN <code><a href="https://abcd@sentry.io/1234" class="bare">https://abcd@sentry.io/1234</a></code></div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties">quarkus.log.sentry=true
+quarkus.log.sentry.dsn=https://abcd@sentry.io/1234
+quarkus.log.sentry.level=ERROR
+quarkus.log.sentry.in-app-packages=org.example</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_configuration_reference"><a class="anchor" href="#_configuration_reference"></a>Configuration Reference</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This extension is configured through the standard <code>application.properties</code> file.</p>
+</div>
+<div class="paragraph configuration-legend">
+<p><span class="icon"><i class="fa fa-lock" title="Fixed at build time"></i></span> Configuration property fixed at build time - All other configuration properties are overridable at runtime</p>
+</div>
+<table class="tableblock frame-all grid-all stretch configuration-reference searchable">
+<colgroup>
+<col style="width: 80%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock"><a id="quarkus-logging-sentry_configuration"></a><a href="#quarkus-logging-sentry_configuration">Configuration property</a></p></th>
+<th class="tableblock halign-left valign-middle"><p class="tableblock">Type</p></th>
+<th class="tableblock halign-left valign-middle"><p class="tableblock">Default</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-logging-sentry_quarkus.log.sentry"></a><code><a href="#quarkus-logging-sentry_quarkus.log.sentry">quarkus.log.sentry</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Determine whether to enable the Sentry logging extension.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>false</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-logging-sentry_quarkus.log.sentry.dsn"></a><code><a href="#quarkus-logging-sentry_quarkus.log.sentry.dsn">quarkus.log.sentry.dsn</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Sentry DSN The DSN is the first and most important thing to configure because it tells the SDK where to send events. You can find your project’s DSN in the “Client Keys” section of your “Project Settings” in Sentry.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-logging-sentry_quarkus.log.sentry.level"></a><code><a href="#quarkus-logging-sentry_quarkus.log.sentry.level">quarkus.log.sentry.level</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>The sentry log level.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="https://docs.jboss.org/jbossas/javadoc/7.1.2.Final/org/jboss/logmanager/Level.html">Level</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>WARN</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-logging-sentry_quarkus.log.sentry.minimum-event-level"></a><code><a href="#quarkus-logging-sentry_quarkus.log.sentry.minimum-event-level">quarkus.log.sentry.minimum-event-level</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>The minimum event level. Every log statement that is greater than minimum event level is turned into Sentry event.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="https://docs.jboss.org/jbossas/javadoc/7.1.2.Final/org/jboss/logmanager/Level.html">Level</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>WARN</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-logging-sentry_quarkus.log.sentry.minimum-breadcrumb-level"></a><code><a href="#quarkus-logging-sentry_quarkus.log.sentry.minimum-breadcrumb-level">quarkus.log.sentry.minimum-breadcrumb-level</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>The minimum breadcrumb level. Every log statement that is greater than minimum breadcrumb level is added to Sentry scope as a breadcrumb, which can be later attached to SentryEvent if one is triggered.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="https://docs.jboss.org/jbossas/javadoc/7.1.2.Final/org/jboss/logmanager/Level.html">Level</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>INFO</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-logging-sentry_quarkus.log.sentry.in-app-packages"></a><code><a href="#quarkus-logging-sentry_quarkus.log.sentry.in-app-packages">quarkus.log.sentry.in-app-packages</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Sentry differentiates stack frames that are directly related to your application (“in application”) from stack frames that come from other packages such as the standard library, frameworks, or other dependencies. The difference is visible in the Sentry web interface where only the “in application” frames are displayed by default. You can configure which package prefixes your application uses with this option. This option is highly recommended as it affects stacktrace grouping and display on Sentry. See documentation: <a href="https://quarkus.io/guides/logging-sentry#in-app-packages" class="bare">https://quarkus.io/guides/logging-sentry#in-app-packages</a></p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">list of string</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-logging-sentry_quarkus.log.sentry.environment"></a><code><a href="#quarkus-logging-sentry_quarkus.log.sentry.environment">quarkus.log.sentry.environment</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Environment With Sentry you can easily filter issues, releases, and user feedback by environment. The environment filter on sentry affects all issue-related metrics like count of users affected, times series graphs, and event count. By setting the environment option, an environment tag will be added to each new issue sent to Sentry. There are a few restrictions: &#8594; the environment name cannot contain newlines or spaces, cannot be the string “None” or exceed 64 characters.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-logging-sentry_quarkus.log.sentry.release"></a><code><a href="#quarkus-logging-sentry_quarkus.log.sentry.release">quarkus.log.sentry.release</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Release A release is a version of your code that is deployed to an environment. When you give Sentry information about your releases, you unlock a number of new features: - Determine the issues and regressions introduced in a new release - Predict which commit caused an issue and who is likely responsible - Resolve issues by including the issue number in your commit message - Receive email notifications when your code gets deployed</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-logging-sentry_quarkus.log.sentry.server-name"></a><code><a href="#quarkus-logging-sentry_quarkus.log.sentry.server-name">quarkus.log.sentry.server-name</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Server name Sets the server name that will be sent with each event.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-logging-sentry_quarkus.log.sentry.debug"></a><code><a href="#quarkus-logging-sentry_quarkus.log.sentry.debug">quarkus.log.sentry.debug</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Debug Enables Sentry debug mode.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>false</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-logging-sentry_quarkus.log.sentry.traces-sample-rate"></a><code><a href="#quarkus-logging-sentry_quarkus.log.sentry.traces-sample-rate">quarkus.log.sentry.traces-sample-rate</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>This should be a float/double between 0.0 and 1.0 (inclusive) and represents the percentage chance that any given transaction will be sent to Sentry. So, barring outside influence, 0.0 is a 0% chance (none will be sent) and 1.0 is a 100% chance (all will be sent). This rate applies equally to all transactions.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">double</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>Copyright (C) 2020-2022 <a href="https://www.redhat.com">Red Hat</a> and individual contributors to <a href="https://github.com/quarkiverse/quarkiverse-docs">Quarkiverse</a>.</p>
+</footer>
+<script src="../../_/js/site.js"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

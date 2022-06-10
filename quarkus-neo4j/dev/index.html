@@ -1,0 +1,1525 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Quarkus Neo4j :: Quarkiverse Documentation</title>
+    <link rel="canonical" href="https://quarkiverse.github.io/quarkiverse-docs/quarkus-neo4j/dev/index.html">
+    <meta name="generator" content="Antora 3.0.1">
+    <link rel="stylesheet" href="../../_/css/site.css">
+    <link rel="stylesheet" href="../../_/css/site-extra.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <script>var uiRootPath = '../../_'</script>
+  </head>
+  <body class="article">
+<header class="header" role="banner">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <div class="navbar-item">
+        <a href="../..">Quarkiverse</a>
+        <span class="separator">//</span>
+        <a href="https://quarkiverse.github.io/quarkiverse-docs">Docs</a>
+      </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item has-dropdown is-hoverable">
+          <div class="navbar-link">Projects</div>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Index</a>
+            <a class="navbar-item" href="#">Quarkus - Java Embedded Framework</a>
+            <a class="navbar-item" href="#">Quarkus Amazon Alexa</a>
+            <a class="navbar-item" href="#">Quarkus Amazon Services</a>
+            <a class="navbar-item" href="#">Quarkus Artemis</a>
+            <a class="navbar-item" href="#">Quarkus Config Extensions</a>
+            <a class="navbar-item" href="#">Quarkus Cucumber</a>
+            <a class="navbar-item" href="#">Quarkus CXF</a>
+            <a class="navbar-item" href="#">Quarkus Dapr</a>
+            <a class="navbar-item" href="#">Quarkus File Vault</a>
+            <a class="navbar-item" href="#">Quarkus Freemarker</a>
+            <a class="navbar-item" href="#">Quarkus GitHub Action</a>
+            <a class="navbar-item" href="#">Quarkus GitHub App</a>
+            <a class="navbar-item" href="#">Quarkus Google Cloud Services</a>
+            <a class="navbar-item" href="#">Quarkus Helm</a>
+            <a class="navbar-item" href="#">Quarkus Hibernate Search Extras</a>
+            <a class="navbar-item" href="#">Quarkus Hibernate types</a>
+            <a class="navbar-item" href="#">Quarkus HiveMQ Client</a>
+            <a class="navbar-item" href="#">Quarkus JDBC Sqlite</a>
+            <a class="navbar-item" href="#">Quarkus JGit</a>
+            <a class="navbar-item" href="#">Quarkus JGraphT</a>
+            <a class="navbar-item" href="#">Quarkus JSch</a>
+            <a class="navbar-item" href="#">Quarkus Kerberos</a>
+            <a class="navbar-item" href="#">Quarkus Logging JSON</a>
+            <a class="navbar-item" href="#">Quarkus Logging Logback</a>
+            <a class="navbar-item" href="#">Quarkus Logging Sentry</a>
+            <a class="navbar-item" href="#">Quarkus Logging Splunk</a>
+            <a class="navbar-item" href="#">Quarkus Micrometer Registry extensions</a>
+            <a class="navbar-item" href="#">Quarkus Mockk</a>
+            <a class="navbar-item" href="#">Quarkus MyBatis</a>
+            <a class="navbar-item" href="#">Quarkus Neo4j</a>
+            <a class="navbar-item" href="#">Quarkus Operator SDK</a>
+            <a class="navbar-item" href="#">Quarkus Prettytime</a>
+            <a class="navbar-item" href="#">Quarkus Quinoa</a>
+            <a class="navbar-item" href="#">Quarkus RabbitMQ Client</a>
+            <a class="navbar-item" href="#">Quarkus Reactive Messaging HTTP</a>
+            <a class="navbar-item" href="#">Quarkus Renarde</a>
+            <a class="navbar-item" href="#">Quarkus Tika</a>
+            <a class="navbar-item" href="#">Quarkus Unleash</a>
+            <a class="navbar-item" href="#">Quarkus Vault</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <div class="navbar-link">Community</div>
+          <div class="navbar-dropdown is-right">
+            <a class="navbar-item" href="https://quarkusio.zulipchat.com">Chat</a>
+          </div>
+        </div>
+        <a class="navbar-item" href="https://twitter.com/quarkusio">
+          <span class="icon">
+            <svg aria-hidden="true" data-icon="twitter" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+              <path fill="#57aaee" d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path>
+            </svg>
+          </span>
+        </a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="quarkus-neo4j" data-version="dev">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="index.html">Quarkus Neo4j</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="index.html">Quarkus - Neo4j</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Quarkus Neo4j</span>
+    <span class="version">dev</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <a class="title" href="../../index/index/index.html">Index</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../index/index/index.html">index</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-java-embedded-framework/dev/index.html">Quarkus - Java Embedded Framework</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-java-embedded-framework/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-amazon-alexa/dev/index.html">Quarkus Amazon Alexa</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-amazon-alexa/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-amazon-services/dev/index.html">Quarkus Amazon Services</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-amazon-services/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-artemis/dev/index.html">Quarkus Artemis</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-artemis/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-config-extensions/dev/index.html">Quarkus Config Extensions</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-config-extensions/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-cucumber/dev/index.html">Quarkus Cucumber</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-cucumber/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-cxf/dev/index.html">Quarkus CXF</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-cxf/dev/index.html">dev</a>
+        </li>
+        <li class="version">
+          <a href="../../quarkus-cxf/v1.x/index.html">v1.x</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-dapr/dev/index.html">Quarkus Dapr</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-dapr/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-file-vault/dev/index.html">Quarkus File Vault</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-file-vault/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-freemarker/dev/index.html">Quarkus Freemarker</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-freemarker/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-github-action/dev/index.html">Quarkus GitHub Action</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-github-action/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-github-app/dev/index.html">Quarkus GitHub App</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-github-app/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-google-cloud-services/main/index.html">Quarkus Google Cloud Services</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-google-cloud-services/main/index.html">main</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-helm/dev/index.html">Quarkus Helm</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-helm/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-hibernate-search-extras/dev/index.html">Quarkus Hibernate Search Extras</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-hibernate-search-extras/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-hibernate-types/dev/index.html">Quarkus Hibernate types</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-hibernate-types/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-hivemq-client/dev/index.html">Quarkus HiveMQ Client</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-hivemq-client/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-JDBC-Sqlite/dev/index.html">Quarkus JDBC Sqlite</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-JDBC-Sqlite/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-jgit/dev/index.html">Quarkus JGit</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-jgit/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-jgrapht/dev/index.html">Quarkus JGraphT</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-jgrapht/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-jsch/dev/index.html">Quarkus JSch</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-jsch/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-kerberos/dev/index.html">Quarkus Kerberos</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-kerberos/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-logging-json/dev/index.html">Quarkus Logging JSON</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-logging-json/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-logging-logback/dev/index.html">Quarkus Logging Logback</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-logging-logback/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-logging-sentry/dev/index.html">Quarkus Logging Sentry</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-logging-sentry/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-logging-splunk/dev/index.html">Quarkus Logging Splunk</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-logging-splunk/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-micrometer-registry/dev/index.html">Quarkus Micrometer Registry extensions</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-micrometer-registry/dev/index.html">dev</a>
+        </li>
+        <li class="version">
+          <a href="../../quarkus-micrometer-registry/1.x/index.html">1.x</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-mockk/dev/index.html">Quarkus Mockk</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-mockk/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-mybatis/dev/index.html">Quarkus MyBatis</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-mybatis/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <a class="title" href="index.html">Quarkus Neo4j</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-operator-sdk/dev/index.html">Quarkus Operator SDK</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-operator-sdk/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-prettytime/dev/index.html">Quarkus Prettytime</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-prettytime/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-quinoa/dev/index.html">Quarkus Quinoa</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-quinoa/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-rabbitmq-client/0.1.0/index.html">Quarkus RabbitMQ Client</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-rabbitmq-client/0.1.0/index.html">0.1.0</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-reactive-messaging-http/dev/index.html">Quarkus Reactive Messaging HTTP</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-reactive-messaging-http/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-renarde/dev/index.html">Quarkus Renarde</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-renarde/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-tika/dev/index.html">Quarkus Tika</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-tika/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-unleash/dev/index.html">Quarkus Unleash</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-unleash/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-vault/dev/index.html">Quarkus Vault</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-vault/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../index/index/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Quarkus Neo4j</a></li>
+    <li><a href="index.html">Quarkus - Neo4j</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/quarkiverse/quarkus-neo4j/edit/main/docs/modules/ROOT/pages/index.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Quarkus Neo4j</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://neo4j.com">Neo4j</a> is a graph database management system developed by Neo4j, Inc. Neo4j is a native graph database focused not only on the data itself, but especially on the relations between data.
+Neo4j stores data as a property graph, which consists of vertices or nodes as we call them, connected with edges or relationships.
+Both of them can have properties.</p>
+</div>
+<div class="paragraph">
+<p>Neo4j offers Cypher, a declarative query language much like SQL.
+Cypher is used to for both querying the graph and creating or updating nodes and relationships.
+As a declarative language it used to tell the database what to do and not how to do it.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Learn more about Cypher in the <a href="https://neo4j.com/docs/cypher-manual/current/">Neo4j Cypher manual</a>.
+      Cypher is not only available in Neo4j, but for example coming to <a href="https://github.com/opencypher/morpheus">Apache Spark</a>.
+      A spec called <a href="http://www.opencypher.org">OpenCypher</a> is available, too.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Clients communicate over the so-called Bolt protocol with the database.</p>
+</div>
+<div class="paragraph">
+<p>Neo4j - as the most popular graph database according to DB-Engines ranking - provides a variety of drivers for various languages.</p>
+</div>
+<div class="paragraph">
+<p>The Quarkus Neo4j extension is based on the official <a href="https://github.com/neo4j/neo4j-java-driver">Neo4j Java Driver</a>.
+The extension provides an instance of the driver configured ready for usage in any Quarkus application.
+You will be able to issue arbitrary Cypher statements over Bolt with this extension.
+Those statements can be simple CRUD statements as well as complex queries, calling graph algorithms and more.</p>
+</div>
+<div class="paragraph">
+<p>The driver itself is released under the Apache 2.0 license,
+while Neo4j itself is available in a GPL3-licensed open-source "community edition",
+with online backup and high availability extensions licensed under a closed-source commercial license.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_programming_model"><a class="anchor" href="#_programming_model"></a>Programming model</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The driver and thus the Quarkus extension support three different programming models:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Blocking database access (much like standard JDBC)</p>
+</li>
+<li>
+<p>Asynchronous programming based on JDK&#8217;s completable futures and related infrastructure</p>
+</li>
+<li>
+<p>Reactive programming based on <a href="http://www.reactive-streams.org">Reactive Streams</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The reactive programming model is only available when connected against a 4.0+ version of Neo4j.
+Reactive programming in Neo4j is fully end-to-end reactive and therefore requires a server that supports backpressure.</p>
+</div>
+<div class="paragraph">
+<p>In this guide you will learn how to</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Add the Neo4j extension to your project</p>
+</li>
+<li>
+<p>Configure the driver</p>
+</li>
+<li>
+<p>And how to use the driver to access a Neo4j database</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This guide will focus on asynchronous access to Neo4j, as this is ready to use for everyone.
+At the end of this guide, there will be a reactive version, which needs however a 4.0 database version.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_the_domain"><a class="anchor" href="#_the_domain"></a>The domain</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As with some other guides, the application shall manage fruit entities.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">package org.acme.neo4j;
+
+Unresolved include directive in modules/ROOT/pages/index.adoc - include::../../../../integration-tests/src/main/java/io/quarkus/it/neo4j/Fruit.java[]</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_prerequisites"><a class="anchor" href="#_prerequisites"></a>Prerequisites</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To complete this guide, you need:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>JDK 11+ installed with <code>JAVA_HOME</code> configured appropriately</p>
+</li>
+<li>
+<p>an IDE</p>
+</li>
+<li>
+<p>Apache Maven 3.8.1+</p>
+</li>
+<li>
+<p>Access to a Neo4j Database</p>
+</li>
+<li>
+<p>Optional Docker for your system</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_setup_neo4j"><a class="anchor" href="#_setup_neo4j"></a>Setup Neo4j</h3>
+<div class="paragraph">
+<p>The easiest way to start a Neo4j instance is a locally installed Docker environment.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">docker run --publish=7474:7474 --publish=7687:7687 -e 'NEO4J_AUTH=neo4j/secret' neo4j:4.3</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This starts a Neo4j instance, that publishes its Bolt port on <code>7687</code> and a web interface on <a href="http://localhost:7474" class="bare">http://localhost:7474</a>.</p>
+</div>
+<div class="paragraph">
+<p>Have a look at the <a href="https://neo4j.com/download/?ref=product">download page</a> for other options to get started with the product itself.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_solution"><a class="anchor" href="#_solution"></a>Solution</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We recommend that you follow the instructions in the next sections and create the application step by step.
+However, you can go right to the completed example.</p>
+</div>
+<div class="paragraph">
+<p>Clone the Git repository: git clone <a href="https://github.com/quarkusio/quarkus-quickstarts.git" class="bare">https://github.com/quarkusio/quarkus-quickstarts.git</a>, or download an archive.</p>
+</div>
+<div class="paragraph">
+<p>The solution is located in the <code>neo4j-quickstart</code> <a href="https://github.com/quarkusio/quarkus-quickstarts/tree/main/neo4j-quickstart">directory</a>.
+It contains a very simple UI to use the JAX-RS resources created here, too.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_creating_the_maven_project"><a class="anchor" href="#_creating_the_maven_project"></a>Creating the Maven project</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>First, we need a new project. Create a new project with the following command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">mvn io.quarkus.platform:quarkus-maven-plugin:2.9.1.Final:create \
+    -DprojectGroupId=org.acme \
+    -DprojectArtifactId=neo4j-quickstart \
+    -DclassName="org.acme.datasource.GreetingResource" \
+    -Dextensions="neo4j,resteasy-reactive-jackson"
+cd neo4j-quickstart</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It generates:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>the Maven structure</p>
+</li>
+<li>
+<p>a landing page accessible on <code><a href="http://localhost:8080" class="bare">http://localhost:8080</a></code></p>
+</li>
+<li>
+<p>example <code>Dockerfile</code> files for both <code>native</code> and <code>jvm</code> modes</p>
+</li>
+<li>
+<p>the application configuration file</p>
+</li>
+<li>
+<p>an <code>org.acme.datasource.GreetingResource</code> resource</p>
+</li>
+<li>
+<p>an associated test</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The Neo4j extension has been added already to your <code>pom.xml</code>.
+In addition, we added <code>resteasy-reactive-jackson</code>, which allows us to expose <code>Fruit</code> instances over HTTP in the JSON format via JAX-RS resources.
+If you have an already created project, the <code>neo4j</code> extension can be added to an existing Quarkus project with the <code>add-extension</code> command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">./mvnw quarkus:add-extension -Dextensions="neo4j"</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Otherwise, you can manually add this to the dependencies section of your <code>pom.xml</code> file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+    &lt;groupId&gt;io.quarkiverse.neo4j&lt;/groupId&gt;
+    &lt;artifactId&gt;quarkus-neo4j&lt;/artifactId&gt;
+    &lt;version&gt;1.2.0&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_configuring"><a class="anchor" href="#_configuring"></a>Configuring</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Neo4j driver can be configured with standard Quarkus properties:</p>
+</div>
+<div class="listingblock">
+<div class="title">src/main/resources/application.properties</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties"># Those are the default values and are implicitly assumed
+quarkus.neo4j.uri = bolt://localhost:7687
+quarkus.neo4j.authentication.username = neo4j
+quarkus.neo4j.authentication.password = secret</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You&#8217;ll recognize the authentication here that you passed on to the docker command above.</p>
+</div>
+<div class="paragraph">
+<p>Having done that, the driver is ready to use, there are however other configuration options, detailed below.</p>
+</div>
+<div class="sect2">
+<h3 id="dev-services"><a class="anchor" href="#dev-services"></a>Dev Services (Configuration Free Databases)</h3>
+<div class="paragraph">
+<p>Quarkus supports a feature called Dev Services that allows you to create various datasources without any config.
+In the case of Neo4j this support applies to the single Neo4j driver instance.
+Dev Services will bring up a Neo4j container if you didn&#8217;t explicit add the default values or configured custom values for
+any of <code>quarkus.neo4j.uri</code>, <code>quarkus.neo4j.authentication.username</code> or <code>quarkus.neo4j.authentication.password</code>.
+If Neo4j seems to be reachable via the default properties, Dev Services will also step back.</p>
+</div>
+<div class="paragraph">
+<p>Otherwise, Quarkus will automatically start a Neo4j container when running tests or dev-mode,
+and automatically configure the connection.</p>
+</div>
+<div class="paragraph">
+<p>When running the production version of the application, the Neo4j connection need to be configured as normal,
+so if you want to include a production database config in your <code>application.properties</code> and continue to use Dev Services
+we recommend that you use the <code>%prod.</code> profile to define your Neo4j settings.</p>
+</div>
+<div class="paragraph configuration-legend">
+<p><span class="icon"><i class="fa fa-lock" title="Fixed at build time"></i></span> Configuration property fixed at build time - All other configuration properties are overridable at runtime</p>
+</div>
+<table class="tableblock frame-all grid-all stretch configuration-reference">
+<colgroup>
+<col style="width: 80%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock"><a id="quarkus-neo4j-config-group-dev-services-build-time-config_configuration"></a><a href="#quarkus-neo4j-config-group-dev-services-build-time-config_configuration">Configuration property</a></p></th>
+<th class="tableblock halign-left valign-middle"><p class="tableblock">Type</p></th>
+<th class="tableblock halign-left valign-middle"><p class="tableblock">Default</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="icon"><i class="fa fa-lock" title="Fixed at build time"></i></span> <a id="quarkus-neo4j-config-group-dev-services-build-time-config_quarkus.neo4j.devservices.enabled"></a><code><a href="#quarkus-neo4j-config-group-dev-services-build-time-config_quarkus.neo4j.devservices.enabled">quarkus.neo4j.devservices.enabled</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>If DevServices has been explicitly enabled or disabled. DevServices is generally enabled by default, unless there is an existing configuration present. When DevServices is enabled Quarkus will attempt to automatically configure and start a database when running in Dev or Test mode.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="icon"><i class="fa fa-lock" title="Fixed at build time"></i></span> <a id="quarkus-neo4j-config-group-dev-services-build-time-config_quarkus.neo4j.devservices.image-name"></a><code><a href="#quarkus-neo4j-config-group-dev-services-build-time-config_quarkus.neo4j.devservices.image-name">quarkus.neo4j.devservices.image-name</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>The container image name to use, for container based DevServices providers.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>neo4j:4.3</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="icon"><i class="fa fa-lock" title="Fixed at build time"></i></span> <a id="quarkus-neo4j-config-group-dev-services-build-time-config_quarkus.neo4j.devservices.bolt-port"></a><code><a href="#quarkus-neo4j-config-group-dev-services-build-time-config_quarkus.neo4j.devservices.bolt-port">quarkus.neo4j.devservices.bolt-port</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>This value can be used to specify the port to which the bolt-port of the container is exposed. It must be a free port, otherwise startup will fail. A random, free port will be used by default. Either way, a messsage will be logged on which port the Neo4j container is reachable over bolt.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">int</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="icon"><i class="fa fa-lock" title="Fixed at build time"></i></span> <a id="quarkus-neo4j-config-group-dev-services-build-time-config_quarkus.neo4j.devservices.http-port"></a><code><a href="#quarkus-neo4j-config-group-dev-services-build-time-config_quarkus.neo4j.devservices.http-port">quarkus.neo4j.devservices.http-port</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>This value can be used to specify the port to which the http-port of the container is exposed. It must be a free port, otherwise startup will fail. A random, free port will be used by default. Either way, a messsage will be logged on which port the Neo4j Browser is available.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">int</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="icon"><i class="fa fa-lock" title="Fixed at build time"></i></span> <a id="quarkus-neo4j-config-group-dev-services-build-time-config_quarkus.neo4j.devservices.additional-env-additional-env"></a><code><a href="#quarkus-neo4j-config-group-dev-services-build-time-config_quarkus.neo4j.devservices.additional-env-additional-env">quarkus.neo4j.devservices.additional-env</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Additional environment entries that can be added to the container before its start.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>Map&lt;String,String&gt;</code></p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_using_the_driver"><a class="anchor" href="#_using_the_driver"></a>Using the driver</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_general_remarks"><a class="anchor" href="#_general_remarks"></a>General remarks</h3>
+<div class="paragraph">
+<p>The result of a statement consists usually of one or more <code>org.neo4j.driver.Record</code>.
+Those records contain arbitrary values, supported by the driver.
+If you return a node of the graph, it will be a <code>org.neo4j.driver.types.Node</code>.</p>
+</div>
+<div class="paragraph">
+<p>We add the following method to the <code>Fruit</code>, as a convenient way to create them:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Unresolved include directive in modules/ROOT/pages/index.adoc - include::../../../../integration-tests/src/main/java/io/quarkus/it/neo4j/Fruit.java[]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Add a <code>FruitResource</code> skeleton like this and <code>@Inject</code> a <code>org.neo4j.driver.Driver</code> instance and a <code>ThreadContext</code> instance:</p>
+</div>
+<div class="listingblock">
+<div class="title">src/main/java/org/acme/neo4j/FruitResource.java</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">package org.acme.neo4j;
+
+Unresolved include directive in modules/ROOT/pages/index.adoc - include::../../../../integration-tests/src/main/java/io/quarkus/it/neo4j/FruitResource.java[]</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The <code>ThreadContext</code> is related to context propagation with completion stage. A completion stage,
+unlike Mutiny, does not have a hook to automatically "capture and restore" the context.
+So, we need to use this construct in later steps when using the connections asynchronous api.</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_reading_nodes"><a class="anchor" href="#_reading_nodes"></a>Reading nodes</h3>
+<div class="paragraph">
+<p>Add the following method to the fruit resource:</p>
+</div>
+<div class="listingblock">
+<div class="title">FruitResource#get</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Unresolved include directive in modules/ROOT/pages/index.adoc - include::../../../../integration-tests/src/main/java/io/quarkus/it/neo4j/FruitResource.java[]</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Open a new, asynchronous session with Neo4j</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Execute a query. This is a Cypher statement.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Retrieve a cursor, list the results and create <code>Fruit</code>s. This must happen inside the transactional function, not outside.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Wrap the completion stage so that the current context is captured, and restored it before calling a continuation
+method of the completion stage. With that, the context is restored and available in any callback.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="5"></i><b>5</b></td>
+<td>Close the session after processing</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="6"></i><b>6</b></td>
+<td>Create a JAX-RS response</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Now start Quarkus in <code>dev</code> mode with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">./mvnw compile quarkus:dev</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>and retrieve the endpoint like this</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">curl localhost:8080/fruits</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>There are not any fruits, so let&#8217;s create some.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_creating_nodes"><a class="anchor" href="#_creating_nodes"></a>Creating nodes</h3>
+<div class="paragraph">
+<p>The <code>POST</code> method looks similar.
+It uses transaction functions of the driver:</p>
+</div>
+<div class="listingblock">
+<div class="title">FruitResource#create</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Unresolved include directive in modules/ROOT/pages/index.adoc - include::../../../../integration-tests/src/main/java/io/quarkus/it/neo4j/FruitResource.java[]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As you can see, we are now using a Cypher statement with named parameters (The <code>$name</code> of the fruit).
+The node is returned, a <code>Fruit</code> entity created and then mapped to a <code>201</code> created response.</p>
+</div>
+<div class="paragraph">
+<p>A curl request against this path may look like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">curl -v -X "POST" "http://localhost:8080/fruits" \
+     -H 'Content-Type: application/json; charset=utf-8' \
+     -d $'{
+  "name": "Banana"
+}'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The response contains an URI that shall return single nodes.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_read_single_nodes"><a class="anchor" href="#_read_single_nodes"></a>Read single nodes</h3>
+<div class="paragraph">
+<p>This time, we ask for a read-only transaction.
+We also add some exception handling, in case the resource is called with an invalid id:</p>
+</div>
+<div class="listingblock">
+<div class="title">FruitResource#getSingle</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Unresolved include directive in modules/ROOT/pages/index.adoc - include::../../../../integration-tests/src/main/java/io/quarkus/it/neo4j/FruitResource.java[]</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>A request may look like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">curl localhost:8080/fruits/42</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+In case Neo4j has been setup as a cluster, the transaction mode is used to decide whether a request is routed
+      to a leader or a follower instance. Write transactions must be handled by a leader, whereas read-only transactions
+      can be handled by followers.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_deleting_nodes"><a class="anchor" href="#_deleting_nodes"></a>Deleting nodes</h3>
+<div class="paragraph">
+<p>Finally, we want to get rid of fruits again and we add the <code>DELETE</code> method:</p>
+</div>
+<div class="listingblock">
+<div class="title">FruitResource#delete</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Unresolved include directive in modules/ROOT/pages/index.adoc - include::../../../../integration-tests/src/main/java/io/quarkus/it/neo4j/FruitResource.java[]</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>There is no result for us, only a summary of the query executed.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>A request may look like this</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">curl -X DELETE localhost:8080/fruits/42</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And that&#8217;s already the most simple CRUD application with one type of nodes.
+Feel free to add relationships to the model.
+One idea would be to model recipes that contain fruits.
+The Cypher manual linked in the introduction will help you with modelling your queries.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_next_steps"><a class="anchor" href="#_next_steps"></a>Next steps</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_packaging"><a class="anchor" href="#_packaging"></a>Packaging</h3>
+<div class="paragraph">
+<p>Packaging your application is as simple as <code>./mvnw clean package</code>.
+It can be run with <code>java -jar target/quarkus-app/quarkus-run.jar</code>.</p>
+</div>
+<div class="paragraph">
+<p>With GraalVM installed, you can also create a native executable binary: <code>./mvnw clean package -Dnative</code>.
+Depending on your system, that will take some time.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_connection_health_check"><a class="anchor" href="#_connection_health_check"></a>Connection Health Check</h3>
+<div class="paragraph">
+<p>If you are using the <code>quarkus-smallrye-health</code> extension, <code>quarkus-neo4j</code> will automatically add a readiness health check
+to validate the connection to Neo4j.</p>
+</div>
+<div class="paragraph">
+<p>So when you access the <code>/q/health/ready</code> endpoint of your application you will have information about the connection validation status.</p>
+</div>
+<div class="paragraph">
+<p>This behavior can be disabled by setting the <code>quarkus.neo4j.health.enabled</code> property to <code>false</code> in your <code>application.properties</code>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_driver_metrics"><a class="anchor" href="#_driver_metrics"></a>Driver metrics</h3>
+<div class="paragraph">
+<p>If you are using a metrics extension and specify the config property <code>quarkus.neo4j.pool.metrics.enabled=true</code>, the Neo4j extension will
+expose several metrics related to the Neo4j connection pool.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_explore_cypher_and_the_graph"><a class="anchor" href="#_explore_cypher_and_the_graph"></a>Explore Cypher and the Graph</h3>
+<div class="paragraph">
+<p>There are tons of options to model your domain within a Graph.
+The <a href="https://neo4j.com/docs/">Neo4j docs</a>, the sandboxes and more are a good starting point.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="reactive"><a class="anchor" href="#reactive"></a>Going reactive</h3>
+<div class="paragraph">
+<p>If you have access to Neo4j 4.0, you can go fully reactive.</p>
+</div>
+<div class="paragraph">
+<p>To make life a bit easier, we will use <a href="https://smallrye.io/smallrye-mutiny/">Mutiny</a> for this.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="title">Mutiny</div>
+<div class="paragraph">
+<p>The following example uses Mutiny reactive types.
+If you are not familiar with Mutiny, check <a href="#mutiny-primer.adoc" class="xref unresolved">Mutiny - an intuitive reactive programming library</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The reactive fruit resources streams the name of all fruits:</p>
+</div>
+<div class="listingblock">
+<div class="title">ReactiveFruitResource.java</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Unresolved include directive in modules/ROOT/pages/index.adoc - include::../../../../integration-tests/src/main/java/io/quarkus/it/neo4j/ReactiveFruitResource.java[]</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>A finalizer that will close a Neo4j driver session in a non-blocking fashion</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The <code>Multi.createFrom().resource()</code> is used to defer the creation of session until the publisher is subscribed to</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>When the publisher is done, the finalizer will be called</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><code>driver.rxSession()</code> returns a reactive session.
+It exposes its API based on <a href="http://www.reactive-streams.org">Reactive Streams</a>, most prominently, as <code>org.reactivestreams.Publisher</code>.
+Those can be used directly, but we found it easier and more expressive to wrap them in reactive types such as the one provided by Mutiny.
+Typically, in the previous code, the session is closed when the stream completes, fails or the subscriber cancels.</p>
+</div>
+<div class="paragraph">
+<p>If you want to return a Mutiny! <code>Uni</code> object, you need to be very careful before you convert a <code>Multi</code> into a <code>Uni</code>:
+The conversion works in such a way, that the first item is emitted and then a cancellation signal is sent to the publisher,
+that will propagate upto the drivers' session, indicating a cancellation of the transaction, thus doing a rollback.</p>
+</div>
+<div class="paragraph">
+<p>In most cases you are better off returning a <code>Multi</code> or just a generic <code>Publisher</code>. If you need a <code>Uni</code>, you can still realize
+this with an emitter:</p>
+</div>
+<div class="listingblock">
+<div class="title">ReactiveFruitResource.java#create</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">Unresolved include directive in modules/ROOT/pages/index.adoc - include::../../../../integration-tests/src/main/java/io/quarkus/it/neo4j/ReactiveFruitResource.java[]</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Here we use <code>Uni.createFrom().emitter()</code> to retrieve an <code>UniEmitter</code> that we use in 2.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Notice how we subscribe to a <code>Multi</code> setup in a similar fashion as in the prior example. The subscription will emit the one
+and only item via the emitter, without a cancellation event.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_configuration_reference"><a class="anchor" href="#_configuration_reference"></a>Configuration Reference</h2>
+<div class="sectionbody">
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Each of the neo4j and bolt URI schemes permit variants that contain extra encryption and trust information.
+      The +s variants enable encryption with a full certificate check, and the +ssc variants enable encryption,
+      but with no certificate check. This latter variant is designed specifically for use with self-signed certificates.
+      The variants are basically shortcuts over explicit configuration. If you use one of them, Quarkus won&#8217;t pass
+      <code>quarkus.neo4j.encrypted</code> and related to the driver creation as the driver prohibits this.
+     <br>
+      The only check applied when Quarkus detects a secure url (either of <code>+s</code> or <code>+ssc</code>) is to ensure availability of
+      SSL in native image and will throw <code>ConfigurationException</code> if it isn&#8217;t available.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph configuration-legend">
+<p><span class="icon"><i class="fa fa-lock" title="Fixed at build time"></i></span> Configuration property fixed at build time - All other configuration properties are overridable at runtime</p>
+</div>
+<table class="tableblock frame-all grid-all stretch configuration-reference searchable">
+<colgroup>
+<col style="width: 80%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock"><a id="quarkus-neo4j_configuration"></a><a href="#quarkus-neo4j_configuration">Configuration property</a></p></th>
+<th class="tableblock halign-left valign-middle"><p class="tableblock">Type</p></th>
+<th class="tableblock halign-left valign-middle"><p class="tableblock">Default</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="icon"><i class="fa fa-lock" title="Fixed at build time"></i></span> <a id="quarkus-neo4j_quarkus.neo4j.health.enabled"></a><code><a href="#quarkus-neo4j_quarkus.neo4j.health.enabled">quarkus.neo4j.health.enabled</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Whether a health check is published in case the smallrye-health extension is present.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>true</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="icon"><i class="fa fa-lock" title="Fixed at build time"></i></span> <a id="quarkus-neo4j_quarkus.neo4j.devservices.enabled"></a><code><a href="#quarkus-neo4j_quarkus.neo4j.devservices.enabled">quarkus.neo4j.devservices.enabled</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>If DevServices has been explicitly enabled or disabled. DevServices is generally enabled by default, unless there is an existing configuration present. When DevServices is enabled Quarkus will attempt to automatically configure and start a database when running in Dev or Test mode.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="icon"><i class="fa fa-lock" title="Fixed at build time"></i></span> <a id="quarkus-neo4j_quarkus.neo4j.devservices.image-name"></a><code><a href="#quarkus-neo4j_quarkus.neo4j.devservices.image-name">quarkus.neo4j.devservices.image-name</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>The container image name to use, for container based DevServices providers.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>neo4j:4.3</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="icon"><i class="fa fa-lock" title="Fixed at build time"></i></span> <a id="quarkus-neo4j_quarkus.neo4j.devservices.bolt-port"></a><code><a href="#quarkus-neo4j_quarkus.neo4j.devservices.bolt-port">quarkus.neo4j.devservices.bolt-port</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>This value can be used to specify the port to which the bolt-port of the container is exposed. It must be a free port, otherwise startup will fail. A random, free port will be used by default. Either way, a messsage will be logged on which port the Neo4j container is reachable over bolt.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">int</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="icon"><i class="fa fa-lock" title="Fixed at build time"></i></span> <a id="quarkus-neo4j_quarkus.neo4j.devservices.http-port"></a><code><a href="#quarkus-neo4j_quarkus.neo4j.devservices.http-port">quarkus.neo4j.devservices.http-port</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>This value can be used to specify the port to which the http-port of the container is exposed. It must be a free port, otherwise startup will fail. A random, free port will be used by default. Either way, a messsage will be logged on which port the Neo4j Browser is available.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">int</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-neo4j_quarkus.neo4j.uri"></a><code><a href="#quarkus-neo4j_quarkus.neo4j.uri">quarkus.neo4j.uri</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>The uri this driver should connect to. The driver supports bolt, bolt&#43;routing or neo4j as schemes.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>bolt://localhost:7687</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-neo4j_quarkus.neo4j.encrypted"></a><code><a href="#quarkus-neo4j_quarkus.neo4j.encrypted">quarkus.neo4j.encrypted</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>If the driver should use encrypted traffic.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>false</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="icon"><i class="fa fa-lock" title="Fixed at build time"></i></span> <a id="quarkus-neo4j_quarkus.neo4j.devservices.additional-env-additional-env"></a><code><a href="#quarkus-neo4j_quarkus.neo4j.devservices.additional-env-additional-env">quarkus.neo4j.devservices.additional-env</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Additional environment entries that can be added to the container before its start.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>Map&lt;String,String&gt;</code></p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock"><a id="quarkus-neo4j_quarkus.neo4j.authentication-authentication"></a><a href="#quarkus-neo4j_quarkus.neo4j.authentication-authentication">Authentication</a></p></th>
+<th class="tableblock halign-left valign-middle"><p class="tableblock">Type</p></th>
+<th class="tableblock halign-left valign-middle"><p class="tableblock">Default</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-neo4j_quarkus.neo4j.authentication.username"></a><code><a href="#quarkus-neo4j_quarkus.neo4j.authentication.username">quarkus.neo4j.authentication.username</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>The login of the user connecting to the database.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>neo4j</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-neo4j_quarkus.neo4j.authentication.password"></a><code><a href="#quarkus-neo4j_quarkus.neo4j.authentication.password">quarkus.neo4j.authentication.password</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>The password of the user connecting to the database.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>neo4j</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-neo4j_quarkus.neo4j.authentication.disabled"></a><code><a href="#quarkus-neo4j_quarkus.neo4j.authentication.disabled">quarkus.neo4j.authentication.disabled</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Set this to true to disable authentication.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>false</code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock"><a id="quarkus-neo4j_quarkus.neo4j.trust-settings-configure-trust-settings-for-encrypted-traffic"></a><a href="#quarkus-neo4j_quarkus.neo4j.trust-settings-configure-trust-settings-for-encrypted-traffic">Configure trust settings for encrypted traffic</a></p></th>
+<th class="tableblock halign-left valign-middle"><p class="tableblock">Type</p></th>
+<th class="tableblock halign-left valign-middle"><p class="tableblock">Default</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-neo4j_quarkus.neo4j.trust-settings.strategy"></a><code><a href="#quarkus-neo4j_quarkus.neo4j.trust-settings.strategy">quarkus.neo4j.trust-settings.strategy</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Configures which trust strategy to apply when using encrypted traffic.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>trust-all-certificates</code>, <code>trust-custom-ca-signed-certificates</code>, <code>trust-system-ca-signed-certificates</code></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>trust-system-ca-signed-certificates</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-neo4j_quarkus.neo4j.trust-settings.cert-file"></a><code><a href="#quarkus-neo4j_quarkus.neo4j.trust-settings.cert-file">quarkus.neo4j.trust-settings.cert-file</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>The file of the certificate to use.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">path</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-neo4j_quarkus.neo4j.trust-settings.hostname-verification-enabled"></a><code><a href="#quarkus-neo4j_quarkus.neo4j.trust-settings.hostname-verification-enabled">quarkus.neo4j.trust-settings.hostname-verification-enabled</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>If hostname verification is used.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>false</code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock"><a id="quarkus-neo4j_quarkus.neo4j.pool-connection-pool"></a><a href="#quarkus-neo4j_quarkus.neo4j.pool-connection-pool">Connection pool</a></p></th>
+<th class="tableblock halign-left valign-middle"><p class="tableblock">Type</p></th>
+<th class="tableblock halign-left valign-middle"><p class="tableblock">Default</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-neo4j_quarkus.neo4j.pool.metrics.enabled"></a><code><a href="#quarkus-neo4j_quarkus.neo4j.pool.metrics.enabled">quarkus.neo4j.pool.metrics.enabled</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Flag, if metrics are enabled.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>false</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-neo4j_quarkus.neo4j.pool.log-leaked-sessions"></a><code><a href="#quarkus-neo4j_quarkus.neo4j.pool.log-leaked-sessions">quarkus.neo4j.pool.log-leaked-sessions</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Flag, if leaked sessions logging is enabled.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>false</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-neo4j_quarkus.neo4j.pool.max-connection-pool-size"></a><code><a href="#quarkus-neo4j_quarkus.neo4j.pool.max-connection-pool-size">quarkus.neo4j.pool.max-connection-pool-size</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>The maximum amount of connections in the connection pool towards a single database.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">int</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>100</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-neo4j_quarkus.neo4j.pool.idle-time-before-connection-test"></a><code><a href="#quarkus-neo4j_quarkus.neo4j.pool.idle-time-before-connection-test">quarkus.neo4j.pool.idle-time-before-connection-test</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Pooled connections that have been idle in the pool for longer than this timeout will be tested before they are used again. The value <code>0</code> means connections will always be tested for validity and negative values mean connections will never be tested.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="https://docs.oracle.com/javase/8/docs/api/java/time/Duration.html">Duration</a>
+  <a href="#duration-note-anchor" title="More information about the Duration format"><span class="icon"><i class="fa fa-question-circle"></i></span></a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>-0.001S</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-neo4j_quarkus.neo4j.pool.max-connection-lifetime"></a><code><a href="#quarkus-neo4j_quarkus.neo4j.pool.max-connection-lifetime">quarkus.neo4j.pool.max-connection-lifetime</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Pooled connections older than this threshold will be closed and removed from the pool.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="https://docs.oracle.com/javase/8/docs/api/java/time/Duration.html">Duration</a>
+  <a href="#duration-note-anchor" title="More information about the Duration format"><span class="icon"><i class="fa fa-question-circle"></i></span></a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>1H</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-neo4j_quarkus.neo4j.pool.connection-acquisition-timeout"></a><code><a href="#quarkus-neo4j_quarkus.neo4j.pool.connection-acquisition-timeout">quarkus.neo4j.pool.connection-acquisition-timeout</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Acquisition of new connections will be attempted for at most configured timeout.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="https://docs.oracle.com/javase/8/docs/api/java/time/Duration.html">Duration</a>
+  <a href="#duration-note-anchor" title="More information about the Duration format"><span class="icon"><i class="fa fa-question-circle"></i></span></a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>1M</code></p></td>
+</tr>
+</tbody>
+</table>
+<div id="duration-note-anchor" class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">About the Duration format</div>
+<div class="paragraph">
+<p>The format for durations uses the standard <code>java.time.Duration</code> format.
+You can learn more about it in the <a href="https://docs.oracle.com/javase/8/docs/api/java/time/Duration.html#parse-java.lang.CharSequence-">Duration#parse() javadoc</a>.</p>
+</div>
+<div class="paragraph">
+<p>You can also provide duration values starting with a number.
+In this case, if the value consists only of a number, the converter treats the value as seconds.
+Otherwise, <code>PT</code> is implicitly prepended to the value to obtain a standard <code>java.time.Duration</code> format.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>Copyright (C) 2020-2022 <a href="https://www.redhat.com">Red Hat</a> and individual contributors to <a href="https://github.com/quarkiverse/quarkiverse-docs">Quarkiverse</a>.</p>
+</footer>
+<script src="../../_/js/site.js"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

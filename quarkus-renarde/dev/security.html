@@ -1,0 +1,1871 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Renarde   Web Framework Security guide :: Quarkiverse Documentation</title>
+    <link rel="canonical" href="https://quarkiverse.github.io/quarkiverse-docs/quarkus-renarde/dev/security.html">
+    <meta name="generator" content="Antora 3.0.1">
+    <link rel="stylesheet" href="../../_/css/site.css">
+    <link rel="stylesheet" href="../../_/css/site-extra.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <script>var uiRootPath = '../../_'</script>
+  </head>
+  <body class="article">
+<header class="header" role="banner">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <div class="navbar-item">
+        <a href="../..">Quarkiverse</a>
+        <span class="separator">//</span>
+        <a href="https://quarkiverse.github.io/quarkiverse-docs">Docs</a>
+      </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item has-dropdown is-hoverable">
+          <div class="navbar-link">Projects</div>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Index</a>
+            <a class="navbar-item" href="#">Quarkus - Java Embedded Framework</a>
+            <a class="navbar-item" href="#">Quarkus Amazon Alexa</a>
+            <a class="navbar-item" href="#">Quarkus Amazon Services</a>
+            <a class="navbar-item" href="#">Quarkus Artemis</a>
+            <a class="navbar-item" href="#">Quarkus Config Extensions</a>
+            <a class="navbar-item" href="#">Quarkus Cucumber</a>
+            <a class="navbar-item" href="#">Quarkus CXF</a>
+            <a class="navbar-item" href="#">Quarkus Dapr</a>
+            <a class="navbar-item" href="#">Quarkus File Vault</a>
+            <a class="navbar-item" href="#">Quarkus Freemarker</a>
+            <a class="navbar-item" href="#">Quarkus GitHub Action</a>
+            <a class="navbar-item" href="#">Quarkus GitHub App</a>
+            <a class="navbar-item" href="#">Quarkus Google Cloud Services</a>
+            <a class="navbar-item" href="#">Quarkus Helm</a>
+            <a class="navbar-item" href="#">Quarkus Hibernate Search Extras</a>
+            <a class="navbar-item" href="#">Quarkus Hibernate types</a>
+            <a class="navbar-item" href="#">Quarkus HiveMQ Client</a>
+            <a class="navbar-item" href="#">Quarkus JDBC Sqlite</a>
+            <a class="navbar-item" href="#">Quarkus JGit</a>
+            <a class="navbar-item" href="#">Quarkus JGraphT</a>
+            <a class="navbar-item" href="#">Quarkus JSch</a>
+            <a class="navbar-item" href="#">Quarkus Kerberos</a>
+            <a class="navbar-item" href="#">Quarkus Logging JSON</a>
+            <a class="navbar-item" href="#">Quarkus Logging Logback</a>
+            <a class="navbar-item" href="#">Quarkus Logging Sentry</a>
+            <a class="navbar-item" href="#">Quarkus Logging Splunk</a>
+            <a class="navbar-item" href="#">Quarkus Micrometer Registry extensions</a>
+            <a class="navbar-item" href="#">Quarkus Mockk</a>
+            <a class="navbar-item" href="#">Quarkus MyBatis</a>
+            <a class="navbar-item" href="#">Quarkus Neo4j</a>
+            <a class="navbar-item" href="#">Quarkus Operator SDK</a>
+            <a class="navbar-item" href="#">Quarkus Prettytime</a>
+            <a class="navbar-item" href="#">Quarkus Quinoa</a>
+            <a class="navbar-item" href="#">Quarkus RabbitMQ Client</a>
+            <a class="navbar-item" href="#">Quarkus Reactive Messaging HTTP</a>
+            <a class="navbar-item" href="#">Quarkus Renarde</a>
+            <a class="navbar-item" href="#">Quarkus Tika</a>
+            <a class="navbar-item" href="#">Quarkus Unleash</a>
+            <a class="navbar-item" href="#">Quarkus Vault</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <div class="navbar-link">Community</div>
+          <div class="navbar-dropdown is-right">
+            <a class="navbar-item" href="https://quarkusio.zulipchat.com">Chat</a>
+          </div>
+        </div>
+        <a class="navbar-item" href="https://twitter.com/quarkusio">
+          <span class="icon">
+            <svg aria-hidden="true" data-icon="twitter" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+              <path fill="#57aaee" d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path>
+            </svg>
+          </span>
+        </a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="quarkus-renarde" data-version="dev">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="index.html">Quarkus Renarde</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="index.html">Quarkus Renarde</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Quarkus Renarde</span>
+    <span class="version">dev</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <a class="title" href="../../index/index/index.html">Index</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../index/index/index.html">index</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-java-embedded-framework/dev/index.html">Quarkus - Java Embedded Framework</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-java-embedded-framework/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-amazon-alexa/dev/index.html">Quarkus Amazon Alexa</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-amazon-alexa/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-amazon-services/dev/index.html">Quarkus Amazon Services</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-amazon-services/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-artemis/dev/index.html">Quarkus Artemis</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-artemis/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-config-extensions/dev/index.html">Quarkus Config Extensions</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-config-extensions/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-cucumber/dev/index.html">Quarkus Cucumber</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-cucumber/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-cxf/dev/index.html">Quarkus CXF</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-cxf/dev/index.html">dev</a>
+        </li>
+        <li class="version">
+          <a href="../../quarkus-cxf/v1.x/index.html">v1.x</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-dapr/dev/index.html">Quarkus Dapr</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-dapr/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-file-vault/dev/index.html">Quarkus File Vault</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-file-vault/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-freemarker/dev/index.html">Quarkus Freemarker</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-freemarker/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-github-action/dev/index.html">Quarkus GitHub Action</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-github-action/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-github-app/dev/index.html">Quarkus GitHub App</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-github-app/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-google-cloud-services/main/index.html">Quarkus Google Cloud Services</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-google-cloud-services/main/index.html">main</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-helm/dev/index.html">Quarkus Helm</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-helm/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-hibernate-search-extras/dev/index.html">Quarkus Hibernate Search Extras</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-hibernate-search-extras/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-hibernate-types/dev/index.html">Quarkus Hibernate types</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-hibernate-types/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-hivemq-client/dev/index.html">Quarkus HiveMQ Client</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-hivemq-client/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-JDBC-Sqlite/dev/index.html">Quarkus JDBC Sqlite</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-JDBC-Sqlite/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-jgit/dev/index.html">Quarkus JGit</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-jgit/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-jgrapht/dev/index.html">Quarkus JGraphT</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-jgrapht/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-jsch/dev/index.html">Quarkus JSch</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-jsch/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-kerberos/dev/index.html">Quarkus Kerberos</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-kerberos/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-logging-json/dev/index.html">Quarkus Logging JSON</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-logging-json/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-logging-logback/dev/index.html">Quarkus Logging Logback</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-logging-logback/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-logging-sentry/dev/index.html">Quarkus Logging Sentry</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-logging-sentry/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-logging-splunk/dev/index.html">Quarkus Logging Splunk</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-logging-splunk/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-micrometer-registry/dev/index.html">Quarkus Micrometer Registry extensions</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-micrometer-registry/dev/index.html">dev</a>
+        </li>
+        <li class="version">
+          <a href="../../quarkus-micrometer-registry/1.x/index.html">1.x</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-mockk/dev/index.html">Quarkus Mockk</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-mockk/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-mybatis/dev/index.html">Quarkus MyBatis</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-mybatis/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-neo4j/dev/index.html">Quarkus Neo4j</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-neo4j/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-operator-sdk/dev/index.html">Quarkus Operator SDK</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-operator-sdk/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-prettytime/dev/index.html">Quarkus Prettytime</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-prettytime/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-quinoa/dev/index.html">Quarkus Quinoa</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-quinoa/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-rabbitmq-client/0.1.0/index.html">Quarkus RabbitMQ Client</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-rabbitmq-client/0.1.0/index.html">0.1.0</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-reactive-messaging-http/dev/index.html">Quarkus Reactive Messaging HTTP</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-reactive-messaging-http/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <a class="title" href="index.html">Quarkus Renarde</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-tika/dev/index.html">Quarkus Tika</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-tika/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-unleash/dev/index.html">Quarkus Unleash</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-unleash/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-vault/dev/index.html">Quarkus Vault</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-vault/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../index/index/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Quarkus Renarde</a></li>
+    <li><a href="security.html">Renarde <span class="image"><img src="_images/renarde-head.svg" alt="renarde head" width="25em"></span>  Web Framework Security guide</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/quarkiverse/quarkus-renarde/edit/main/docs/modules/ROOT/pages/security.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Renarde <span class="image"><img src="_images/renarde-head.svg" alt="renarde head" width="25em"></span>  Web Framework Security guide</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Renarde <span class="image"><img src="_images/renarde-head.svg" alt="renarde head" width="15em"></span> can help you deal with security and user registration, either manually, using OIDC, or
+a mix of both.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_custom_authentication_with_jwt"><a class="anchor" href="#_custom_authentication_with_jwt"></a>Custom authentication with JWT</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In order to handle your own authentication by storing users in your database, you can use <a href="#security-jwt.adoc" class="xref unresolved">JWT tokens</a>.
+Start with importing the <code>renarde-oidc</code> module:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+  &lt;groupId&gt;io.quarkiverse.renarde&lt;/groupId&gt;
+  &lt;artifactId&gt;quarkus-renarde-oidc&lt;/artifactId&gt;
+  &lt;version&gt;1.0.0-SNAPSHOT&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And set those configuration values:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties"># Must be set to get proper error reporting
+quarkus.http.auth.proactive=false</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Your entity should extend <code>RenardeUser</code> and can look like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">package model;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.Table;
+
+import io.quarkiverse.renarde.oidc.RenardeUser;
+import io.quarkus.hibernate.orm.panache.PanacheEntity;
+
+@Entity
+@Table(name = "user_table")
+public class User extends PanacheEntity implements RenardeUser {
+
+    @Column(nullable = false)
+    public String email;
+    @Column(unique = true)
+    public String userName;
+    public String password;
+    public String firstName;
+    public String lastName;
+    public boolean isAdmin;
+
+    @Column(unique = true)
+    public String confirmationCode;
+
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    public UserStatus status;
+
+    public boolean isRegistered(){
+        return status == UserStatus.REGISTERED;
+    }
+
+    @Override
+    public Set&lt;String&gt; getRoles() {
+        Set&lt;String&gt; roles = new HashSet&lt;&gt;();
+        if(isAdmin) {
+            roles.add("admin");
+        }
+        return roles;
+    }
+
+    @Override
+    public String getUserId() {
+        return userName;
+    }
+
+    //
+    // Helpers
+
+    public static User findUnconfirmedByEmail(String email) {
+        return find("LOWER(email) = ?1 AND status = ?2", email.toLowerCase(), UserStatus.CONFIRMATION_REQUIRED).firstResult();
+    }
+
+    public static User findRegisteredByUserName(String username) {
+        return find("LOWER(userName) = ?1 AND status = ?2", username.toLowerCase(), UserStatus.REGISTERED).firstResult();
+    }
+
+    public static User findByUserName(String username) {
+        return find("LOWER(userName) = ?1", username.toLowerCase()).firstResult();
+    }
+
+    public static User findForContirmation(String confirmationCode) {
+        return find("confirmationCode = ?1 AND status = ?2", confirmationCode, UserStatus.CONFIRMATION_REQUIRED).firstResult();
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now tell Renarde how to map the JWT cookies to your user model by implementing <code>RenardeUserProvider</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">package util;
+
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
+
+import io.quarkiverse.renarde.oidc.RenardeSecurity;
+import io.quarkiverse.renarde.oidc.RenardeUser;
+import io.quarkiverse.renarde.oidc.RenardeUserProvider;
+import model.User;
+
+@ApplicationScoped
+public class MyOidcSetup implements RenardeUserProvider {
+
+    @Inject
+    RenardeSecurity security;
+
+    @Override
+    public RenardeUser findUser(String tenantId, String id) {
+        return User.findByUserName(id);
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>With this, Renarde will make sure that we produce a <code>user</code> named bean containing the current user if there is a
+logged-in user. You can then use it in your views with <code>inject:user</code> or by injecting it in
+your endpoints.</p>
+</div>
+<div class="paragraph">
+<p>Renarde also provides a <code>ControllerWithUser</code> class which you can extend to access the current user for all controllers
+that need a user.</p>
+</div>
+<div class="paragraph">
+<p>Now you can write your login and registration page like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-html hljs" data-lang="html">{#include main.html }
+{#title}Login{/title}
+
+&lt;div class="row"&gt;
+  &lt;div class="col-md-5"&gt;
+    {#form uri:Login.manualLogin()}
+        &lt;fieldset&gt;
+            &lt;legend&gt;Login&lt;/legend&gt;
+            {#formElement name="userName" label="User Name"}
+                {#input name="userName"/}
+            {/formElement}
+            {#formElement name="password" label="Password"}
+                {#input name="password" type="password"/}
+            {/formElement}
+            &lt;button type="submit" class="btn btn-primary"&gt;Login&lt;/button&gt;
+        &lt;/fieldset&gt;
+    {/form}
+  &lt;/div&gt;
+  &lt;div class="col-md-5"&gt;
+    {#form uri:Login.register()}
+        &lt;fieldset&gt;
+            &lt;legend&gt;Register&lt;/legend&gt;
+            {#formElement name="email" label="Email"}
+                {#input name="email"/}
+            {/formElement}
+            &lt;button type="submit" class="btn btn-primary"&gt;Register&lt;/button&gt;
+        &lt;/fieldset&gt;
+    {/form}
+  &lt;/div&gt;
+&lt;/div&gt;
+
+{/include}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>As for your registration page, it can look like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-html hljs" data-lang="html">{#include main.html }
+{#title}Complete registration{/title}
+
+{#form uri:Login.complete(newUser.confirmationCode)}
+
+&lt;fieldset&gt;
+    &lt;legend&gt;Complete registration for {newUser.email}&lt;/legend&gt;
+    {#formElement name="userName" label="User Name"}
+        {#input name="userName" value=newUser.userName/}
+    {/formElement}
+    {#formElement name="password" label="Password"}
+        {#input name="password" type="password"/}
+    {/formElement}
+    {#formElement name="password2" label="Password Confirmation"}
+        {#input name="password2" type="password"/}
+    {/formElement}
+    {#formElement name="firstName" label="First Name"}
+        {#input name="firstName" value=newUser.firstName/}
+    {/formElement}
+    {#formElement name="lastName" label="Last Name"}
+        {#input name="lastName" value=newUser.lastName/}
+    {/formElement}
+    &lt;button type="submit" class="btn btn-primary"&gt;Complete registration&lt;/button&gt;
+&lt;/fieldset&gt;
+
+{/form}
+{/include}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And your login and registration endpoint can look like this to handle user registration and login:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">package rest;
+
+import java.util.UUID;
+
+import javax.inject.Inject;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.ws.rs.POST;
+import javax.ws.rs.core.NewCookie;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.ResponseBuilder;
+
+import org.hibernate.validator.constraints.Length;
+import org.jboss.resteasy.reactive.RestForm;
+import org.jboss.resteasy.reactive.RestQuery;
+
+import email.Emails;
+import io.quarkiverse.renarde.oidc.RenardeSecurity;
+import io.quarkiverse.renarde.router.Router;
+import io.quarkiverse.renarde.util.StringUtils;
+import io.quarkus.elytron.security.common.BcryptUtil;
+import io.quarkus.qute.CheckedTemplate;
+import io.quarkus.qute.TemplateInstance;
+import io.quarkus.security.Authenticated;
+import model.User;
+import model.UserStatus;
+
+public class Login extends ControllerWithUser&lt;User&gt; {
+
+    @Inject
+    RenardeSecurity security;
+
+    @CheckedTemplate
+    static class Templates {
+        public static native TemplateInstance login();
+        public static native TemplateInstance register(String email);
+        public static native TemplateInstance confirm(User newUser);
+        public static native TemplateInstance logoutFirst();
+        public static native TemplateInstance welcome();
+    }
+
+    /**
+     * Login page
+     */
+    public TemplateInstance login() {
+        return Templates.login();
+    }
+
+    /**
+     * Welcome page at the end of registration
+     */
+    @Authenticated
+    public TemplateInstance welcome() {
+        return Templates.welcome();
+    }
+
+    /**
+     * Manual login form
+     */
+    @POST
+    public Response manualLogin(@NotBlank @RestForm String userName,
+            @NotBlank @RestForm String password) {
+        if(validationFailed()) {
+            login();
+        }
+        User user = User.findRegisteredByUserName(userName);
+        if(user == null
+                || !BcryptUtil.matches(password, user.password)) {
+            validation.addError("userName", "Invalid username/pasword");
+            prepareForErrorRedirect();
+            login();
+        }
+        NewCookie cookie = security.makeUserCookie(user);
+        return Response.seeOther(Router.getURI(Application::index)).cookie(cookie).build();
+    }
+
+
+    /**
+     * Manual registration form, sends confirmation email
+     */
+    @POST
+    public TemplateInstance register(@RestForm @NotBlank @Email String email) {
+        if(validationFailed())
+            login();
+        User newUser = User.findUnconfirmedByEmail(email);
+        if(newUser == null) {
+            newUser = new User();
+            newUser.email = email;
+            newUser.status = UserStatus.CONFIRMATION_REQUIRED;
+            newUser.confirmationCode = UUID.randomUUID().toString();
+            newUser.persist();
+        }
+        // send the confirmation code again
+        Emails.confirm(newUser);
+        return Templates.register(email);
+    }
+
+
+    /**
+     * Confirmation form, once email is verified, to add user info
+     */
+    public TemplateInstance confirm(@RestQuery String confirmationCode){
+        checkLogoutFirst();
+        User newUser = checkConfirmationCode(confirmationCode);
+        return Templates.confirm(newUser);
+    }
+
+    private void checkLogoutFirst() {
+        if(getUser() != null) {
+            logoutFirst();
+        }
+    }
+
+    /**
+     * Link to logout page
+     */
+    public TemplateInstance logoutFirst() {
+        return Templates.logoutFirst();
+    }
+
+    private User checkConfirmationCode(String confirmationCode) {
+        // can't use error reporting as those are query parameters and not form fields
+        if(StringUtils.isEmpty(confirmationCode)){
+            flash("message", "Missing confirmation code");
+            flash("messageType", "error");
+            redirect(Application.class).index();
+        }
+        User user = User.findForContirmation(confirmationCode);
+        if(user == null){
+            flash("message", "Invalid confirmation code");
+            flash("messageType", "error");
+            redirect(Application.class).index();
+        }
+        return user;
+    }
+
+    @POST
+    public Response complete(@RestQuery String confirmationCode,
+            @RestForm @NotBlank String userName,
+            @RestForm @Length(min = 8) String password,
+            @RestForm @Length(min = 8) String password2,
+            @RestForm @NotBlank String firstName,
+            @RestForm @NotBlank String lastName) {
+        checkLogoutFirst();
+        User user = checkConfirmationCode(confirmationCode);
+
+        if(validationFailed())
+            confirm(confirmationCode);
+
+        validation.required("password", password);
+        validation.required("password2", password2);
+        validation.equals("password", password, password2);
+
+        if(User.findRegisteredByUserName(userName) != null)
+            validation.addError("userName", "User name already taken");
+        if(validationFailed())
+            confirm(confirmationCode);
+
+        user.userName = userName;
+        user.password = BcryptUtil.bcryptHash(password);
+        user.firstName = firstName;
+        user.lastName = lastName;
+        user.confirmationCode = null;
+        user.status = UserStatus.REGISTERED;
+
+        ResponseBuilder responseBuilder = Response.seeOther(Router.getURI(Login::welcome));
+        NewCookie cookie = security.makeUserCookie(user);
+        responseBuilder.cookie(cookie);
+        return responseBuilder.build();
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can now use the <code>@Authenticated</code> and <code>@RolesAllowed("admin")</code> annotations on your endpoints.</p>
+</div>
+<div class="sect2">
+<h3 id="_privatepublic_keys"><a class="anchor" href="#_privatepublic_keys"></a>Private/public keys</h3>
+<div class="paragraph">
+<p>In DEV mode, your private/public keys will be generated for you at startup if they do not exist and
+are not specified. Cleaning your project will remove those keys, so previous JWT tokens won&#8217;t be valid
+anymore on restart.</p>
+</div>
+<div class="paragraph">
+<p>In production environments you will need to generate and specify your private and public keys using the following
+commands:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ openssl genrsa -out rsaPrivateKey.pem 2048
+$ openssl rsa -pubout -in rsaPrivateKey.pem -out src/main/resources/publicKey.pem
+$ openssl pkcs8 -topk8 -nocrypt -inform pem -in rsaPrivateKey.pem -outform pem -out src/main/resources/privateKey.pem</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can then point to those files in your <code>application.properties</code> Quarkus configuration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties">mp.jwt.verify.publickey.location=publicKey.pem
+mp.jwt.decrypt.key.location=privateKey.pem
+smallrye.jwt.sign.key.location=privateKey.pem
+smallrye.jwt.encrypt.key.location=publicKey.pem
+
+quarkus.native.resources.includes=publicKey.pem
+quarkus.native.resources.includes=privateKey.pem</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_using_oidc_for_login"><a class="anchor" href="#_using_oidc_for_login"></a>Using OIDC for login</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>OIDC (Open ID Connect) is a way to delegate user login to external services, such as:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="#setting-up-oidc-for-apple">Apple</a></p>
+</li>
+<li>
+<p><a href="#setting-up-oidc-for-github">Github</a></p>
+</li>
+<li>
+<p><a href="#setting-up-oidc-for-google">Google</a></p>
+</li>
+<li>
+<p><a href="#setting-up-oidc-for-facebook">Facebook</a></p>
+</li>
+<li>
+<p><a href="#setting-up-oidc-for-microsoft">Microsoft</a></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If you use OIDC, you can skip the email validation phase, and avoid storing passwords for your users, but you may
+likely still need to store a user representation in your data store, and associate it to the external identity provider
+using the provider name and its own ID.</p>
+</div>
+<div class="paragraph">
+<p>The recommended set up is to place each provider in its own tenant, and disable the default tenant if you want to leave
+it free for the manual user registration and authentication we already covered:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties"># Google
+quarkus.oidc.google.provider=google
+quarkus.oidc.google.client-id=SECRET
+quarkus.oidc.google.credentials.secret=SECRET
+
+# Github
+quarkus.oidc.github.provider=github
+quarkus.oidc.github.client-id=SECRET
+quarkus.oidc.github.credentials.secret=SECRET
+
+# Manual context
+quarkus.oidc.manual.tenant-enabled=false
+
+# Default is just disabled
+quarkus.oidc.tenant-enabled=false
+
+# Get rid of keycloak dev services
+quarkus.keycloak.devservices.enabled=false
+
+# Must be set to get proper error reporting
+quarkus.http.auth.proactive=false</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Make sure you import the <code>renarde-oidc</code> module in your <code>pom.xml</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+  &lt;groupId&gt;io.quarkiverse.renarde&lt;/groupId&gt;
+  &lt;artifactId&gt;quarkus-renarde-oidc&lt;/artifactId&gt;
+  &lt;version&gt;1.0.0-SNAPSHOT&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We first adapt our <code>User</code> model to handle OIDC users by adding <code>tenantId</code> and <code>authId</code> fields:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">package model;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+
+import io.quarkiverse.renarde.oidc.RenardeUser;
+import io.quarkus.hibernate.orm.panache.PanacheEntity;
+
+@Entity
+@Table(name = "user_table", uniqueConstraints = @UniqueConstraint(columnNames = {"tenantId", "authId"}))
+public class User extends PanacheEntity implements RenardeUser {
+
+    @Column(nullable = false)
+    public String email;
+    @Column(unique = true)
+    public String userName;
+    public String password;
+    public String firstName;
+    public String lastName;
+    public boolean isAdmin;
+
+    @Column(unique = true)
+    public String confirmationCode;
+
+    public String tenantId;
+    public String authId;
+
+    @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
+    public UserStatus status;
+
+    public boolean isRegistered(){
+        return status == UserStatus.REGISTERED;
+    }
+
+    @Override
+    public Set&lt;String&gt; getRoles() {
+        Set&lt;String&gt; roles = new HashSet&lt;&gt;();
+        if(isAdmin) {
+            roles.add("admin");
+        }
+        return roles;
+    }
+
+    @Override
+    public String getUserId() {
+        return userName;
+    }
+
+    public boolean isOidc() {
+        return tenantId != null;
+    }
+
+    //
+    // Helpers
+
+    public static User findUnconfirmedByEmail(String email) {
+        return find("LOWER(email) = ?1 AND status = ?2", email.toLowerCase(), UserStatus.CONFIRMATION_REQUIRED).firstResult();
+    }
+
+    public static User findRegisteredByUserName(String username) {
+        return find("LOWER(userName) = ?1 AND status = ?2", username.toLowerCase(), UserStatus.REGISTERED).firstResult();
+    }
+
+    public static User findByUserName(String username) {
+        return find("LOWER(userName) = ?1", username.toLowerCase()).firstResult();
+    }
+
+    public static User findByAuthId(String tenantId, String authId) {
+        return find("tenantId = ?1 AND authId = ?2", tenantId, authId).firstResult();
+    }
+
+    public static User findForContirmation(String confirmationCode) {
+        return find("confirmationCode = ?1 AND status = ?2", confirmationCode, UserStatus.CONFIRMATION_REQUIRED).firstResult();
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now you need to provide implementations of <code>RenardeUserProvider</code> and <code>RenardeOidcHandler</code> which you can group:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">package util;
+
+import java.net.URI;
+import java.util.UUID;
+
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
+import javax.transaction.Transactional;
+import javax.ws.rs.core.Response;
+
+import io.quarkiverse.renarde.oidc.RenardeOidcHandler;
+import io.quarkiverse.renarde.oidc.RenardeSecurity;
+import io.quarkiverse.renarde.oidc.RenardeUser;
+import io.quarkiverse.renarde.oidc.RenardeUserProvider;
+import io.quarkiverse.renarde.router.Router;
+import io.quarkiverse.renarde.util.Flash;
+import io.quarkiverse.renarde.util.RedirectException;
+import model.User;
+import model.UserStatus;
+import rest.Application;
+import rest.Login;
+
+@ApplicationScoped
+public class MyOidcSetup implements RenardeUserProvider, RenardeOidcHandler {
+
+    @Inject
+    RenardeSecurity security;
+
+    @Inject
+    Flash flash;
+
+    /**
+     * This allows us to map tenant/id to our users: manually or via OIDC
+     */
+    @Override
+    public RenardeUser findUser(String tenantId, String id) {
+        if(tenantId == null || tenantId.equals("manual")) {
+            return User.findByUserName(id);
+        } else {
+            return User.findByAuthId(tenantId, id);
+        }
+    }
+
+    /**
+     * This will be called on every successful OIDC authentication,
+     * be it a first-time user registration, or existing user login
+     */
+    @Transactional
+    @Override
+    public void oidcSuccess(String tenantId, String authId) {
+        User user = User.findByAuthId(tenantId, authId);
+        URI uri;
+        if(user == null) {
+            // registration
+            user = new User();
+            user.tenantId = tenantId;
+            user.authId = authId;
+
+            user.email = security.getOidcEmail();
+            user.firstName = security.getOidcFirstName();
+            user.lastName = security.getOidcLastName();
+            user.userName = security.getOidcUserName();
+
+            user.status = UserStatus.CONFIRMATION_REQUIRED;
+            user.confirmationCode = UUID.randomUUID().toString();
+            user.persist();
+
+            // go to registration
+            uri = Router.getURI(Login::confirm, user.confirmationCode);
+        } else if(!user.isRegistered()) {
+            // user exists, but not fully registered yet
+            // go to registration
+            uri = Router.getURI(Login::confirm, user.confirmationCode);
+        } else {
+            // regular login
+            uri = Router.getURI(Application::index);
+        }
+        throw new RedirectException(Response.seeOther(uri).build());
+    }
+
+    /**
+     * This will be called if the existing user has a valid OIDC session,
+     * and attemps to login again, so we check if the user exists, and is
+     * fully registered.
+     */
+    @Override
+    public void loginWithOidcSession(String tenantId, String authId) {
+        RenardeUser user = findUser(tenantId, authId);
+        // old cookie, no such user
+        if(user == null) {
+            flash.flash("message", "Invalid user: "+authId);
+            throw new RedirectException(security.makeLogoutResponse());
+        }
+        // redirect to registration
+        URI uri;
+        if(!user.isRegistered()) {
+            uri = Router.getURI(Login::confirm, ((User)user).confirmationCode);
+        } else {
+            flash.flash("message", "Already logged in");
+            uri = Router.getURI(Application::index);
+        }
+        throw new RedirectException(Response.seeOther(uri).build());
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>We have to adapt our registration page to account for users coming in from OIDC, by skipping the password
+if the user is an OIDC user:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-html hljs" data-lang="html">{#include main.html }
+{#title}Complete registration{/title}
+
+{#form uri:Login.complete(newUser.confirmationCode)}
+
+&lt;fieldset&gt;
+    &lt;legend&gt;Complete registration for {newUser.email}&lt;/legend&gt;
+    {#formElement name="userName" label="User Name"}
+        {#input name="userName" value=newUser.userName/}
+    {/formElement}
+    {#if !newUser.authId}
+        {#formElement name="password" label="Password"}
+            {#input name="password" type="password"/}
+        {/formElement}
+        {#formElement name="password2" label="Password Confirmation"}
+            {#input name="password2" type="password"/}
+        {/formElement}
+    {/if}
+    {#formElement name="firstName" label="First Name"}
+        {#input name="firstName" value=newUser.firstName/}
+    {/formElement}
+    {#formElement name="lastName" label="Last Name"}
+        {#input name="lastName" value=newUser.lastName/}
+    {/formElement}
+    &lt;button type="submit" class="btn btn-primary"&gt;Complete registration&lt;/button&gt;
+&lt;/fieldset&gt;
+
+{/form}
+{/include}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And the corresponding controller:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">    @POST
+    public Response complete(@RestQuery String confirmationCode,
+            @RestForm @NotBlank String userName,
+            @RestForm @Length(min = 8) String password,
+            @RestForm @Length(min = 8) String password2,
+            @RestForm @NotBlank String firstName,
+            @RestForm @NotBlank String lastName) {
+        checkLogoutFirst();
+        User user = checkConfirmationCode(confirmationCode);
+
+        if(validationFailed())
+            confirm(confirmationCode);
+
+        // is it OIDC?
+        if(!user.isOidc()) {
+            validation.required("password", password);
+            validation.required("password2", password2);
+            validation.equals("password", password, password2);
+        }
+
+        if(User.findRegisteredByUserName(userName) != null)
+            validation.addError("userName", "User name already taken");
+        if(validationFailed())
+            confirm(confirmationCode);
+
+        user.userName = userName;
+        if(!user.isOidc()) {
+            user.password = BcryptUtil.bcryptHash(password);
+        }
+        user.firstName = firstName;
+        user.lastName = lastName;
+        user.confirmationCode = null;
+        user.status = UserStatus.REGISTERED;
+
+        ResponseBuilder responseBuilder = Response.seeOther(Router.getURI(Login::welcome));
+        if(!user.isOidc()) {
+            NewCookie cookie = security.makeUserCookie(user);
+            responseBuilder.cookie(cookie);
+        }
+        return responseBuilder.build();
+    }</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And finally we can add the OIDC login options to the login page:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-html hljs" data-lang="html">{#include main.html }
+{#title}Login{/title}
+
+&lt;div class="row"&gt;
+  &lt;div class="col-md-2"&gt;
+    &lt;fieldset&gt;
+        &lt;legend&gt;Login/Register&lt;/legend&gt;
+        &lt;div class="d-grid gap-2"&gt;
+          &lt;a class="btn btn-block btn-light" href="{uri:RenardeSecurityController.loginUsingOidc('github')}" role="button"&gt;&lt;img src="/images/signin-github.svg" height="16px" style="vertical-align: text-top"/&gt; GitHub&lt;/a&gt;
+          &lt;a class="btn btn-block btn-light" href="{uri:RenardeSecurityController.loginUsingOidc('google')}" role="button"&gt;&lt;img src="/images/signin-google.svg" height="16px" style="vertical-align: text-top"/&gt; Google&lt;/a&gt;
+          &lt;a class="btn btn-block btn-light" href="{uri:RenardeSecurityController.loginUsingOidc('microsoft')}" role="button"&gt;&lt;img src="/images/signin-microsoft.svg" height="16px" style="vertical-align: text-top"/&gt; Microsoft&lt;/a&gt;
+          &lt;a class="btn btn-block btn-light" href="{uri:RenardeSecurityController.loginUsingOidc('facebook')}" role="button"&gt;&lt;img src="/images/signin-facebook.svg" height="16px" style="vertical-align: text-top"/&gt; Facebook&lt;/a&gt;
+          &lt;a class="btn btn-block btn-light" href="{uri:RenardeSecurityController.loginUsingOidc('apple')}" role="button"&gt;&lt;img src="/images/signin-apple.svg" height="16px" style="vertical-align: text-top"/&gt; Apple&lt;/a&gt;
+        &lt;/div&gt;
+     &lt;/fieldset&gt;
+  &lt;/div&gt;
+  &lt;-- ... Manual login and registration ... --&gt;
+&lt;/div&gt;
+
+{/include}</code></pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_setting_up_oidc_for_github"><a class="anchor" href="#_setting_up_oidc_for_github"></a>Setting up OIDC for Github</h3>
+<div class="paragraph">
+<p>In order to set up OIDC for Github you need to create a new OAuth application in your <a href="https://github.com/settings/applications/new">GitHub developer settings</a>:</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="_images/oidc-github-1.png" alt="oidc github 1">
+</div>
+</div>
+<div class="paragraph">
+<p>Make sure to fill in the appropriate details, but more importantly the Authorization Callback URL, set to <code><a href="http://localhost:8080/_renarde/security/github-success" class="bare">http://localhost:8080/_renarde/security/github-success</a></code>
+(if you intend to test this using the Quarkus DEV mode).</p>
+</div>
+<div class="paragraph">
+<p>Now click on <code>Register application</code> and you&#8217;ll be shown your application page:</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="_images/oidc-github-2.png" alt="oidc github 2">
+</div>
+</div>
+<div class="paragraph">
+<p>You need to click on <code>Generate a new client secret</code>, confirm your credentials, and write down
+your Client ID and Client secret (especially that one, because you will not be able to see it again
+later from that page, but you can always recreate one, do don&#8217;t worry too much):</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="_images/oidc-github-3.png" alt="oidc github 3">
+</div>
+</div>
+<div class="paragraph">
+<p>Now add the following configuration to your <code>application.properties</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties">quarkus.oidc.github.provider=github
+quarkus.oidc.github.client-id=&lt;Client ID&gt;
+quarkus.oidc.github.credentials.secret=&lt;Secret&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_setting_up_oidc_for_google"><a class="anchor" href="#_setting_up_oidc_for_google"></a>Setting up OIDC for Google</h3>
+<div class="paragraph">
+<p>In order to set up OIDC for Google you need to create a new project in your <a href="https://console.cloud.google.com/projectcreate">Google Cloud Platform console</a>:</p>
+</div>
+<div class="paragraph">
+<p>Pick a project name and click on <code>CREATE</code>.</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="_images/oidc-google-1.png" alt="oidc google 1">
+</div>
+</div>
+<div class="paragraph">
+<p>Now make sure you select your project in the top selector, and click on the left-hand bar menu on <code>APIs and Services &gt; OAuth consent screen</code>:</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="_images/oidc-google-2.png" alt="oidc google 2">
+</div>
+</div>
+<div class="paragraph">
+<p>Select <code>External</code> to authorise any Google user to log in to your application and press <code>CREATE</code>:</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="_images/oidc-google-3.png" alt="oidc google 3">
+</div>
+</div>
+<div class="paragraph">
+<p>Now you can fill in your application name, your support email, your developer contact information and press <code>SAVE AND CONTINUE</code>:</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="_images/oidc-google-4.png" alt="oidc google 4">
+</div>
+</div>
+<div class="paragraph">
+<p>Do not add any scopes on the next page, and press <code>SAVE AND CONTINUE</code>:</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="_images/oidc-google-5.png" alt="oidc google 5">
+</div>
+</div>
+<div class="paragraph">
+<p>Do not add any test user on the next page, and press <code>SAVE AND CONTINUE</code>:</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="_images/oidc-google-6.png" alt="oidc google 6">
+</div>
+</div>
+<div class="paragraph">
+<p>Click on the top menu <code>CREATE CREDENTIALS</code> &gt; <code>OAuth client ID</code>:</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="_images/oidc-google-7.png" alt="oidc google 7">
+</div>
+</div>
+<div class="paragraph">
+<p>Select <code>Web application</code> as <code>Application type</code>, and add <code><a href="http://localhost:8080/_renarde/security/oidc-success" class="bare">http://localhost:8080/_renarde/security/oidc-success</a></code> in
+the <code>Authorised redirect URIs</code> list, then press <code>CREATE</code>:</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="_images/oidc-google-8.png" alt="oidc google 8">
+</div>
+</div>
+<div class="paragraph">
+<p>Copy your Client ID and Client Secret:</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="_images/oidc-google-9.png" alt="oidc google 9">
+</div>
+</div>
+<div class="paragraph">
+<p>You can now configure your <code>application.properties</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties">quarkus.oidc.google.provider=google
+quarkus.oidc.google.client-id=&lt;Client ID&gt;
+quarkus.oidc.google.credentials.secret=&lt;Secret&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_setting_up_oidc_for_microsoft"><a class="anchor" href="#_setting_up_oidc_for_microsoft"></a>Setting up OIDC for Microsoft</h3>
+<div class="paragraph">
+<p>In order to set up OIDC for Microsoft you need to go to your <a href="https://portal.azure.com">Microsoft Azure Portal</a>,
+and search for <code>Azure Active Directory</code>, then click on it:</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="_images/oidc-microsoft-1.png" alt="oidc microsoft 1">
+</div>
+</div>
+<div class="paragraph">
+<p>Once there, on the left side under <code>Manage</code>, click on <code>App registrations</code> then click on <code>New registration</code>:</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="_images/oidc-microsoft-2.png" alt="oidc microsoft 2">
+</div>
+</div>
+<div class="paragraph">
+<p>Fill in your application name, select <code>Accounts in any organizational directory (Any Azure AD directory - Multitenant) and personal Microsoft accounts (e.g. Skype, Xbox)</code> to allow anyone to log in, and add a <code>Web</code> Redirect URI as <code><a href="http://localhost:8080/_renarde/security/oidc-success" class="bare">http://localhost:8080/_renarde/security/oidc-success</a></code>,
+then click on <code>Register</code>:</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="_images/oidc-microsoft-3.png" alt="oidc microsoft 3">
+</div>
+</div>
+<div class="paragraph">
+<p>On that resulting page, copy the <code>Client Id</code> (under <code>Application (client) ID</code>, then click on <code>Add a certificate or secret</code>:</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="_images/oidc-microsoft-4.png" alt="oidc microsoft 4">
+</div>
+</div>
+<div class="paragraph">
+<p>Now, under <code>Client secrets (0)</code>, click on <code>New client secret</code>:</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="_images/oidc-microsoft-5.png" alt="oidc microsoft 5">
+</div>
+</div>
+<div class="paragraph">
+<p>Click on <code>Add</code> in that dialog without changing anything:</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="_images/oidc-microsoft-6.png" alt="oidc microsoft 6">
+</div>
+</div>
+<div class="paragraph">
+<p>On the resulting page, copy your <code>Secret ID</code>:</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="_images/oidc-microsoft-7.png" alt="oidc microsoft 7">
+</div>
+</div>
+<div class="paragraph">
+<p>You can now configure your <code>application.properties</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties">quarkus.oidc.microsoft.provider=microsoft
+quarkus.oidc.microsoft.client-id=&lt;Client ID&gt;
+quarkus.oidc.microsoft.credentials.secret=&lt;Secret&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_setting_up_oidc_for_apple"><a class="anchor" href="#_setting_up_oidc_for_apple"></a>Setting up OIDC for Apple</h3>
+<div class="paragraph">
+<p>In order to set up OIDC for Apple you need to create a developer account, and sign up for the 99€/year program, but you cannot test your application on <code>localhost</code> like most other OIDC providers:
+you will need to run it over <code>https</code> and make it publicly accessible, so for development purposes
+you may want to use a service such as <a href="https://ngrok.com" class="bare">https://ngrok.com</a>.</p>
+</div>
+<div class="paragraph">
+<p>Go to <a href="https://developer.apple.com/account/resources/identifiers/list">Create a new identifier</a> and press <code>+</code></p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="_images/oidc-apple-1.png" alt="oidc apple 1">
+</div>
+</div>
+<div class="paragraph">
+<p>Dont touch anything, keep <code>App IDs</code> selected, and press <code>Continue</code>:</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="_images/oidc-apple-2.png" alt="oidc apple 2">
+</div>
+</div>
+<div class="paragraph">
+<p>Dont touch anything, keep <code>App</code> selected, and press <code>Continue</code>:</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="_images/oidc-apple-3.png" alt="oidc apple 3">
+</div>
+</div>
+<div class="paragraph">
+<p>Enter a description and a Bundle ID (use your application package name):</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="_images/oidc-apple-4.png" alt="oidc apple 4">
+</div>
+</div>
+<div class="paragraph">
+<p>Then scroll down to find the <code>Sign in with Apple</code> Capability, select it, and press <code>Continue</code>:</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="_images/oidc-apple-5.png" alt="oidc apple 5">
+</div>
+</div>
+<div class="paragraph">
+<p>Write down your App ID Prefix, then press <code>Register</code>:</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="_images/oidc-apple-6.png" alt="oidc apple 6">
+</div>
+</div>
+<div class="paragraph">
+<p>Back on the <code>Identifiers</code> page, press <code>+</code>:</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="_images/oidc-apple-7.png" alt="oidc apple 7">
+</div>
+</div>
+<div class="paragraph">
+<p>Select <code>Service IDs</code> and press <code>Continue</code>:</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="_images/oidc-apple-8.png" alt="oidc apple 8">
+</div>
+</div>
+<div class="paragraph">
+<p>Enter a description and Bundle ID (use your application package name), then press <code>Continue</code>:</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="_images/oidc-apple-9.png" alt="oidc apple 9">
+</div>
+</div>
+<div class="paragraph">
+<p>Now press <code>Register</code>:</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="_images/oidc-apple-10.png" alt="oidc apple 10">
+</div>
+</div>
+<div class="paragraph">
+<p>Back on the service list, click on your newly created service:</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="_images/oidc-apple-11.png" alt="oidc apple 11">
+</div>
+</div>
+<div class="paragraph">
+<p>Enable <code>Sign in with Apple</code> and press <code>Configure</code>:</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="_images/oidc-apple-12.png" alt="oidc apple 12">
+</div>
+</div>
+<div class="paragraph">
+<p>Add your domain and return URL (set to <code>&lt;host&gt;/_renarde/security/oidc-success</code>) and press <code>Next</code>:</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="_images/oidc-apple-13.png" alt="oidc apple 13">
+</div>
+</div>
+<div class="paragraph">
+<p>Now press <code>Done</code>:</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="_images/oidc-apple-14.png" alt="oidc apple 14">
+</div>
+</div>
+<div class="paragraph">
+<p>Now press <code>Continue</code>:</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="_images/oidc-apple-15.png" alt="oidc apple 15">
+</div>
+</div>
+<div class="paragraph">
+<p>And now press <code>Save</code>:</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="_images/oidc-apple-16.png" alt="oidc apple 16">
+</div>
+</div>
+<div class="paragraph">
+<p>Go to the <a href="https://developer.apple.com/account/resources/authkeys/list">Keys</a> page on the left menu, and press <code>+</code>:</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="_images/oidc-apple-17.png" alt="oidc apple 17">
+</div>
+</div>
+<div class="paragraph">
+<p>Fill in a key name, enable <code>Sign in with Apple</code>, and press <code>Configure</code>:</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="_images/oidc-apple-18.png" alt="oidc apple 18">
+</div>
+</div>
+<div class="paragraph">
+<p>Select your Primary App ID and press <code>Save</code>:</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="_images/oidc-apple-19.png" alt="oidc apple 19">
+</div>
+</div>
+<div class="paragraph">
+<p>Back on the key page, press <code>Continue</code>:</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="_images/oidc-apple-20.png" alt="oidc apple 20">
+</div>
+</div>
+<div class="paragraph">
+<p>Now press <code>Register</code>:</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="_images/oidc-apple-21.png" alt="oidc apple 21">
+</div>
+</div>
+<div class="paragraph">
+<p>Write down your <code>Key ID</code>, download your key and save it to your Quarkus application in <code>src/main/resources/AuthKey_&lt;KEYID&gt;.p8</code>:</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="_images/oidc-apple-22.png" alt="oidc apple 22">
+</div>
+</div>
+<div class="paragraph">
+<p>You can now configure your your <code>application.properties</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties">quarkus.oidc.apple.provider=apple
+quarkus.oidc.apple.client-id=&lt;Bundle ID&gt;
+quarkus.oidc.apple.credentials.jwt.key-file=AuthKey_&lt;Key ID&gt;.p8
+quarkus.oidc.apple.credentials.jwt.token-key-id=&lt;Key ID&gt;
+quarkus.oidc.apple.credentials.jwt.issuer=&lt;App ID Prefix&gt;
+quarkus.oidc.apple.credentials.jwt.subject=&lt;Bundle ID}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_setting_up_oidc_for_facebook"><a class="anchor" href="#_setting_up_oidc_for_facebook"></a>Setting up OIDC for Facebook</h3>
+<div class="paragraph">
+<p>Facebook you will not be let you test your application on <code>localhost</code> like most other OIDC providers:
+you will need to run it over <code>https</code> and make it publicly accessible, so for development purposes
+you may want to use a service such as <a href="https://ngrok.com" class="bare">https://ngrok.com</a>.</p>
+</div>
+<div class="paragraph">
+<p>In order to set up OIDC for Facebook start by <a href="https://developers.facebook.com/apps/create/">Creating an application</a>, select <code>None</code> as an app type, and press <code>Next</code>:</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="_images/oidc-facebook-1.png" alt="oidc facebook 1">
+</div>
+</div>
+<div class="paragraph">
+<p>Now enter an application name, and contact email, and press <code>Create app</code>:</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="_images/oidc-facebook-2.png" alt="oidc facebook 2">
+</div>
+</div>
+<div class="paragraph">
+<p>On the app page, click <code>Set up</code> on the <code>Facebook login</code> product:</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="_images/oidc-facebook-3.png" alt="oidc facebook 3">
+</div>
+</div>
+<div class="paragraph">
+<p>Quick the <code>Quickstarts</code> page and click on <code>Facebook login &gt; Settings</code> on the left menu:</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="_images/oidc-facebook-4.png" alt="oidc facebook 4">
+</div>
+</div>
+<div class="paragraph">
+<p>Enter your <code>Redirect URIs</code> (set to <code>&lt;host&gt;/_renarde/security/oidc-success</code>) and press <code>Save changes</code>:</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="_images/oidc-facebook-5.png" alt="oidc facebook 5">
+</div>
+</div>
+<div class="paragraph">
+<p>Now go to <code>Settings &gt; Basic</code> on the left hand menu, and write down your <code>App ID</code> and <code>App secret</code>:</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="_images/oidc-facebook-6.png" alt="oidc facebook 6">
+</div>
+</div>
+<div class="paragraph">
+<p>You can now configure your your <code>application.properties</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties">quarkus.oidc.facebook.provider=facebook
+quarkus.oidc.facebook.client-id=&lt;App ID&gt;
+quarkus.oidc.facebook.credentials.secret=&lt;App secret&gt;</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_setting_up_oidc_for_twitter"><a class="anchor" href="#_setting_up_oidc_for_twitter"></a>Setting up OIDC for Twitter</h3>
+<div class="paragraph">
+<p>You can use Twitter for OIDC login, but at the moment, it restricts access to the user&#8217;s email, which means you
+will have to obtain it and verify it yourself.</p>
+</div>
+<div class="paragraph">
+<p>In order to set up OIDC for Twitter start by <a href="https://developer.twitter.com/en/portal/projects/new">Creating a project</a>, enter a project name, and press <code>Next</code>:</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="_images/oidc-twitter-1.png" alt="oidc twitter 1">
+</div>
+</div>
+<div class="paragraph">
+<p>Enter a use case, and press <code>Next</code>:</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="_images/oidc-twitter-2.png" alt="oidc twitter 2">
+</div>
+</div>
+<div class="paragraph">
+<p>Enter a project description, and press <code>Next</code>:</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="_images/oidc-twitter-3.png" alt="oidc twitter 3">
+</div>
+</div>
+<div class="paragraph">
+<p>Now enter an application name, and press <code>Next</code>:</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="_images/oidc-twitter-4.png" alt="oidc twitter 4">
+</div>
+</div>
+<div class="paragraph">
+<p>Write down your keys, because they will not be displayed again, and press <code>App Settings</code>:</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="_images/oidc-twitter-5.png" alt="oidc twitter 5">
+</div>
+</div>
+<div class="paragraph">
+<p>Navigate down to the <code>User authentication settings</code> section and press <code>Set up</code>:</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="_images/oidc-twitter-6.png" alt="oidc twitter 6">
+</div>
+</div>
+<div class="paragraph">
+<p>Check the <code>OAuth 2.0</code> check box:</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="_images/oidc-twitter-7.png" alt="oidc twitter 7">
+</div>
+</div>
+<div class="paragraph">
+<p>Select <code>Web App</code> as application type, then fill in your application details (use <code>&lt;host&gt;/_renarde/security/twitter-success</code>
+for the <code>Callback URI</code>).</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Twitter doesn&#8217;t require https usage in practice, but won&#8217;t accept your <code>Website URL</code> without it, so
+you can still use ngrok for it.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Now press <code>Save</code>:</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="_images/oidc-twitter-8.png" alt="oidc twitter 8">
+</div>
+</div>
+<div class="paragraph">
+<p>You can now copy your <code>Client ID</code> and <code>Client Secret</code> and press <code>Done</code>:</p>
+</div>
+<div class="imageblock thumb">
+<div class="content">
+<img src="_images/oidc-twitter-9.png" alt="oidc twitter 9">
+</div>
+</div>
+<div class="paragraph">
+<p>You can now configure your your <code>application.properties</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties">quarkus.oidc.twitter.provider=twitter
+quarkus.oidc.twitter.client-id=&lt;Client ID&gt;
+quarkus.oidc.twitter.credentials.secret=&lt;Client Secret&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>Copyright (C) 2020-2022 <a href="https://www.redhat.com">Red Hat</a> and individual contributors to <a href="https://github.com/quarkiverse/quarkiverse-docs">Quarkiverse</a>.</p>
+</footer>
+<script src="../../_/js/site.js"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

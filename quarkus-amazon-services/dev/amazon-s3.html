@@ -1,0 +1,2566 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Amazon S3 Client :: Quarkiverse Documentation</title>
+    <link rel="canonical" href="https://quarkiverse.github.io/quarkiverse-docs/quarkus-amazon-services/dev/amazon-s3.html">
+    <meta name="generator" content="Antora 3.0.1">
+    <link rel="stylesheet" href="../../_/css/site.css">
+    <link rel="stylesheet" href="../../_/css/site-extra.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <script>var uiRootPath = '../../_'</script>
+  </head>
+  <body class="article">
+<header class="header" role="banner">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <div class="navbar-item">
+        <a href="../..">Quarkiverse</a>
+        <span class="separator">//</span>
+        <a href="https://quarkiverse.github.io/quarkiverse-docs">Docs</a>
+      </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item has-dropdown is-hoverable">
+          <div class="navbar-link">Projects</div>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Index</a>
+            <a class="navbar-item" href="#">Quarkus - Java Embedded Framework</a>
+            <a class="navbar-item" href="#">Quarkus Amazon Alexa</a>
+            <a class="navbar-item" href="#">Quarkus Amazon Services</a>
+            <a class="navbar-item" href="#">Quarkus Artemis</a>
+            <a class="navbar-item" href="#">Quarkus Config Extensions</a>
+            <a class="navbar-item" href="#">Quarkus Cucumber</a>
+            <a class="navbar-item" href="#">Quarkus CXF</a>
+            <a class="navbar-item" href="#">Quarkus Dapr</a>
+            <a class="navbar-item" href="#">Quarkus File Vault</a>
+            <a class="navbar-item" href="#">Quarkus Freemarker</a>
+            <a class="navbar-item" href="#">Quarkus GitHub Action</a>
+            <a class="navbar-item" href="#">Quarkus GitHub App</a>
+            <a class="navbar-item" href="#">Quarkus Google Cloud Services</a>
+            <a class="navbar-item" href="#">Quarkus Helm</a>
+            <a class="navbar-item" href="#">Quarkus Hibernate Search Extras</a>
+            <a class="navbar-item" href="#">Quarkus Hibernate types</a>
+            <a class="navbar-item" href="#">Quarkus HiveMQ Client</a>
+            <a class="navbar-item" href="#">Quarkus JDBC Sqlite</a>
+            <a class="navbar-item" href="#">Quarkus JGit</a>
+            <a class="navbar-item" href="#">Quarkus JGraphT</a>
+            <a class="navbar-item" href="#">Quarkus JSch</a>
+            <a class="navbar-item" href="#">Quarkus Kerberos</a>
+            <a class="navbar-item" href="#">Quarkus Logging JSON</a>
+            <a class="navbar-item" href="#">Quarkus Logging Logback</a>
+            <a class="navbar-item" href="#">Quarkus Logging Sentry</a>
+            <a class="navbar-item" href="#">Quarkus Logging Splunk</a>
+            <a class="navbar-item" href="#">Quarkus Micrometer Registry extensions</a>
+            <a class="navbar-item" href="#">Quarkus Mockk</a>
+            <a class="navbar-item" href="#">Quarkus MyBatis</a>
+            <a class="navbar-item" href="#">Quarkus Neo4j</a>
+            <a class="navbar-item" href="#">Quarkus Operator SDK</a>
+            <a class="navbar-item" href="#">Quarkus Prettytime</a>
+            <a class="navbar-item" href="#">Quarkus Quinoa</a>
+            <a class="navbar-item" href="#">Quarkus RabbitMQ Client</a>
+            <a class="navbar-item" href="#">Quarkus Reactive Messaging HTTP</a>
+            <a class="navbar-item" href="#">Quarkus Renarde</a>
+            <a class="navbar-item" href="#">Quarkus Tika</a>
+            <a class="navbar-item" href="#">Quarkus Unleash</a>
+            <a class="navbar-item" href="#">Quarkus Vault</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <div class="navbar-link">Community</div>
+          <div class="navbar-dropdown is-right">
+            <a class="navbar-item" href="https://quarkusio.zulipchat.com">Chat</a>
+          </div>
+        </div>
+        <a class="navbar-item" href="https://twitter.com/quarkusio">
+          <span class="icon">
+            <svg aria-hidden="true" data-icon="twitter" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+              <path fill="#57aaee" d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path>
+            </svg>
+          </span>
+        </a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="quarkus-amazon-services" data-version="dev">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="index.html">Quarkus Amazon Services</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="index.html">Quarkus Amazon Services</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="amazon-cognitouserpools.html">Cognito User Pools</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="amazon-dynamodb.html">DynamoDB</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="amazon-iam.html">IAM</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="amazon-kms.html">KMS</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="amazon-s3.html">S3</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="amazon-secretsmanager.html">Secret Manager</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="amazon-ses.html">SES</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="amazon-sns.html">SNS</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="amazon-sqs.html">SQS</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="amazon-ssm.html">SSM</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Quarkus Amazon Services</span>
+    <span class="version">dev</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <a class="title" href="../../index/index/index.html">Index</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../index/index/index.html">index</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-java-embedded-framework/dev/index.html">Quarkus - Java Embedded Framework</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-java-embedded-framework/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-amazon-alexa/dev/index.html">Quarkus Amazon Alexa</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-amazon-alexa/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <a class="title" href="index.html">Quarkus Amazon Services</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-artemis/dev/index.html">Quarkus Artemis</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-artemis/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-config-extensions/dev/index.html">Quarkus Config Extensions</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-config-extensions/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-cucumber/dev/index.html">Quarkus Cucumber</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-cucumber/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-cxf/dev/index.html">Quarkus CXF</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-cxf/dev/index.html">dev</a>
+        </li>
+        <li class="version">
+          <a href="../../quarkus-cxf/v1.x/index.html">v1.x</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-dapr/dev/index.html">Quarkus Dapr</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-dapr/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-file-vault/dev/index.html">Quarkus File Vault</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-file-vault/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-freemarker/dev/index.html">Quarkus Freemarker</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-freemarker/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-github-action/dev/index.html">Quarkus GitHub Action</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-github-action/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-github-app/dev/index.html">Quarkus GitHub App</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-github-app/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-google-cloud-services/main/index.html">Quarkus Google Cloud Services</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-google-cloud-services/main/index.html">main</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-helm/dev/index.html">Quarkus Helm</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-helm/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-hibernate-search-extras/dev/index.html">Quarkus Hibernate Search Extras</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-hibernate-search-extras/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-hibernate-types/dev/index.html">Quarkus Hibernate types</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-hibernate-types/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-hivemq-client/dev/index.html">Quarkus HiveMQ Client</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-hivemq-client/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-JDBC-Sqlite/dev/index.html">Quarkus JDBC Sqlite</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-JDBC-Sqlite/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-jgit/dev/index.html">Quarkus JGit</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-jgit/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-jgrapht/dev/index.html">Quarkus JGraphT</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-jgrapht/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-jsch/dev/index.html">Quarkus JSch</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-jsch/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-kerberos/dev/index.html">Quarkus Kerberos</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-kerberos/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-logging-json/dev/index.html">Quarkus Logging JSON</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-logging-json/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-logging-logback/dev/index.html">Quarkus Logging Logback</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-logging-logback/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-logging-sentry/dev/index.html">Quarkus Logging Sentry</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-logging-sentry/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-logging-splunk/dev/index.html">Quarkus Logging Splunk</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-logging-splunk/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-micrometer-registry/dev/index.html">Quarkus Micrometer Registry extensions</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-micrometer-registry/dev/index.html">dev</a>
+        </li>
+        <li class="version">
+          <a href="../../quarkus-micrometer-registry/1.x/index.html">1.x</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-mockk/dev/index.html">Quarkus Mockk</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-mockk/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-mybatis/dev/index.html">Quarkus MyBatis</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-mybatis/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-neo4j/dev/index.html">Quarkus Neo4j</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-neo4j/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-operator-sdk/dev/index.html">Quarkus Operator SDK</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-operator-sdk/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-prettytime/dev/index.html">Quarkus Prettytime</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-prettytime/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-quinoa/dev/index.html">Quarkus Quinoa</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-quinoa/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-rabbitmq-client/0.1.0/index.html">Quarkus RabbitMQ Client</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-rabbitmq-client/0.1.0/index.html">0.1.0</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-reactive-messaging-http/dev/index.html">Quarkus Reactive Messaging HTTP</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-reactive-messaging-http/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-renarde/dev/index.html">Quarkus Renarde</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-renarde/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-tika/dev/index.html">Quarkus Tika</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-tika/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-unleash/dev/index.html">Quarkus Unleash</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-unleash/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-vault/dev/index.html">Quarkus Vault</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-vault/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../index/index/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Quarkus Amazon Services</a></li>
+    <li><a href="amazon-s3.html">S3</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/quarkiverse/quarkus-amazon-services/edit/main/docs/modules/ROOT/pages/amazon-s3.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Amazon S3 Client</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Amazon S3 is an object storage service. It can be employed to store any type of object which allows for uses like storage for Internet applications,
+backup and recovery, disaster recovery, data archives, data lakes for analytics, any hybrid cloud storage.
+This extension provides functionality that allows the client to communicate with the service when running in Quarkus.
+You can find more information about S3 at <a href="https://aws.amazon.com/s3/">the Amazon S3 website</a>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The S3 extension is based on <a href="https://docs.aws.amazon.com/sdk-for-java/v2/developer-guide/welcome.html">AWS Java SDK 2.x</a>.
+It&#8217;s a major rewrite of the 1.x code base that offers two programming models (Blocking &amp; Async).
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The Quarkus extension supports two programming models:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Blocking access using URL Connection HTTP client (by default) or the Apache HTTP Client</p>
+</li>
+<li>
+<p><a href="https://docs.aws.amazon.com/sdk-for-java/v2/developer-guide/basics-async.html">Asynchronous programming</a> based on JDK&#8217;s <code>CompletableFuture</code> objects and the Netty HTTP client.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In this guide, we see how you can get your REST services to use S3 locally and on AWS.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_prerequisites"><a class="anchor" href="#_prerequisites"></a>Prerequisites</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To complete this guide, you need:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>JDK 11+ installed with <code>JAVA_HOME</code> configured appropriately</p>
+</li>
+<li>
+<p>an IDE</p>
+</li>
+<li>
+<p>Apache Maven 3.8.1+</p>
+</li>
+<li>
+<p><a href="https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html">AWS Command line interface</a></p>
+</li>
+<li>
+<p>An AWS Account to access the S3 service. Before you can use the AWS SDKs with Amazon S3, you must get an AWS access key ID and secret access key.</p>
+</li>
+<li>
+<p>Optionally, Docker for your system to run S3 locally for testing purposes</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_provision_s3_locally"><a class="anchor" href="#_provision_s3_locally"></a>Provision S3 locally</h3>
+<div class="paragraph">
+<p>The easiest way to start working with S3 is to run a local instance as a container.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">docker run -it --publish 8008:4566 -e SERVICES=s3 -e START_WEB=0 localstack/localstack:0.11.5</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This starts a S3 instance that is accessible on port <code>8008</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+Versions of localstack newer than v0.11.5 require port <code>4566</code> instead of port <code>4572</code>. See this <a href="https://github.com/localstack/localstack/issues/2983">GitHub issue</a> for details on this change.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Create an AWS profile for your local instance using AWS CLI:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">$ aws configure --profile localstack
+AWS Access Key ID [None]: test-key
+AWS Secret Access Key [None]: test-secret
+Default region name [None]: us-east-1
+Default output format [None]:</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_create_a_s3_bucket"><a class="anchor" href="#_create_a_s3_bucket"></a>Create a S3 bucket</h3>
+<div class="paragraph">
+<p>Create a S3 bucket using AWS CLI</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">aws s3 mb s3://quarkus.s3.quickstart --profile localstack --endpoint-url=http://localhost:8008</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_solution"><a class="anchor" href="#_solution"></a>Solution</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The application built here allows to manage files stored in Amazon S3.</p>
+</div>
+<div class="paragraph">
+<p>We recommend that you follow the instructions in the next sections and create the application step by step.
+However, you can go right to the completed example.</p>
+</div>
+<div class="paragraph">
+<p>Clone the Git repository: <code>git clone <a href="https://github.com/quarkusio/quarkus-quickstarts.git" class="bare">https://github.com/quarkusio/quarkus-quickstarts.git</a></code>, or download an <a href="https://github.com/quarkusio/quarkus-quickstarts/archive/main.zip">archive</a>.</p>
+</div>
+<div class="paragraph">
+<p>The solution is located in the <code>amazon-s3-quickstart</code> <a href="https://github.com/quarkusio/quarkus-quickstarts/tree/main/amazon-s3-quickstart">directory</a>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_creating_the_maven_project"><a class="anchor" href="#_creating_the_maven_project"></a>Creating the Maven project</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>First, we need a new project. Create a new project with the following command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-bash hljs" data-lang="bash">mvn io.quarkus.platform:quarkus-maven-plugin:2.8.0.Final:create \
+    -DprojectGroupId=org.acme \
+    -DprojectArtifactId=amazon-s3-quickstart \
+    -DclassName="org.acme.s3.S3SyncClientResource" \
+    -Dpath="/s3" \
+    -Dextensions="resteasy-reactive-jackson,amazon-s3"
+cd amazon-s3-quickstart</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This command generates a Maven structure importing the RESTEasy Reactive/JAX-RS and S3 Client extensions.
+After this, the <code>amazon-s3</code> extension has been added to your <code>pom.xml</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+The default setting for <code>quarkus.http.limits.max-body-size</code> is 10240K. This may limit your ability to upload multipart files larger than the default. If you want to upload larger files, you will need to set this limit explicitly.
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_setting_up_the_model"><a class="anchor" href="#_setting_up_the_model"></a>Setting up the model</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this example, we will create an application to manage a list of files. The example application will demonstrate the two programming models supported by the extension.</p>
+</div>
+<div class="paragraph">
+<p>Because the primary goal of our application is to upload a file into the S3 bucket, we need to setup the model we will be using to define the <code>multipart/form-data</code> payload,
+in the form of a <code>@MultipartForm</code> POJO.</p>
+</div>
+<div class="paragraph">
+<p>Create a <code>org.acme.s3.FormData</code> class as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">package org.acme.s3;
+
+import java.io.File;
+import javax.ws.rs.core.MediaType;
+import org.jboss.resteasy.reactive.PartType;
+import org.jboss.resteasy.reactive.RestForm;
+
+public class FormData {
+
+    @RestForm("file")
+    public File data;
+
+    @RestForm
+    @PartType(MediaType.TEXT_PLAIN)
+    public String filename;
+
+    @RestForm
+    @PartType(MediaType.TEXT_PLAIN)
+    public String mimetype;
+
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The class defines three fields:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>data</code> that fill capture stream of uploaded bytes from the client</p>
+</li>
+<li>
+<p><code>fileName</code> that captures a filename as provided by the submited form</p>
+</li>
+<li>
+<p><code>mimeType</code> content type of the uploaded file</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In the second step let&#8217;s create a bean that will represent a file in a Amazon S3 bucket as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">package org.acme.s3;
+
+import software.amazon.awssdk.services.s3.model.S3Object;
+
+public class FileObject {
+    private String objectKey;
+
+    private Long size;
+
+    public FileObject() {
+    }
+
+    public static FileObject from(S3Object s3Object) {
+        FileObject file = new FileObject();
+        if (s3Object != null) {
+            file.setObjectKey(s3Object.key());
+            file.setSize(s3Object.size());
+        }
+        return file;
+    }
+
+    public String getObjectKey() {
+        return objectKey;
+    }
+
+    public Long getSize() {
+        return size;
+    }
+
+    public FileObject setObjectKey(String objectKey) {
+        this.objectKey = objectKey;
+        return this;
+    }
+
+    public FileObject setSize(Long size) {
+        this.size = size;
+        return this;
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Nothing fancy. One important thing to note is that having a default constructor is required by the JSON serialization layer. The static <code>from</code> method creates a bean based on the <code>S3Object</code>
+object provided by the S3 client response when listing all the objects in a bucket.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_create_jax_rs_resource"><a class="anchor" href="#_create_jax_rs_resource"></a>Create JAX-RS resource</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Now create a <code>org.acme.s3.CommonResource</code> that will consist of methods to prepare S3 request to get object from a S3 bucket, or to put file into a S3 bucket.
+Note a configuration property <code>bucket.name</code> is defined here as the request method required name of the S3 bucket.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">package org.acme.s3;
+
+import org.eclipse.microprofile.config.inject.ConfigProperty;
+
+import software.amazon.awssdk.services.s3.model.GetObjectRequest;
+import software.amazon.awssdk.services.s3.model.PutObjectRequest;
+
+abstract public class CommonResource {
+
+    @ConfigProperty(name = "bucket.name")
+    String bucketName;
+
+    protected PutObjectRequest buildPutRequest(FormData formData) {
+        return PutObjectRequest.builder()
+                .bucket(bucketName)
+                .key(formData.filename)
+                .contentType(formData.mimetype)
+                .build();
+    }
+
+    protected GetObjectRequest buildGetRequest(String objectKey) {
+        return GetObjectRequest.builder()
+                .bucket(bucketName)
+                .key(objectKey)
+                .build();
+    }
+
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Then, create a <code>org.acme.s3.S3SyncClientResource</code> that will provides an API to upload/download files as well as to list all the files in a bucket.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">package org.acme.s3;
+
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
+import javax.inject.Inject;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.ResponseBuilder;
+import javax.ws.rs.core.Response.Status;
+import org.jboss.resteasy.reactive.MultipartForm;
+import software.amazon.awssdk.core.ResponseBytes;
+import software.amazon.awssdk.core.sync.RequestBody;
+import software.amazon.awssdk.services.s3.S3Client;
+import software.amazon.awssdk.services.s3.model.GetObjectResponse;
+import software.amazon.awssdk.services.s3.model.ListObjectsRequest;
+import software.amazon.awssdk.services.s3.model.PutObjectResponse;
+
+
+@Path("/s3")
+public class S3SyncClientResource extends CommonResource {
+    @Inject
+    S3Client s3;
+
+    @POST
+    @Path("upload")
+    @Consumes(MediaType.MULTIPART_FORM_DATA)
+    public Response uploadFile(@MultipartForm FormData formData) throws Exception {
+
+        if (formData.filename == null || formData.filename.isEmpty()) {
+            return Response.status(Status.BAD_REQUEST).build();
+        }
+
+        if (formData.mimetype == null || formData.mimetype.isEmpty()) {
+            return Response.status(Status.BAD_REQUEST).build();
+        }
+
+        PutObjectResponse putResponse = s3.putObject(buildPutRequest(formData),
+                RequestBody.fromFile(formData.data));
+        if (putResponse != null) {
+            return Response.ok().status(Status.CREATED).build();
+        } else {
+            return Response.serverError().build();
+        }
+    }
+
+    @GET
+    @Path("download/{objectKey}")
+    @Produces(MediaType.APPLICATION_OCTET_STREAM)
+    public Response downloadFile(String objectKey) {
+        ResponseBytes&lt;GetObjectResponse&gt; objectBytes = s3.getObjectAsBytes(buildGetRequest(objectKey));
+        ResponseBuilder response = Response.ok(objectBytes.asUtf8String());
+        response.header("Content-Disposition", "attachment;filename=" + objectKey);
+        response.header("Content-Type", objectBytes.response().contentType());
+        return response.build();
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public List&lt;FileObject&gt; listFiles() {
+        ListObjectsRequest listRequest = ListObjectsRequest.builder().bucket(bucketName).build();
+
+        //HEAD S3 objects to get metadata
+        return s3.listObjects(listRequest).contents().stream()
+                .map(FileObject::from)
+                .sorted(Comparator.comparing(FileObject::getObjectKey))
+                .collect(Collectors.toList());
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_configuring_s3_clients"><a class="anchor" href="#_configuring_s3_clients"></a>Configuring S3 clients</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Both S3 clients (sync and async) are configurable via the <code>application.properties</code> file that can be provided in the <code>src/main/resources</code> directory.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+You need to add to the classpath a proper implementation of the sync client. By default the extension uses the URL connection HTTP client, so
+add a URL connection client dependency to the <code>pom.xml</code> file:
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+    &lt;groupId&gt;software.amazon.awssdk&lt;/groupId&gt;
+    &lt;artifactId&gt;url-connection-client&lt;/artifactId&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you want to use Apache HTTP client instead, configure it as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties">quarkus.s3.sync-client.type=apache</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And add following dependency to the application <code>pom.xml</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+    &lt;groupId&gt;software.amazon.awssdk&lt;/groupId&gt;
+    &lt;artifactId&gt;apache-client&lt;/artifactId&gt;
+&lt;/dependency&gt;
+&lt;dependency&gt;
+    &lt;groupId&gt;io.quarkus&lt;/groupId&gt;
+    &lt;artifactId&gt;quarkus-apache-httpclient&lt;/artifactId&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For asynchronous client refer to <a href="#_going_asynchronous">Going asynchronous</a> for more information.</p>
+</div>
+<div class="paragraph">
+<p>If you&#8217;re going to use a local S3 instance, configure it as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties">quarkus.s3.endpoint-override=http://localhost:8008
+
+quarkus.s3.aws.region=us-east-1
+quarkus.s3.aws.credentials.type=static
+quarkus.s3.aws.credentials.static-provider.access-key-id=test-key
+quarkus.s3.aws.credentials.static-provider.secret-access-key=test-secret
+
+bucket.name=quarkus.s3.quickstart</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>quarkus.s3.aws.region</code> - It&#8217;s required by the client, but since you&#8217;re using a local S3 instance you can pick any valid AWS region.</p>
+</li>
+<li>
+<p><code>quarkus.s3.aws.credentials.type</code> - Set <code>static</code> credentials provider with any values for <code>access-key-id</code> and <code>secret-access-key</code></p>
+</li>
+<li>
+<p><code>quarkus.s3.endpoint-override</code> - Override the S3 client to use a local instance instead of an AWS service</p>
+</li>
+<li>
+<p><code>bucket.name</code> - Name of the S3 bucket</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>If you want to work with an AWS account, you&#8217;d need to set it with:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties">bucket.name=&lt;your-bucket-name&gt;
+
+quarkus.s3.aws.region=&lt;YOUR_REGION&gt;
+quarkus.s3.aws.credentials.type=default</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>bucket.name</code> - name of the S3 bucket on your AWS account.</p>
+</li>
+<li>
+<p><code>quarkus.s3.aws.region</code> you should set it to the region where your S3 bucket was created,</p>
+</li>
+<li>
+<p><code>quarkus.s3.aws.credentials.type</code> - use the <code>default</code> credentials provider chain that looks for credentials in this order:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Java System Properties - <code>aws.accessKeyId</code> and <code>aws.secretAccessKey</code></p>
+</li>
+<li>
+<p>Environment Variables - <code>AWS_ACCESS_KEY_ID</code> and <code>AWS_SECRET_ACCESS_KEY</code></p>
+</li>
+<li>
+<p>Credential profiles file at the default location (<code>~/.aws/credentials</code>) shared by all AWS SDKs and the AWS CLI</p>
+</li>
+<li>
+<p>Credentials delivered through the Amazon ECS if the <code>AWS_CONTAINER_CREDENTIALS_RELATIVE_URI</code> environment variable is set and the security manager has permission to access the variable,</p>
+</li>
+<li>
+<p>Instance profile credentials delivered through the Amazon EC2 metadata service</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_creating_a_frontend"><a class="anchor" href="#_creating_a_frontend"></a>Creating a frontend</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Now let&#8217;s add a simple web page to interact with our <code>S3SyncClientResource</code>.
+Quarkus automatically serves static resources located under the <code>META-INF/resources</code> directory.
+In the <code>src/main/resources/META-INF/resources</code> directory, add a <code>s3.html</code> file with the content from this <a href="https://github.com/quarkusio/quarkus-quickstarts/blob/main/amazon-s3-quickstart/src/main/resources/META-INF/resources/s3.html">s3.html</a> file in it.</p>
+</div>
+<div class="paragraph">
+<p>You can now interact with your REST service:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>start Quarkus with <code>./mvnw compile quarkus:dev</code></p>
+</li>
+<li>
+<p>open a browser to <code><a href="http://localhost:8080/s3.html" class="bare">http://localhost:8080/s3.html</a></code></p>
+</li>
+<li>
+<p>upload new file to the current S3 bucket via the form and see the list of files in the bucket</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_next_steps"><a class="anchor" href="#_next_steps"></a>Next steps</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_packaging"><a class="anchor" href="#_packaging"></a>Packaging</h3>
+<div class="paragraph">
+<p>Packaging your application is as simple as <code>./mvnw clean package</code>.
+It can be run with <code>java -jar target/quarkus-app/quarkus-run.jar</code>.</p>
+</div>
+<div class="paragraph">
+<p>With GraalVM installed, you can also create a native executable binary: <code>./mvnw clean package -Dnative</code>.
+Depending on your system, that will take some time.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_going_asynchronous"><a class="anchor" href="#_going_asynchronous"></a>Going asynchronous</h3>
+<div class="paragraph">
+<p>Thanks to the AWS SDK v2.x used by the Quarkus extension, you can use the asynchronous programming model out of the box.</p>
+</div>
+<div class="paragraph">
+<p>Create a <code>org.acme.s3.S3AsyncClientResource</code> that will be similar to our <code>S3SyncClientResource</code> but using an asynchronous programming model.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">package org.acme.s3;
+
+import io.smallrye.mutiny.Uni;
+import java.util.Comparator;
+import java.util.List;
+import java.util.stream.Collectors;
+import javax.inject.Inject;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.Status;
+import org.jboss.resteasy.reactive.MultipartForm;
+import software.amazon.awssdk.core.async.AsyncRequestBody;
+import software.amazon.awssdk.core.async.AsyncResponseTransformer;
+import software.amazon.awssdk.services.s3.S3AsyncClient;
+import software.amazon.awssdk.services.s3.model.ListObjectsRequest;
+import software.amazon.awssdk.services.s3.model.ListObjectsResponse;
+
+@Path("/async-s3")
+public class S3AsyncClientResource extends CommonResource {
+    @Inject
+    S3AsyncClient s3;
+
+    @POST
+    @Path("upload")
+    @Consumes(MediaType.MULTIPART_FORM_DATA)
+    public Uni&lt;Response&gt; uploadFile(@MultipartForm FormData formData) throws Exception {
+
+        if (formData.filename == null || formData.filename.isEmpty()) {
+            return Uni.createFrom().item(Response.status(Status.BAD_REQUEST).build());
+        }
+
+        if (formData.mimetype == null || formData.mimetype.isEmpty()) {
+            return Uni.createFrom().item(Response.status(Status.BAD_REQUEST).build());
+        }
+
+        return Uni.createFrom()
+                .completionStage(() -&gt; {
+                    return s3.putObject(buildPutRequest(formData), AsyncRequestBody.fromFile(formData.data));
+                })
+                .onItem().ignore().andSwitchTo(Uni.createFrom().item(Response.created(null).build()))
+                .onFailure().recoverWithItem(th -&gt; {
+                    th.printStackTrace();
+                    return Response.serverError().build();
+                });
+    }
+
+    @GET
+    @Path("download/{objectKey}")
+    @Produces(MediaType.APPLICATION_OCTET_STREAM)
+    public Uni&lt;Response&gt; downloadFile(String objectKey) {
+        return Uni.createFrom()
+                .completionStage(() -&gt; s3.getObject(buildGetRequest(objectKey), AsyncResponseTransformer.toBytes()))
+                .onItem()
+                .transform(object -&gt; Response.ok(object.asUtf8String())
+                        .header("Content-Disposition", "attachment;filename=" + objectKey)
+                        .header("Content-Type", object.response().contentType()).build());
+    }
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Uni&lt;List&lt;FileObject&gt;&gt; listFiles() {
+        ListObjectsRequest listRequest = ListObjectsRequest.builder()
+                .bucket(bucketName)
+                .build();
+
+        return Uni.createFrom().completionStage(() -&gt; s3.listObjects(listRequest))
+                .onItem().transform(result -&gt; toFileItems(result));
+    }
+
+    private List&lt;FileObject&gt; toFileItems(ListObjectsResponse objects) {
+        return objects.contents().stream()
+                .map(FileObject::from)
+                .sorted(Comparator.comparing(FileObject::getObjectKey))
+                .collect(Collectors.toList());
+    }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>And we need to add the Netty HTTP client dependency to the <code>pom.xml</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+    &lt;groupId&gt;software.amazon.awssdk&lt;/groupId&gt;
+    &lt;artifactId&gt;netty-nio-client&lt;/artifactId&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_configuration_reference"><a class="anchor" href="#_configuration_reference"></a>Configuration Reference</h2>
+<div class="sectionbody">
+<div class="paragraph configuration-legend">
+<p><span class="icon"><i class="fa fa-lock" title="Fixed at build time"></i></span> Configuration property fixed at build time - All other configuration properties are overridable at runtime</p>
+</div>
+<table class="tableblock frame-all grid-all stretch configuration-reference searchable">
+<colgroup>
+<col style="width: 80%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock"><a id="quarkus-amazon-s3_configuration"></a><a href="#quarkus-amazon-s3_configuration">Configuration property</a></p></th>
+<th class="tableblock halign-left valign-middle"><p class="tableblock">Type</p></th>
+<th class="tableblock halign-left valign-middle"><p class="tableblock">Default</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="icon"><i class="fa fa-lock" title="Fixed at build time"></i></span> <a id="quarkus-amazon-s3_quarkus.s3.interceptors"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.interceptors">quarkus.s3.interceptors</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>List of execution interceptors that will have access to read and modify the request and response objects as they are processed by the AWS SDK.
+ The list should consists of class names which implements <code>software.amazon.awssdk.core.interceptor.ExecutionInterceptor</code> interface.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">list of string</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="icon"><i class="fa fa-lock" title="Fixed at build time"></i></span> <a id="quarkus-amazon-s3_quarkus.s3.sync-client.type"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.sync-client.type">quarkus.s3.sync-client.type</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Type of the sync HTTP client implementation</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>url</code>, <code>apache</code></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>url</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.accelerate-mode"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.accelerate-mode">quarkus.s3.accelerate-mode</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Enable using the accelerate endpoint when accessing S3.
+ Accelerate endpoints allow faster transfer of objects by using Amazon CloudFront&#8217;s globally distributed edge locations.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>false</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.checksum-validation"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.checksum-validation">quarkus.s3.checksum-validation</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Enable doing a validation of the checksum of an object stored in S3.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>true</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.chunked-encoding"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.chunked-encoding">quarkus.s3.chunked-encoding</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Enable using chunked encoding when signing the request payload for <code>software.amazon.awssdk.services.s3.model.PutObjectRequest</code> and <code>software.amazon.awssdk.services.s3.model.UploadPartRequest</code>.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>true</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.dualstack"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.dualstack">quarkus.s3.dualstack</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Enable dualstack mode for accessing S3. If you want to use IPv6 when accessing S3, dualstack must be enabled.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>false</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.path-style-access"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.path-style-access">quarkus.s3.path-style-access</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Enable using path style access for accessing S3 objects instead of DNS style access. DNS style access is preferred as it will result in better load balancing when accessing S3.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>false</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.use-arn-region-enabled"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.use-arn-region-enabled">quarkus.s3.use-arn-region-enabled</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Enable cross-region call to the region specified in the S3 resource ARN different than the region the client was configured with. If this flag is not set to 'true', the cross-region call will throw an exception.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>false</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.profile-name"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.profile-name">quarkus.s3.profile-name</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Define the profile name that should be consulted to determine the default value of <code>use-arn-region-enabled</code>. This is not used, if the <code>use-arn-region-enabled</code> is configured to 'true'.
+ If not specified, the value in <code>AWS_PROFILE</code> environment variable or <code>aws.profile</code> system property is used and defaults to <code>default</code> name.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock"><a id="quarkus-amazon-s3_quarkus.s3.sdk-aws-sdk-client-configurations"></a><a href="#quarkus-amazon-s3_quarkus.s3.sdk-aws-sdk-client-configurations">AWS SDK client configurations</a></p></th>
+<th class="tableblock halign-left valign-middle"><p class="tableblock">Type</p></th>
+<th class="tableblock halign-left valign-middle"><p class="tableblock">Default</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.endpoint-override"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.endpoint-override">quarkus.s3.endpoint-override</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>The endpoint URI with which the SDK should communicate.
+ If not specified, an appropriate endpoint to be used for the given service and region.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="https://docs.oracle.com/javase/8/docs/api/java/net/URI.html">URI</a></p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.api-call-timeout"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.api-call-timeout">quarkus.s3.api-call-timeout</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>The amount of time to allow the client to complete the execution of an API call.
+ This timeout covers the entire client execution except for marshalling. This includes request handler execution, all HTTP requests including retries, unmarshalling, etc.
+ This value should always be positive, if present.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="https://docs.oracle.com/javase/8/docs/api/java/time/Duration.html">Duration</a>
+  <a href="#duration-note-anchor" title="More information about the Duration format"><span class="icon"><i class="fa fa-question-circle"></i></span></a></p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.api-call-attempt-timeout"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.api-call-attempt-timeout">quarkus.s3.api-call-attempt-timeout</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>The amount of time to wait for the HTTP request to complete before giving up and timing out.
+ This value should always be positive, if present.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="https://docs.oracle.com/javase/8/docs/api/java/time/Duration.html">Duration</a>
+  <a href="#duration-note-anchor" title="More information about the Duration format"><span class="icon"><i class="fa fa-question-circle"></i></span></a></p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock"><a id="quarkus-amazon-s3_quarkus.s3.aws-aws-services-configurations"></a><a href="#quarkus-amazon-s3_quarkus.s3.aws-aws-services-configurations">AWS services configurations</a></p></th>
+<th class="tableblock halign-left valign-middle"><p class="tableblock">Type</p></th>
+<th class="tableblock halign-left valign-middle"><p class="tableblock">Default</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.aws.region"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.aws.region">quarkus.s3.aws.region</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>An Amazon Web Services region that hosts the given service.</p>
+</div>
+<div class="paragraph">
+<p>It overrides region provider chain with static value of
+region with which the service client should communicate.</p>
+</div>
+<div class="paragraph">
+<p>If not set, region is retrieved via the default providers chain in the following order:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>aws.region</code> system property</p>
+</li>
+<li>
+<p><code>region</code> property from the profile file</p>
+</li>
+<li>
+<p>Instance profile file</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>See <code>software.amazon.awssdk.regions.Region</code> for available regions.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Region</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.aws.credentials.type"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.aws.credentials.type">quarkus.s3.aws.credentials.type</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Configure the credentials provider that should be used to authenticate with AWS.</p>
+</div>
+<div class="paragraph">
+<p>Available values:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>default</code> - the provider will attempt to identify the credentials automatically using the following checks:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Java System Properties - <code>aws.accessKeyId</code> and <code>aws.secretAccessKey</code></p>
+</li>
+<li>
+<p>Environment Variables - <code>AWS_ACCESS_KEY_ID</code> and <code>AWS_SECRET_ACCESS_KEY</code></p>
+</li>
+<li>
+<p>Credential profiles file at the default location (<code>~/.aws/credentials</code>) shared by all AWS SDKs and the AWS CLI</p>
+</li>
+<li>
+<p>Credentials delivered through the Amazon EC2 container service if <code>AWS_CONTAINER_CREDENTIALS_RELATIVE_URI</code> environment variable is set and security manager has permission to access the variable.</p>
+</li>
+<li>
+<p>Instance profile credentials delivered through the Amazon EC2 metadata service</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><code>static</code> - the provider that uses the access key and secret access key specified in the <code>static-provider</code> section of the config.</p>
+</li>
+<li>
+<p><code>system-property</code> - it loads credentials from the <code>aws.accessKeyId</code>, <code>aws.secretAccessKey</code> and <code>aws.sessionToken</code> system properties.</p>
+</li>
+<li>
+<p><code>env-variable</code> - it loads credentials from the <code>AWS_ACCESS_KEY_ID</code>, <code>AWS_SECRET_ACCESS_KEY</code> and <code>AWS_SESSION_TOKEN</code> environment variables.</p>
+</li>
+<li>
+<p><code>profile</code> - credentials are based on AWS configuration profiles. This loads credentials from
+a <a href="http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html">profile file</a>,
+allowing you to share multiple sets of AWS security credentials between different tools like the AWS SDK for Java and the AWS CLI.</p>
+</li>
+<li>
+<p><code>container</code> - It loads credentials from a local metadata service. Containers currently supported by the AWS SDK are
+<strong>Amazon Elastic Container Service (ECS)</strong> and <strong>AWS Greengrass</strong></p>
+</li>
+<li>
+<p><code>instance-profile</code> - It loads credentials from the Amazon EC2 Instance Metadata Service.</p>
+</li>
+<li>
+<p><code>process</code> - Credentials are loaded from an external process. This is used to support the credential_process setting in the profile
+credentials file. See <a href="https://docs.aws.amazon.com/cli/latest/topic/config-vars.html#sourcing-credentials-from-external-processes">Sourcing Credentials From External Processes</a>
+for more information.</p>
+</li>
+<li>
+<p><code>anonymous</code> - It always returns anonymous AWS credentials. Anonymous AWS credentials result in un-authenticated requests and will
+fail unless the resource or API&#8217;s policy has been configured to specifically allow anonymous access.</p>
+</li>
+</ul>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>default</code>, <code>static</code>, <code>system-property</code>, <code>env-variable</code>, <code>profile</code>, <code>container</code>, <code>instance-profile</code>, <code>process</code>, <code>anonymous</code></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>default</code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock"><a id="quarkus-amazon-s3_quarkus.s3.aws.credentials.default-provider-default-credentials-provider-configuration"></a><a href="#quarkus-amazon-s3_quarkus.s3.aws.credentials.default-provider-default-credentials-provider-configuration">Default credentials provider configuration</a></p></th>
+<th class="tableblock halign-left valign-middle"><p class="tableblock">Type</p></th>
+<th class="tableblock halign-left valign-middle"><p class="tableblock">Default</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.aws.credentials.default-provider.async-credential-update-enabled"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.aws.credentials.default-provider.async-credential-update-enabled">quarkus.s3.aws.credentials.default-provider.async-credential-update-enabled</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Whether this provider should fetch credentials asynchronously in the background.
+ If this is <code>true</code>, threads are less likely to block, but additional resources are used to maintain the provider.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>false</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.aws.credentials.default-provider.reuse-last-provider-enabled"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.aws.credentials.default-provider.reuse-last-provider-enabled">quarkus.s3.aws.credentials.default-provider.reuse-last-provider-enabled</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Whether the provider should reuse the last successful credentials provider in the chain.
+ Reusing the last successful credentials provider will typically return credentials faster than searching through the chain.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>true</code></p></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock"><a id="quarkus-amazon-s3_quarkus.s3.aws.credentials.static-provider-static-credentials-provider-configuration"></a><a href="#quarkus-amazon-s3_quarkus.s3.aws.credentials.static-provider-static-credentials-provider-configuration">Static credentials provider configuration</a></p></th>
+<th class="tableblock halign-left valign-middle"><p class="tableblock">Type</p></th>
+<th class="tableblock halign-left valign-middle"><p class="tableblock">Default</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.aws.credentials.static-provider.access-key-id"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.aws.credentials.static-provider.access-key-id">quarkus.s3.aws.credentials.static-provider.access-key-id</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>AWS Access key id</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.aws.credentials.static-provider.secret-access-key"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.aws.credentials.static-provider.secret-access-key">quarkus.s3.aws.credentials.static-provider.secret-access-key</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>AWS Secret access key</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.aws.credentials.static-provider.session-token"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.aws.credentials.static-provider.session-token">quarkus.s3.aws.credentials.static-provider.session-token</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>AWS Session token</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock"><a id="quarkus-amazon-s3_quarkus.s3.aws.credentials.profile-provider-aws-profile-credentials-provider-configuration"></a><a href="#quarkus-amazon-s3_quarkus.s3.aws.credentials.profile-provider-aws-profile-credentials-provider-configuration">AWS Profile credentials provider configuration</a></p></th>
+<th class="tableblock halign-left valign-middle"><p class="tableblock">Type</p></th>
+<th class="tableblock halign-left valign-middle"><p class="tableblock">Default</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.aws.credentials.profile-provider.profile-name"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.aws.credentials.profile-provider.profile-name">quarkus.s3.aws.credentials.profile-provider.profile-name</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>The name of the profile that should be used by this credentials provider.
+ If not specified, the value in <code>AWS_PROFILE</code> environment variable or <code>aws.profile</code> system property is used and defaults to <code>default</code> name.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock"><a id="quarkus-amazon-s3_quarkus.s3.aws.credentials.process-provider-process-credentials-provider-configuration"></a><a href="#quarkus-amazon-s3_quarkus.s3.aws.credentials.process-provider-process-credentials-provider-configuration">Process credentials provider configuration</a></p></th>
+<th class="tableblock halign-left valign-middle"><p class="tableblock">Type</p></th>
+<th class="tableblock halign-left valign-middle"><p class="tableblock">Default</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.aws.credentials.process-provider.async-credential-update-enabled"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.aws.credentials.process-provider.async-credential-update-enabled">quarkus.s3.aws.credentials.process-provider.async-credential-update-enabled</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Whether the provider should fetch credentials asynchronously in the background.
+ If this is true, threads are less likely to block when credentials are loaded, but additional resources are used to maintain the provider.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>false</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.aws.credentials.process-provider.credential-refresh-threshold"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.aws.credentials.process-provider.credential-refresh-threshold">quarkus.s3.aws.credentials.process-provider.credential-refresh-threshold</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>The amount of time between when the credentials expire and when the credentials should start to be refreshed.
+ This allows the credentials to be refreshed *before* they are reported to expire.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="https://docs.oracle.com/javase/8/docs/api/java/time/Duration.html">Duration</a>
+  <a href="#duration-note-anchor" title="More information about the Duration format"><span class="icon"><i class="fa fa-question-circle"></i></span></a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>15S</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.aws.credentials.process-provider.process-output-limit"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.aws.credentials.process-provider.process-output-limit">quarkus.s3.aws.credentials.process-provider.process-output-limit</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>The maximum size of the output that can be returned by the external process before an exception is raised.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">MemorySize  <a href="#memory-size-note-anchor" title="More information about the MemorySize format"><span class="icon"><i class="fa fa-question-circle"></i></span></a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>1024</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.aws.credentials.process-provider.command"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.aws.credentials.process-provider.command">quarkus.s3.aws.credentials.process-provider.command</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>The command that should be executed to retrieve credentials.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock"><a id="quarkus-amazon-s3_quarkus.s3.sync-client-sync-http-transport-configurations"></a><a href="#quarkus-amazon-s3_quarkus.s3.sync-client-sync-http-transport-configurations">Sync HTTP transport configurations</a></p></th>
+<th class="tableblock halign-left valign-middle"><p class="tableblock">Type</p></th>
+<th class="tableblock halign-left valign-middle"><p class="tableblock">Default</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.sync-client.connection-timeout"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.sync-client.connection-timeout">quarkus.s3.sync-client.connection-timeout</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>The maximum amount of time to establish a connection before timing out.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="https://docs.oracle.com/javase/8/docs/api/java/time/Duration.html">Duration</a>
+  <a href="#duration-note-anchor" title="More information about the Duration format"><span class="icon"><i class="fa fa-question-circle"></i></span></a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>2S</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.sync-client.socket-timeout"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.sync-client.socket-timeout">quarkus.s3.sync-client.socket-timeout</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>The amount of time to wait for data to be transferred over an established, open connection before the connection is timed out.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="https://docs.oracle.com/javase/8/docs/api/java/time/Duration.html">Duration</a>
+  <a href="#duration-note-anchor" title="More information about the Duration format"><span class="icon"><i class="fa fa-question-circle"></i></span></a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>30S</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.sync-client.tls-key-managers-provider.type"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.sync-client.tls-key-managers-provider.type">quarkus.s3.sync-client.tls-key-managers-provider.type</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>TLS key managers provider type.</p>
+</div>
+<div class="paragraph">
+<p>Available providers:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>none</code> - Use this provider if you don&#8217;t want the client to present any certificates to the remote TLS host.</p>
+</li>
+<li>
+<p><code>system-property</code> - Provider checks the standard <code>javax.net.ssl.keyStore</code>, <code>javax.net.ssl.keyStorePassword</code>, and
+<code>javax.net.ssl.keyStoreType</code> properties defined by the
+ <a href="https://docs.oracle.com/javase/8/docs/technotes/guides/security/jsse/JSSERefGuide.html">JSSE</a>.</p>
+</li>
+<li>
+<p><code>file-store</code> - Provider that loads a the key store from a file.</p>
+</li>
+</ul>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>none</code>, <code>system-property</code>, <code>file-store</code></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>system-property</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.sync-client.tls-key-managers-provider.file-store.path"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.sync-client.tls-key-managers-provider.file-store.path">quarkus.s3.sync-client.tls-key-managers-provider.file-store.path</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Path to the key store.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">path</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.sync-client.tls-key-managers-provider.file-store.type"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.sync-client.tls-key-managers-provider.file-store.type">quarkus.s3.sync-client.tls-key-managers-provider.file-store.type</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Key store type.
+ See the KeyStore section in the <a href="https://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#KeyStore[Java" class="bare">https://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#KeyStore[Java</a> Cryptography Architecture Standard Algorithm Name Documentation] for information about standard keystore types.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.sync-client.tls-key-managers-provider.file-store.password"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.sync-client.tls-key-managers-provider.file-store.password">quarkus.s3.sync-client.tls-key-managers-provider.file-store.password</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Key store password</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.sync-client.tls-trust-managers-provider.type"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.sync-client.tls-trust-managers-provider.type">quarkus.s3.sync-client.tls-trust-managers-provider.type</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>TLS trust managers provider type.</p>
+</div>
+<div class="paragraph">
+<p>Available providers:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>trust-all</code> - Use this provider to disable the validation of servers certificates and therefor turst all server certificates.</p>
+</li>
+<li>
+<p><code>system-property</code> - Provider checks the standard <code>javax.net.ssl.keyStore</code>, <code>javax.net.ssl.keyStorePassword</code>, and
+<code>javax.net.ssl.keyStoreType</code> properties defined by the
+ <a href="https://docs.oracle.com/javase/8/docs/technotes/guides/security/jsse/JSSERefGuide.html">JSSE</a>.</p>
+</li>
+<li>
+<p><code>file-store</code> - Provider that loads a the key store from a file.</p>
+</li>
+</ul>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>trust-all</code>, <code>system-property</code>, <code>file-store</code></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>system-property</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.sync-client.tls-trust-managers-provider.file-store.path"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.sync-client.tls-trust-managers-provider.file-store.path">quarkus.s3.sync-client.tls-trust-managers-provider.file-store.path</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Path to the key store.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">path</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.sync-client.tls-trust-managers-provider.file-store.type"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.sync-client.tls-trust-managers-provider.file-store.type">quarkus.s3.sync-client.tls-trust-managers-provider.file-store.type</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Key store type.
+ See the KeyStore section in the <a href="https://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#KeyStore[Java" class="bare">https://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#KeyStore[Java</a> Cryptography Architecture Standard Algorithm Name Documentation] for information about standard keystore types.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.sync-client.tls-trust-managers-provider.file-store.password"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.sync-client.tls-trust-managers-provider.file-store.password">quarkus.s3.sync-client.tls-trust-managers-provider.file-store.password</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Key store password</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock"><a id="quarkus-amazon-s3_quarkus.s3.sync-client.apache-apache-http-client-specific-configurations"></a><a href="#quarkus-amazon-s3_quarkus.s3.sync-client.apache-apache-http-client-specific-configurations">Apache HTTP client specific configurations</a></p></th>
+<th class="tableblock halign-left valign-middle"><p class="tableblock">Type</p></th>
+<th class="tableblock halign-left valign-middle"><p class="tableblock">Default</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.sync-client.apache.connection-acquisition-timeout"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.sync-client.apache.connection-acquisition-timeout">quarkus.s3.sync-client.apache.connection-acquisition-timeout</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>The amount of time to wait when acquiring a connection from the pool before giving up and timing out.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="https://docs.oracle.com/javase/8/docs/api/java/time/Duration.html">Duration</a>
+  <a href="#duration-note-anchor" title="More information about the Duration format"><span class="icon"><i class="fa fa-question-circle"></i></span></a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>10S</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.sync-client.apache.connection-max-idle-time"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.sync-client.apache.connection-max-idle-time">quarkus.s3.sync-client.apache.connection-max-idle-time</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>The maximum amount of time that a connection should be allowed to remain open while idle.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="https://docs.oracle.com/javase/8/docs/api/java/time/Duration.html">Duration</a>
+  <a href="#duration-note-anchor" title="More information about the Duration format"><span class="icon"><i class="fa fa-question-circle"></i></span></a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>60S</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.sync-client.apache.connection-time-to-live"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.sync-client.apache.connection-time-to-live">quarkus.s3.sync-client.apache.connection-time-to-live</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>The maximum amount of time that a connection should be allowed to remain open, regardless of usage frequency.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="https://docs.oracle.com/javase/8/docs/api/java/time/Duration.html">Duration</a>
+  <a href="#duration-note-anchor" title="More information about the Duration format"><span class="icon"><i class="fa fa-question-circle"></i></span></a></p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.sync-client.apache.max-connections"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.sync-client.apache.max-connections">quarkus.s3.sync-client.apache.max-connections</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>The maximum number of connections allowed in the connection pool.
+ Each built HTTP client has its own private connection pool.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">int</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>50</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.sync-client.apache.expect-continue-enabled"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.sync-client.apache.expect-continue-enabled">quarkus.s3.sync-client.apache.expect-continue-enabled</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Whether the client should send an HTTP expect-continue handshake before each request.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>true</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.sync-client.apache.use-idle-connection-reaper"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.sync-client.apache.use-idle-connection-reaper">quarkus.s3.sync-client.apache.use-idle-connection-reaper</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Whether the idle connections in the connection pool should be closed asynchronously.
+ When enabled, connections left idling for longer than <code>quarkus..sync-client.connection-max-idle-time</code> will be closed. This will not close connections currently in use.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>true</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.sync-client.apache.proxy.enabled"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.sync-client.apache.proxy.enabled">quarkus.s3.sync-client.apache.proxy.enabled</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Enable HTTP proxy</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>false</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.sync-client.apache.proxy.endpoint"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.sync-client.apache.proxy.endpoint">quarkus.s3.sync-client.apache.proxy.endpoint</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>The endpoint of the proxy server that the SDK should connect through.
+ Currently, the endpoint is limited to a host and port. Any other URI components will result in an exception being raised.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="https://docs.oracle.com/javase/8/docs/api/java/net/URI.html">URI</a></p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.sync-client.apache.proxy.username"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.sync-client.apache.proxy.username">quarkus.s3.sync-client.apache.proxy.username</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>The username to use when connecting through a proxy.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.sync-client.apache.proxy.password"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.sync-client.apache.proxy.password">quarkus.s3.sync-client.apache.proxy.password</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>The password to use when connecting through a proxy.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.sync-client.apache.proxy.ntlm-domain"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.sync-client.apache.proxy.ntlm-domain">quarkus.s3.sync-client.apache.proxy.ntlm-domain</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>For NTLM proxies - the Windows domain name to use when authenticating with the proxy.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.sync-client.apache.proxy.ntlm-workstation"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.sync-client.apache.proxy.ntlm-workstation">quarkus.s3.sync-client.apache.proxy.ntlm-workstation</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>For NTLM proxies - the Windows workstation name to use when authenticating with the proxy.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.sync-client.apache.proxy.preemptive-basic-authentication-enabled"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.sync-client.apache.proxy.preemptive-basic-authentication-enabled">quarkus.s3.sync-client.apache.proxy.preemptive-basic-authentication-enabled</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Whether to attempt to authenticate preemptively against the proxy server using basic authentication.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.sync-client.apache.proxy.non-proxy-hosts"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.sync-client.apache.proxy.non-proxy-hosts">quarkus.s3.sync-client.apache.proxy.non-proxy-hosts</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>The hosts that the client is allowed to access without going through the proxy.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">list of string</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock"><a id="quarkus-amazon-s3_quarkus.s3.async-client-netty-http-transport-configurations"></a><a href="#quarkus-amazon-s3_quarkus.s3.async-client-netty-http-transport-configurations">Netty HTTP transport configurations</a></p></th>
+<th class="tableblock halign-left valign-middle"><p class="tableblock">Type</p></th>
+<th class="tableblock halign-left valign-middle"><p class="tableblock">Default</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.async-client.max-concurrency"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.async-client.max-concurrency">quarkus.s3.async-client.max-concurrency</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>The maximum number of allowed concurrent requests.
+ For HTTP/1.1 this is the same as max connections. For HTTP/2 the number of connections that will be used depends on the max streams allowed per connection.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">int</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>50</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.async-client.max-pending-connection-acquires"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.async-client.max-pending-connection-acquires">quarkus.s3.async-client.max-pending-connection-acquires</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>The maximum number of pending acquires allowed.
+ Once this exceeds, acquire tries will be failed.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">int</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>10000</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.async-client.read-timeout"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.async-client.read-timeout">quarkus.s3.async-client.read-timeout</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>The amount of time to wait for a read on a socket before an exception is thrown.
+ Specify <code>0</code> to disable.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="https://docs.oracle.com/javase/8/docs/api/java/time/Duration.html">Duration</a>
+  <a href="#duration-note-anchor" title="More information about the Duration format"><span class="icon"><i class="fa fa-question-circle"></i></span></a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>30S</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.async-client.write-timeout"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.async-client.write-timeout">quarkus.s3.async-client.write-timeout</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>The amount of time to wait for a write on a socket before an exception is thrown.
+ Specify <code>0</code> to disable.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="https://docs.oracle.com/javase/8/docs/api/java/time/Duration.html">Duration</a>
+  <a href="#duration-note-anchor" title="More information about the Duration format"><span class="icon"><i class="fa fa-question-circle"></i></span></a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>30S</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.async-client.connection-timeout"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.async-client.connection-timeout">quarkus.s3.async-client.connection-timeout</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>The amount of time to wait when initially establishing a connection before giving up and timing out.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="https://docs.oracle.com/javase/8/docs/api/java/time/Duration.html">Duration</a>
+  <a href="#duration-note-anchor" title="More information about the Duration format"><span class="icon"><i class="fa fa-question-circle"></i></span></a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>10S</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.async-client.connection-acquisition-timeout"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.async-client.connection-acquisition-timeout">quarkus.s3.async-client.connection-acquisition-timeout</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>The amount of time to wait when acquiring a connection from the pool before giving up and timing out.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="https://docs.oracle.com/javase/8/docs/api/java/time/Duration.html">Duration</a>
+  <a href="#duration-note-anchor" title="More information about the Duration format"><span class="icon"><i class="fa fa-question-circle"></i></span></a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>2S</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.async-client.connection-time-to-live"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.async-client.connection-time-to-live">quarkus.s3.async-client.connection-time-to-live</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>The maximum amount of time that a connection should be allowed to remain open, regardless of usage frequency.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="https://docs.oracle.com/javase/8/docs/api/java/time/Duration.html">Duration</a>
+  <a href="#duration-note-anchor" title="More information about the Duration format"><span class="icon"><i class="fa fa-question-circle"></i></span></a></p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.async-client.connection-max-idle-time"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.async-client.connection-max-idle-time">quarkus.s3.async-client.connection-max-idle-time</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>The maximum amount of time that a connection should be allowed to remain open while idle.
+ Currently has no effect if <code>quarkus..async-client.use-idle-connection-reaper</code> is false.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="https://docs.oracle.com/javase/8/docs/api/java/time/Duration.html">Duration</a>
+  <a href="#duration-note-anchor" title="More information about the Duration format"><span class="icon"><i class="fa fa-question-circle"></i></span></a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>5S</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.async-client.use-idle-connection-reaper"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.async-client.use-idle-connection-reaper">quarkus.s3.async-client.use-idle-connection-reaper</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Whether the idle connections in the connection pool should be closed.
+ When enabled, connections left idling for longer than <code>quarkus..async-client.connection-max-idle-time</code> will be closed. This will not close connections currently in use.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>true</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.async-client.protocol"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.async-client.protocol">quarkus.s3.async-client.protocol</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>The HTTP protocol to use.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>http1-1</code>, <code>http2</code></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>http1-1</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.async-client.ssl-provider"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.async-client.ssl-provider">quarkus.s3.async-client.ssl-provider</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>The SSL Provider to be used in the Netty client.
+ Default is <code>OPENSSL</code> if available, <code>JDK</code> otherwise.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>jdk</code>, <code>openssl</code>, <code>openssl-refcnt</code></p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.async-client.http2.max-streams"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.async-client.http2.max-streams">quarkus.s3.async-client.http2.max-streams</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>The maximum number of concurrent streams for an HTTP/2 connection.
+ This setting is only respected when the HTTP/2 protocol is used.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">long</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>4294967295</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.async-client.http2.initial-window-size"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.async-client.http2.initial-window-size">quarkus.s3.async-client.http2.initial-window-size</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>The initial window size for an HTTP/2 stream.
+ This setting is only respected when the HTTP/2 protocol is used.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">int</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>1048576</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.async-client.http2.health-check-ping-period"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.async-client.http2.health-check-ping-period">quarkus.s3.async-client.http2.health-check-ping-period</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Sets the period that the Netty client will send <code>PING</code> frames to the remote endpoint to check the health of the connection. To disable this feature, set a duration of 0.
+ This setting is only respected when the HTTP/2 protocol is used.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="https://docs.oracle.com/javase/8/docs/api/java/time/Duration.html">Duration</a>
+  <a href="#duration-note-anchor" title="More information about the Duration format"><span class="icon"><i class="fa fa-question-circle"></i></span></a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>5</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.async-client.proxy.enabled"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.async-client.proxy.enabled">quarkus.s3.async-client.proxy.enabled</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Enable HTTP proxy.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>false</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.async-client.proxy.endpoint"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.async-client.proxy.endpoint">quarkus.s3.async-client.proxy.endpoint</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>The endpoint of the proxy server that the SDK should connect through.
+ Currently, the endpoint is limited to a host and port. Any other URI components will result in an exception being raised.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="https://docs.oracle.com/javase/8/docs/api/java/net/URI.html">URI</a></p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.async-client.proxy.non-proxy-hosts"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.async-client.proxy.non-proxy-hosts">quarkus.s3.async-client.proxy.non-proxy-hosts</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>The hosts that the client is allowed to access without going through the proxy.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">list of string</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.async-client.tls-key-managers-provider.type"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.async-client.tls-key-managers-provider.type">quarkus.s3.async-client.tls-key-managers-provider.type</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>TLS key managers provider type.</p>
+</div>
+<div class="paragraph">
+<p>Available providers:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>none</code> - Use this provider if you don&#8217;t want the client to present any certificates to the remote TLS host.</p>
+</li>
+<li>
+<p><code>system-property</code> - Provider checks the standard <code>javax.net.ssl.keyStore</code>, <code>javax.net.ssl.keyStorePassword</code>, and
+<code>javax.net.ssl.keyStoreType</code> properties defined by the
+ <a href="https://docs.oracle.com/javase/8/docs/technotes/guides/security/jsse/JSSERefGuide.html">JSSE</a>.</p>
+</li>
+<li>
+<p><code>file-store</code> - Provider that loads a the key store from a file.</p>
+</li>
+</ul>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>none</code>, <code>system-property</code>, <code>file-store</code></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>system-property</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.async-client.tls-key-managers-provider.file-store.path"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.async-client.tls-key-managers-provider.file-store.path">quarkus.s3.async-client.tls-key-managers-provider.file-store.path</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Path to the key store.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">path</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.async-client.tls-key-managers-provider.file-store.type"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.async-client.tls-key-managers-provider.file-store.type">quarkus.s3.async-client.tls-key-managers-provider.file-store.type</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Key store type.
+ See the KeyStore section in the <a href="https://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#KeyStore[Java" class="bare">https://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#KeyStore[Java</a> Cryptography Architecture Standard Algorithm Name Documentation] for information about standard keystore types.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.async-client.tls-key-managers-provider.file-store.password"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.async-client.tls-key-managers-provider.file-store.password">quarkus.s3.async-client.tls-key-managers-provider.file-store.password</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Key store password</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.async-client.tls-trust-managers-provider.type"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.async-client.tls-trust-managers-provider.type">quarkus.s3.async-client.tls-trust-managers-provider.type</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>TLS trust managers provider type.</p>
+</div>
+<div class="paragraph">
+<p>Available providers:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>trust-all</code> - Use this provider to disable the validation of servers certificates and therefor turst all server certificates.</p>
+</li>
+<li>
+<p><code>system-property</code> - Provider checks the standard <code>javax.net.ssl.keyStore</code>, <code>javax.net.ssl.keyStorePassword</code>, and
+<code>javax.net.ssl.keyStoreType</code> properties defined by the
+ <a href="https://docs.oracle.com/javase/8/docs/technotes/guides/security/jsse/JSSERefGuide.html">JSSE</a>.</p>
+</li>
+<li>
+<p><code>file-store</code> - Provider that loads a the key store from a file.</p>
+</li>
+</ul>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>trust-all</code>, <code>system-property</code>, <code>file-store</code></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>system-property</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.async-client.tls-trust-managers-provider.file-store.path"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.async-client.tls-trust-managers-provider.file-store.path">quarkus.s3.async-client.tls-trust-managers-provider.file-store.path</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Path to the key store.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">path</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.async-client.tls-trust-managers-provider.file-store.type"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.async-client.tls-trust-managers-provider.file-store.type">quarkus.s3.async-client.tls-trust-managers-provider.file-store.type</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Key store type.
+ See the KeyStore section in the <a href="https://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#KeyStore[Java" class="bare">https://docs.oracle.com/javase/8/docs/technotes/guides/security/StandardNames.html#KeyStore[Java</a> Cryptography Architecture Standard Algorithm Name Documentation] for information about standard keystore types.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.async-client.tls-trust-managers-provider.file-store.password"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.async-client.tls-trust-managers-provider.file-store.password">quarkus.s3.async-client.tls-trust-managers-provider.file-store.password</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Key store password</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.async-client.event-loop.override"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.async-client.event-loop.override">quarkus.s3.async-client.event-loop.override</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Enable the custom configuration of the Netty event loop group.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>false</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.async-client.event-loop.number-of-threads"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.async-client.event-loop.number-of-threads">quarkus.s3.async-client.event-loop.number-of-threads</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Number of threads to use for the event loop group.
+ If not set, the default Netty thread count is used (which is double the number of available processors unless the <code>io.netty.eventLoopThreads</code> system property is set.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">int</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.async-client.event-loop.thread-name-prefix"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.async-client.event-loop.thread-name-prefix">quarkus.s3.async-client.event-loop.thread-name-prefix</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>The thread name prefix for threads created by this thread factory used by event loop group.
+ The prefix will be appended with a number unique to the thread factory and a number unique to the thread.
+ If not specified it defaults to <code>aws-java-sdk-NettyEventLoop</code></p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-amazon-s3_quarkus.s3.async-client.advanced.use-future-completion-thread-pool"></a><code><a href="#quarkus-amazon-s3_quarkus.s3.async-client.advanced.use-future-completion-thread-pool">quarkus.s3.async-client.advanced.use-future-completion-thread-pool</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Whether the default thread pool should be used to complete the futures returned from the HTTP client request.
+ When disabled, futures will be completed on the Netty event loop thread.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>true</code></p></td>
+</tr>
+</tbody>
+</table>
+<div id="duration-note-anchor" class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">About the Duration format</div>
+<div class="paragraph">
+<p>The format for durations uses the standard <code>java.time.Duration</code> format.
+You can learn more about it in the <a href="https://docs.oracle.com/javase/8/docs/api/java/time/Duration.html#parse-java.lang.CharSequence-">Duration#parse() javadoc</a>.</p>
+</div>
+<div class="paragraph">
+<p>You can also provide duration values starting with a number.
+In this case, if the value consists only of a number, the converter treats the value as seconds.
+Otherwise, <code>PT</code> is implicitly prepended to the value to obtain a standard <code>java.time.Duration</code> format.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div id="memory-size-note-anchor" class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="title">About the MemorySize format</div>
+<div class="paragraph">
+<p>A size configuration option recognises string in this format (shown as a regular expression): <code>[0-9]+[KkMmGgTtPpEeZzYy]?</code>.
+If no suffix is given, assume bytes.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>Copyright (C) 2020-2022 <a href="https://www.redhat.com">Red Hat</a> and individual contributors to <a href="https://github.com/quarkiverse/quarkiverse-docs">Quarkiverse</a>.</p>
+</footer>
+<script src="../../_/js/site.js"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

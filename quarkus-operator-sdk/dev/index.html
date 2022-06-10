@@ -1,0 +1,1197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Quarkiverse Java Operator SDK :: Quarkiverse Documentation</title>
+    <link rel="canonical" href="https://quarkiverse.github.io/quarkiverse-docs/quarkus-operator-sdk/dev/index.html">
+    <meta name="generator" content="Antora 3.0.1">
+    <link rel="stylesheet" href="../../_/css/site.css">
+    <link rel="stylesheet" href="../../_/css/site-extra.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <script>var uiRootPath = '../../_'</script>
+  </head>
+  <body class="article">
+<header class="header" role="banner">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <div class="navbar-item">
+        <a href="../..">Quarkiverse</a>
+        <span class="separator">//</span>
+        <a href="https://quarkiverse.github.io/quarkiverse-docs">Docs</a>
+      </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item has-dropdown is-hoverable">
+          <div class="navbar-link">Projects</div>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Index</a>
+            <a class="navbar-item" href="#">Quarkus - Java Embedded Framework</a>
+            <a class="navbar-item" href="#">Quarkus Amazon Alexa</a>
+            <a class="navbar-item" href="#">Quarkus Amazon Services</a>
+            <a class="navbar-item" href="#">Quarkus Artemis</a>
+            <a class="navbar-item" href="#">Quarkus Config Extensions</a>
+            <a class="navbar-item" href="#">Quarkus Cucumber</a>
+            <a class="navbar-item" href="#">Quarkus CXF</a>
+            <a class="navbar-item" href="#">Quarkus Dapr</a>
+            <a class="navbar-item" href="#">Quarkus File Vault</a>
+            <a class="navbar-item" href="#">Quarkus Freemarker</a>
+            <a class="navbar-item" href="#">Quarkus GitHub Action</a>
+            <a class="navbar-item" href="#">Quarkus GitHub App</a>
+            <a class="navbar-item" href="#">Quarkus Google Cloud Services</a>
+            <a class="navbar-item" href="#">Quarkus Helm</a>
+            <a class="navbar-item" href="#">Quarkus Hibernate Search Extras</a>
+            <a class="navbar-item" href="#">Quarkus Hibernate types</a>
+            <a class="navbar-item" href="#">Quarkus HiveMQ Client</a>
+            <a class="navbar-item" href="#">Quarkus JDBC Sqlite</a>
+            <a class="navbar-item" href="#">Quarkus JGit</a>
+            <a class="navbar-item" href="#">Quarkus JGraphT</a>
+            <a class="navbar-item" href="#">Quarkus JSch</a>
+            <a class="navbar-item" href="#">Quarkus Kerberos</a>
+            <a class="navbar-item" href="#">Quarkus Logging JSON</a>
+            <a class="navbar-item" href="#">Quarkus Logging Logback</a>
+            <a class="navbar-item" href="#">Quarkus Logging Sentry</a>
+            <a class="navbar-item" href="#">Quarkus Logging Splunk</a>
+            <a class="navbar-item" href="#">Quarkus Micrometer Registry extensions</a>
+            <a class="navbar-item" href="#">Quarkus Mockk</a>
+            <a class="navbar-item" href="#">Quarkus MyBatis</a>
+            <a class="navbar-item" href="#">Quarkus Neo4j</a>
+            <a class="navbar-item" href="#">Quarkus Operator SDK</a>
+            <a class="navbar-item" href="#">Quarkus Prettytime</a>
+            <a class="navbar-item" href="#">Quarkus Quinoa</a>
+            <a class="navbar-item" href="#">Quarkus RabbitMQ Client</a>
+            <a class="navbar-item" href="#">Quarkus Reactive Messaging HTTP</a>
+            <a class="navbar-item" href="#">Quarkus Renarde</a>
+            <a class="navbar-item" href="#">Quarkus Tika</a>
+            <a class="navbar-item" href="#">Quarkus Unleash</a>
+            <a class="navbar-item" href="#">Quarkus Vault</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <div class="navbar-link">Community</div>
+          <div class="navbar-dropdown is-right">
+            <a class="navbar-item" href="https://quarkusio.zulipchat.com">Chat</a>
+          </div>
+        </div>
+        <a class="navbar-item" href="https://twitter.com/quarkusio">
+          <span class="icon">
+            <svg aria-hidden="true" data-icon="twitter" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+              <path fill="#57aaee" d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path>
+            </svg>
+          </span>
+        </a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="quarkus-operator-sdk" data-version="dev">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="index.html">Quarkus Operator SDK</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="index.html">Quarkiverse Operator SDK</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Quarkus Operator SDK</span>
+    <span class="version">dev</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <a class="title" href="../../index/index/index.html">Index</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../index/index/index.html">index</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-java-embedded-framework/dev/index.html">Quarkus - Java Embedded Framework</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-java-embedded-framework/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-amazon-alexa/dev/index.html">Quarkus Amazon Alexa</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-amazon-alexa/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-amazon-services/dev/index.html">Quarkus Amazon Services</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-amazon-services/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-artemis/dev/index.html">Quarkus Artemis</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-artemis/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-config-extensions/dev/index.html">Quarkus Config Extensions</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-config-extensions/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-cucumber/dev/index.html">Quarkus Cucumber</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-cucumber/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-cxf/dev/index.html">Quarkus CXF</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-cxf/dev/index.html">dev</a>
+        </li>
+        <li class="version">
+          <a href="../../quarkus-cxf/v1.x/index.html">v1.x</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-dapr/dev/index.html">Quarkus Dapr</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-dapr/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-file-vault/dev/index.html">Quarkus File Vault</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-file-vault/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-freemarker/dev/index.html">Quarkus Freemarker</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-freemarker/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-github-action/dev/index.html">Quarkus GitHub Action</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-github-action/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-github-app/dev/index.html">Quarkus GitHub App</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-github-app/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-google-cloud-services/main/index.html">Quarkus Google Cloud Services</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-google-cloud-services/main/index.html">main</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-helm/dev/index.html">Quarkus Helm</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-helm/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-hibernate-search-extras/dev/index.html">Quarkus Hibernate Search Extras</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-hibernate-search-extras/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-hibernate-types/dev/index.html">Quarkus Hibernate types</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-hibernate-types/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-hivemq-client/dev/index.html">Quarkus HiveMQ Client</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-hivemq-client/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-JDBC-Sqlite/dev/index.html">Quarkus JDBC Sqlite</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-JDBC-Sqlite/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-jgit/dev/index.html">Quarkus JGit</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-jgit/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-jgrapht/dev/index.html">Quarkus JGraphT</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-jgrapht/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-jsch/dev/index.html">Quarkus JSch</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-jsch/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-kerberos/dev/index.html">Quarkus Kerberos</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-kerberos/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-logging-json/dev/index.html">Quarkus Logging JSON</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-logging-json/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-logging-logback/dev/index.html">Quarkus Logging Logback</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-logging-logback/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-logging-sentry/dev/index.html">Quarkus Logging Sentry</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-logging-sentry/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-logging-splunk/dev/index.html">Quarkus Logging Splunk</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-logging-splunk/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-micrometer-registry/dev/index.html">Quarkus Micrometer Registry extensions</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-micrometer-registry/dev/index.html">dev</a>
+        </li>
+        <li class="version">
+          <a href="../../quarkus-micrometer-registry/1.x/index.html">1.x</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-mockk/dev/index.html">Quarkus Mockk</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-mockk/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-mybatis/dev/index.html">Quarkus MyBatis</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-mybatis/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-neo4j/dev/index.html">Quarkus Neo4j</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-neo4j/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <a class="title" href="index.html">Quarkus Operator SDK</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-prettytime/dev/index.html">Quarkus Prettytime</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-prettytime/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-quinoa/dev/index.html">Quarkus Quinoa</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-quinoa/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-rabbitmq-client/0.1.0/index.html">Quarkus RabbitMQ Client</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-rabbitmq-client/0.1.0/index.html">0.1.0</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-reactive-messaging-http/dev/index.html">Quarkus Reactive Messaging HTTP</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-reactive-messaging-http/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-renarde/dev/index.html">Quarkus Renarde</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-renarde/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-tika/dev/index.html">Quarkus Tika</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-tika/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-unleash/dev/index.html">Quarkus Unleash</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-unleash/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-vault/dev/index.html">Quarkus Vault</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-vault/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../index/index/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Quarkus Operator SDK</a></li>
+    <li><a href="index.html">Quarkiverse Operator SDK</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/quarkiverse/quarkus-operator-sdk/edit/main/docs/modules/ROOT/pages/index.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Quarkiverse Java Operator SDK</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>This extension integrates the <a href="https://javaoperatorsdk.io">Java Operator SDK</a> project (JOSDK) with Quarkus, making it even easier to use both.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_features"><a class="anchor" href="#_features"></a>Features</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Automatically generates a main class, so that the only thing that&#8217;s required is to write <code>Reconciler</code> implementation(s)</p>
+</li>
+<li>
+<p>Automatically makes a Kubernetes/OpenShift client available for CDI injection</p>
+</li>
+<li>
+<p>Automatically sets up an <code>Operator</code> instance, also available for CDI injection</p>
+</li>
+<li>
+<p>Automatically processes the reconcilers' configuration at build time, exposing all the available configuration of JOSDK via application properties</p>
+</li>
+<li>
+<p>Automatically registers reconcilers with the <code>Operator</code> and start them</p>
+</li>
+<li>
+<p>Automatically generates CRDs for all <code>CustomResource</code> implementations used by reconcilers</p>
+</li>
+<li>
+<p>Automatically generates Kubernetes descriptors</p>
+</li>
+<li>
+<p>Automatically generates the bundle manifests for all reconcilers (using the <code>quarkus-operator-sdk-bundle-generator</code> extension) [Preview]</p>
+</li>
+<li>
+<p>Integrates with the Dev mode:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Watches your code for changes and reload automatically your operator if needed without having to hit an endpoint</p>
+</li>
+<li>
+<p>Only re-generates the CRDs if a change impacting its generation is detected</p>
+</li>
+<li>
+<p>Only re-processes a reconciler&#8217;s configuration if needed</p>
+</li>
+<li>
+<p>Automatically apply the CRD to the cluster when it has changed</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Automatically generates CDI observers to allow for delayed registration of reconcilers (for example, to wait until some external resource is available)</p>
+</li>
+<li>
+<p>Supports micrometer registry extensions (adding a Quarkus-supported micrometer registry extension will automatically inject said registry into the operator)</p>
+</li>
+<li>
+<p>Automatically adds a SmallRye health check</p>
+</li>
+<li>
+<p>Can easily generate a Docker image via JIB</p>
+</li>
+<li>
+<p>Sets up reflection for native binary generation</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_installation"><a class="anchor" href="#_installation"></a>Installation</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you want to use this extension, you need to add the <code>quarkus-operator-sdk</code> extension first.</p>
+</div>
+<div class="paragraph">
+<p>You need to add minimally, the following to your <code>pom.xml</code> file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+    &lt;groupId&gt;io.quarkiverse.operatorsdk&lt;/groupId&gt;
+    &lt;artifactId&gt;quarkus-operator-sdk&lt;/artifactId&gt;
+    &lt;version&gt;{extension version}&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>However, it might be more convenient to use the <code>quarkus-operator-sdk-bom</code> dependency to ensure that all dependency versions are properly aligned:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependencyManagement&gt;
+    &lt;dependencies&gt;
+      &lt;dependency&gt;
+        &lt;groupId&gt;io.quarkiverse.operatorsdk&lt;/groupId&gt;
+        &lt;artifactId&gt;quarkus-operator-sdk-bom&lt;/artifactId&gt;
+        &lt;version&gt;{extension version}&lt;/version&gt;
+        &lt;type&gt;pom&lt;/type&gt;
+        &lt;scope&gt;import&lt;/scope&gt;
+      &lt;/dependency&gt;
+
+      &lt;!-- other dependencies as needed by your project --&gt;
+
+    &lt;/dependencies&gt;
+  &lt;/dependencyManagement&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you do use the BOM, please do make sure to use the same Quarkus version as the one defined in the BOM when configuring the Quarkus plugin as the Quarkus Dev Mode will not work properly otherwise, failing with an error:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell hljs" data-lang="shell">Exception in thread "main" java.lang.RuntimeException: java.lang.RuntimeException: java.lang.IllegalStateException: Hot deployment of the application is not supported when updating the Quarkus version. The application needs to be stopped and dev mode started up again
+        at io.quarkus.deployment.dev.DevModeMain.start(DevModeMain.java:138)
+        at io.quarkus.deployment.dev.DevModeMain.main(DevModeMain.java:62)</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you want to use the Bundle generator, you will first need to use Quarkus 2.3.0.Final or above and add the <code>quarkus-operator-sdk-bundle-generator</code> extension first:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+    &lt;groupId&gt;io.quarkiverse.operatorsdk&lt;/groupId&gt;
+    &lt;artifactId&gt;quarkus-operator-sdk-bundle-generator&lt;/artifactId&gt;
+    &lt;version&gt;{extension version}&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_deployment"><a class="anchor" href="#_deployment"></a>Deployment</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This section explains how to deploy your operator using the <a href="https://olm.operatorframework.io/">Operator Lifecycle Manager (OLM)</a> by following the next steps:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Requirements</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Make sure you have installed the <a href="https://github.com/operator-framework/operator-registry">opm</a> command tool and are connected to a Kubernetes cluster on which OLM is installed.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Generate the Operator image and bundle manifests</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Quarkus provides <a href="https://quarkus.io/guides/container-image">several extensions</a> to build the container image.
+For example, the <a href="https://github.com/quarkiverse/quarkus-operator-sdk/tree/main/samples/joke#deployment">Joke</a> sample uses the <a href="https://quarkus.io/guides/container-image#jib">Quarkus Jib container image extension</a> to build the image.
+So, you first need to configure one of these extensions as you prefer.
+Then, you need to add the <code>quarkus-operator-sdk-bundle-generator</code> extension:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+    &lt;groupId&gt;io.quarkiverse.operatorsdk&lt;/groupId&gt;
+    &lt;artifactId&gt;quarkus-operator-sdk-bundle-generator&lt;/artifactId&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This extension generates the Operator bundle manifests in the <code>target/bundle</code> directory.</p>
+</div>
+<div class="paragraph">
+<p>Finally, to generate the operator image and the bundle manifests at once, you simply need to run the next Maven command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell script hljs" data-lang="shell script">mvn clean package -Dquarkus.container-image.build=true \
+    -Dquarkus.container-image.push=true \
+    -Dquarkus.container-image.registry=&lt;your container registry. Example: quay.io&gt; \
+    -Dquarkus.container-image.group=&lt;your container registry namespace&gt; \
+    -Dquarkus.kubernetes.namespace=&lt;the kubernetes namespace where you will deploy the operator&gt; \
+    -Dquarkus.operator-sdk.bundle.package-name=&lt;the name of the package that bundle image belongs to&gt; \
+    -Dquarkus.operator-sdk.bundle.channels=&lt;the list of channels that bundle image belongs to&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For example, if we want to name the package <code>my-operator</code> and use the <code>alpha</code> channels, we would need to append the properties <code>-Dquarkus.operator-sdk.bundle.package-name=my-operator -Dquarkus.operator-sdk.bundle.channels=alpha</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Find more information about channels and packages <a href="https://olm.operatorframework.io/docs/best-practices/channel-naming/#channels">here</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If you&#8217;re using an insecure container registry, you&#8217;ll also need to append the next property to the Maven command <code>-Dquarkus.container-image.insecure=true</code>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Build the Operator Bundle image</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>An Operator Bundle is a container image that stores Kubernetes manifests and metadata associated with an operator.
+You can find more information about this <a href="https://olm.operatorframework.io/docs/tasks/creating-operator-bundle/">here</a>.
+In the previous step, we generated the bundle manifests at <code>target/bundle</code> which includes a ready-to-use <code>target/bundle/bundle.Dockerfile</code> Dockerfile that you will use to build and push the final Operator Bundle image to your container registry:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell script hljs" data-lang="shell script">MY_BUNDLE_IMAGE=&lt;your container registry&gt;/&lt;your container registry namespace&gt;/&lt;bundle image name&gt;:&lt;tag&gt;
+docker build -t $MY_BUNDLE_IMAGE -f target/bundle/bundle.Dockerfile target/bundle
+docker push $MY_BUNDLE_IMAGE</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For example, if we want to name our bundle image as <code>my-manifest-bundle</code>, our container registry is <code>quay.io</code>, our Quay user is <code>myuser</code> and the tag we&#8217;re releasing is <code>1.0</code>, the final <code>MY_BUNDLE_IMAGE</code> property would be <code>quay.io/myuser/my-manifest-bundle:1.0</code>.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Make your operator available within a Catalog</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>OLM uses catalogs to discover and install Operators and their dependencies.
+So, a catalog is similar to a repository of operators and their associated versions that can be installed on a cluster.
+Moreover, the catalog is also a container image that contains a collection of bundles and channels.
+Therefore, we&#8217;d need to create a new catalog (or update an existing one if you&#8217;re already have one), build/push the catalog image and then install it on our cluster.</p>
+</div>
+<div class="paragraph">
+<p>So far, we have already built the Operator bundle image at <code>$MY_BUNDLE_IMAGE</code> (see above) and next, we need to add this Operator bundle image into our catalog.
+For doing this, we&#8217;ll use the <code>olm</code> tool as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell script hljs" data-lang="shell script">CATALOG_IMAGE=&lt;catalog container registry&gt;/&lt;catalog container registry namespace&gt;/&lt;catalog name&gt;:&lt;tag&gt;
+opm index add \
+    --bundles $MY_BUNDLE_IMAGE \
+    --tag $CATALOG_IMAGE \
+    --build-tool docker
+docker push $CATALOG_IMAGE</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For example, if our catalog name is <code>my-catalog</code>, our container registry for the catalog is <code>quay.io</code>, our Quay user is <code>myuser</code> and the container tag we&#8217;re releasing is <code>59.0</code>, the final <code>CATALOG_IMAGE</code> property would be <code>quay.io/myuser/my-catalog:59.0</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>If you&#8217;re using an insecure registry, you&#8217;d need to append the argument <code>--skip-tls</code> to the <code>opm index</code> command.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Once we have our catalog image built and pushed at <code>$CATALOG_IMAGE</code>, we need to install it in the same namespace where OLM is running (by default, OLM is running in the <code>operators</code> namespace, we will use the <code>OLM_NAMESPACE</code> property to represent this namespace) on our cluster using the <code>CatalogSource</code> resource by doing the next command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell script hljs" data-lang="shell script">cat &lt;&lt;EOF | kubectl apply -f -
+apiVersion: operators.coreos.com/v1alpha1
+kind: CatalogSource
+metadata:
+  name: my-catalog-source
+  namespace: $OLM_NAMESPACE
+spec:
+  sourceType: grpc
+  image: $CATALOG_IMAGE
+EOF</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Once the catalog is installed, you should see the catalog pod up and running:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell script hljs" data-lang="shell script">kubectl get pods -n $OLM_NAMESPACE --selector=olm.catalogSource=my-catalog-source</code></pre>
+</div>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Install your operator via OLM</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>OLM deploys operators via <a href="https://olm.operatorframework.io/docs/tasks/install-operator-with-olm/#install-your-operator">subscriptions</a>.
+Creating a  <code>Subscription</code> will trigger the operator deployment.
+You can simply create the <code>Subscription</code> resource that contains the operator name and channel to install by running the following command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell script hljs" data-lang="shell script">cat &lt;&lt;EOF | kubectl create -f -
+apiVersion: operators.coreos.com/v1alpha1
+kind: Subscription
+metadata:
+  name: my-subscription
+  namespace: &lt;Kubernetes namespace where your operator will be installed&gt;
+spec:
+  channel: alpha
+  name: my-operator-name
+  source: my-catalog-source
+  sourceNamespace: $OLM_NAMESPACE
+EOF</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>We&#8217;ll install the operator in the target namespace defined in the metadata object.
+The <code>sourceNamespace</code> value is the Kubernetes namespace where the catalog was installed on.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Once the subscription is created, you should see your operator pod up and running:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-shell script hljs" data-lang="shell script">kubectl get csv -n $OLM_NAMESPACE my-operator-name</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="extension-configuration-reference"><a class="anchor" href="#extension-configuration-reference"></a>Extension Configuration Reference</h2>
+<div class="sectionbody">
+<div class="paragraph configuration-legend">
+<p><span class="icon"><i class="fa fa-lock" title="Fixed at build time"></i></span> Configuration property fixed at build time - All other configuration properties are overridable at runtime</p>
+</div>
+<table class="tableblock frame-all grid-all stretch configuration-reference searchable">
+<colgroup>
+<col style="width: 80%;">
+<col style="width: 10%;">
+<col style="width: 10%;">
+</colgroup>
+<tbody>
+<tr>
+<th class="tableblock halign-left valign-top"><p class="tableblock"><a id="quarkus-operator-sdk_configuration"></a>
+<a href="#quarkus-operator-sdk_configuration">Configuration property</a></p></th>
+<th class="tableblock halign-left valign-middle"><p class="tableblock">Type</p></th>
+<th class="tableblock halign-left valign-middle"><p class="tableblock">Default</p></th>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="icon"><i class="fa fa-lock" title="Fixed at build time"></i></span></p>
+</div>
+<div class="paragraph">
+<p><a id="quarkus-operator-sdk_quarkus.operator-sdk.generate-csv"></a><code><a href="#quarkus-operator-sdk_quarkus.operator-sdk.generate-csv">quarkus.operator-sdk.generate-csv</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Whether the extension should generate a ClusterServiceVersion manifest for controllers.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>false</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="icon"><i class="fa fa-lock" title="Fixed at build time"></i></span></p>
+</div>
+<div class="paragraph">
+<p><a id="quarkus-operator-sdk_quarkus.operator-sdk.crd.validate"></a><code><a href="#quarkus-operator-sdk_quarkus.operator-sdk.crd.validate">quarkus.operator-sdk.crd.validate</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Whether the operator should check that the CRD is properly deployed and that the associated <code>CustomResource</code> implementation matches its information before registering the associated controller.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>true</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="icon"><i class="fa fa-lock" title="Fixed at build time"></i></span></p>
+</div>
+<div class="paragraph">
+<p><a id="quarkus-operator-sdk_quarkus.operator-sdk.crd.generate"></a><code><a href="#quarkus-operator-sdk_quarkus.operator-sdk.crd.generate">quarkus.operator-sdk.crd.generate</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Whether the extension should automatically generate the CRD based on <code>CustomResource</code> implementations.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>true</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="icon"><i class="fa fa-lock" title="Fixed at build time"></i></span></p>
+</div>
+<div class="paragraph">
+<p><a id="quarkus-operator-sdk_quarkus.operator-sdk.crd.apply"></a><code><a href="#quarkus-operator-sdk_quarkus.operator-sdk.crd.apply">quarkus.operator-sdk.crd.apply</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Whether the extension should automatically apply updated CRDs when they change.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>false</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="icon"><i class="fa fa-lock" title="Fixed at build time"></i></span></p>
+</div>
+<div class="paragraph">
+<p><a id="quarkus-operator-sdk_quarkus.operator-sdk.crd.versions"></a><code><a href="#quarkus-operator-sdk_quarkus.operator-sdk.crd.versions">quarkus.operator-sdk.crd.versions</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Comma-separated list of which CRD versions should be generated.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">list of string</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>v1</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="icon"><i class="fa fa-lock" title="Fixed at build time"></i></span></p>
+</div>
+<div class="paragraph">
+<p><a id="quarkus-operator-sdk_quarkus.operator-sdk.crd.output-directory"></a><code><a href="#quarkus-operator-sdk_quarkus.operator-sdk.crd.output-directory">quarkus.operator-sdk.crd.output-directory</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>The directory where the CRDs will be generated, relative to the project&#8217;s output directory.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>kubernetes</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="icon"><i class="fa fa-lock" title="Fixed at build time"></i></span></p>
+</div>
+<div class="paragraph">
+<p><a id="quarkus-operator-sdk_quarkus.operator-sdk.generation-aware"></a><code><a href="#quarkus-operator-sdk_quarkus.operator-sdk.generation-aware">quarkus.operator-sdk.generation-aware</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Whether controllers should only process events if the associated resource generation has increased since last reconciliation, otherwise will process all events.
+Sets the default value for all controllers.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>true</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="icon"><i class="fa fa-lock" title="Fixed at build time"></i></span></p>
+</div>
+<div class="paragraph">
+<p><a id="quarkus-operator-sdk_quarkus.operator-sdk.delay-registration-until-event"></a><code><a href="#quarkus-operator-sdk_quarkus.operator-sdk.delay-registration-until-event">quarkus.operator-sdk.delay-registration-until-event</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>The optional fully qualified name of a CDI event class that controllers will wait for before registering with the Operator.
+Sets the default value for all controllers.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-operator-sdk_quarkus.operator-sdk.concurrent-reconciliation-threads"></a><code><a href="#quarkus-operator-sdk_quarkus.operator-sdk.concurrent-reconciliation-threads">quarkus.operator-sdk.concurrent-reconciliation-threads</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>The max number of concurrent dispatches of reconciliation requests to controllers.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">int</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-operator-sdk_quarkus.operator-sdk.termination-timeout-seconds"></a><code><a href="#quarkus-operator-sdk_quarkus.operator-sdk.termination-timeout-seconds">quarkus.operator-sdk.termination-timeout-seconds</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Amount of seconds the SDK waits for reconciliation threads to terminate before shutting down.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">int</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-operator-sdk_quarkus.operator-sdk.namespaces"></a><code><a href="#quarkus-operator-sdk_quarkus.operator-sdk.namespaces">quarkus.operator-sdk.namespaces</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>An optional list of comma-separated namespace names all controllers will watch if not specified.
+If this property is left empty then controllers will watch all namespaces by default.
+Sets the default value for all controllers.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">list of string</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-operator-sdk_quarkus.operator-sdk.finalizer"></a><code><a href="#quarkus-operator-sdk_quarkus.operator-sdk.finalizer">quarkus.operator-sdk.finalizer</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>The optional name of the finalizer to use for controllers.
+If none is provided, one will be automatically generated.
+It should be noted that having several controllers use the same finalizer might create issues and this configuration item is mostly useful when we don&#8217;t want to use finalizers at all by default (using the <code>io.javaoperatorsdk.operator.api.Controller#NO_FINALIZER</code> value).
+Sets the default value for all controllers.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="icon"><i class="fa fa-lock" title="Fixed at build time"></i></span></p>
+</div>
+<div class="paragraph">
+<p><a id="quarkus-operator-sdk_quarkus.operator-sdk.controllers.-controllers-.generation-aware"></a><code><a href="#quarkus-operator-sdk_quarkus.operator-sdk.controllers.-controllers-.generation-aware">quarkus.operator-sdk.controllers."controllers".generation-aware</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>Whether the controller should only process events if the associated resource generation has increased since last reconciliation, otherwise will process all events.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>true</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><span class="icon"><i class="fa fa-lock" title="Fixed at build time"></i></span></p>
+</div>
+<div class="paragraph">
+<p><a id="quarkus-operator-sdk_quarkus.operator-sdk.controllers.-controllers-.delay-registration-until-event"></a><code><a href="#quarkus-operator-sdk_quarkus.operator-sdk.controllers.-controllers-.delay-registration-until-event">quarkus.operator-sdk.controllers."controllers".delay-registration-until-event</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-operator-sdk_quarkus.operator-sdk.controllers.-controllers-.namespaces"></a><code><a href="#quarkus-operator-sdk_quarkus.operator-sdk.controllers.-controllers-.namespaces">quarkus.operator-sdk.controllers."controllers".namespaces</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>An optional list of comma-separated namespace names the controller should watch.
+If this property is left empty then the controller will watch all namespaces.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">list of string</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-operator-sdk_quarkus.operator-sdk.controllers.-controllers-.finalizer"></a><code><a href="#quarkus-operator-sdk_quarkus.operator-sdk.controllers.-controllers-.finalizer">quarkus.operator-sdk.controllers."controllers".finalizer</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>The optional name of the finalizer for the controller.
+If none is provided, one will be automatically generated.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-operator-sdk_quarkus.operator-sdk.controllers.-controllers-.retry.max-attempts"></a><code><a href="#quarkus-operator-sdk_quarkus.operator-sdk.controllers.-controllers-.retry.max-attempts">quarkus.operator-sdk.controllers."controllers".retry.max-attempts</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>How many times an operation should be retried before giving up</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">int</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-operator-sdk_quarkus.operator-sdk.controllers.-controllers-.retry.interval.initial"></a><code><a href="#quarkus-operator-sdk_quarkus.operator-sdk.controllers.-controllers-.retry.interval.initial">quarkus.operator-sdk.controllers."controllers".retry.interval.initial</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>The initial interval that the controller waits for before attempting the first retry</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">long</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>2000</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-operator-sdk_quarkus.operator-sdk.controllers.-controllers-.retry.interval.multiplier"></a><code><a href="#quarkus-operator-sdk_quarkus.operator-sdk.controllers.-controllers-.retry.interval.multiplier">quarkus.operator-sdk.controllers."controllers".retry.interval.multiplier</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>The value by which the initial interval is multiplied by for each retry</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">double</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><code>1.5</code></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-operator-sdk_quarkus.operator-sdk.controllers.-controllers-.retry.interval.max"></a><code><a href="#quarkus-operator-sdk_quarkus.operator-sdk.controllers.-controllers-.retry.interval.max">quarkus.operator-sdk.controllers."controllers".retry.interval.max</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>The maximum interval that the controller will wait for before attempting a retry, regardless of all other configuration</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">long</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><div class="content"><div class="paragraph">
+<p><a id="quarkus-operator-sdk_quarkus.operator-sdk.controllers.-controllers-.selector"></a><code><a href="#quarkus-operator-sdk_quarkus.operator-sdk.controllers.-controllers-.selector">quarkus.operator-sdk.controllers."controllers".selector</a></code></p>
+</div>
+<div class="openblock description">
+<div class="content">
+<div class="paragraph">
+<p>An optional list of comma-separated label selectors that Custom Resources must match to trigger the controller.
+See <a href="https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/" class="bare">https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/</a> for more details on selectors.</p>
+</div>
+</div>
+</div></div></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">string</p></td>
+<td class="tableblock halign-left valign-middle"></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>Copyright (C) 2020-2022 <a href="https://www.redhat.com">Red Hat</a> and individual contributors to <a href="https://github.com/quarkiverse/quarkiverse-docs">Quarkiverse</a>.</p>
+</footer>
+<script src="../../_/js/site.js"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

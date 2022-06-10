@@ -1,0 +1,1504 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Comment-Based Commands :: Quarkiverse Documentation</title>
+    <link rel="canonical" href="https://quarkiverse.github.io/quarkiverse-docs/quarkus-github-app/dev/commands.html">
+    <meta name="generator" content="Antora 3.0.1">
+    <link rel="stylesheet" href="../../_/css/site.css">
+    <link rel="stylesheet" href="../../_/css/site-extra.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+    <script>var uiRootPath = '../../_'</script>
+  </head>
+  <body class="article">
+<header class="header" role="banner">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <div class="navbar-item">
+        <a href="../..">Quarkiverse</a>
+        <span class="separator">//</span>
+        <a href="https://quarkiverse.github.io/quarkiverse-docs">Docs</a>
+      </div>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <div class="navbar-item has-dropdown is-hoverable">
+          <div class="navbar-link">Projects</div>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Index</a>
+            <a class="navbar-item" href="#">Quarkus - Java Embedded Framework</a>
+            <a class="navbar-item" href="#">Quarkus Amazon Alexa</a>
+            <a class="navbar-item" href="#">Quarkus Amazon Services</a>
+            <a class="navbar-item" href="#">Quarkus Artemis</a>
+            <a class="navbar-item" href="#">Quarkus Config Extensions</a>
+            <a class="navbar-item" href="#">Quarkus Cucumber</a>
+            <a class="navbar-item" href="#">Quarkus CXF</a>
+            <a class="navbar-item" href="#">Quarkus Dapr</a>
+            <a class="navbar-item" href="#">Quarkus File Vault</a>
+            <a class="navbar-item" href="#">Quarkus Freemarker</a>
+            <a class="navbar-item" href="#">Quarkus GitHub Action</a>
+            <a class="navbar-item" href="#">Quarkus GitHub App</a>
+            <a class="navbar-item" href="#">Quarkus Google Cloud Services</a>
+            <a class="navbar-item" href="#">Quarkus Helm</a>
+            <a class="navbar-item" href="#">Quarkus Hibernate Search Extras</a>
+            <a class="navbar-item" href="#">Quarkus Hibernate types</a>
+            <a class="navbar-item" href="#">Quarkus HiveMQ Client</a>
+            <a class="navbar-item" href="#">Quarkus JDBC Sqlite</a>
+            <a class="navbar-item" href="#">Quarkus JGit</a>
+            <a class="navbar-item" href="#">Quarkus JGraphT</a>
+            <a class="navbar-item" href="#">Quarkus JSch</a>
+            <a class="navbar-item" href="#">Quarkus Kerberos</a>
+            <a class="navbar-item" href="#">Quarkus Logging JSON</a>
+            <a class="navbar-item" href="#">Quarkus Logging Logback</a>
+            <a class="navbar-item" href="#">Quarkus Logging Sentry</a>
+            <a class="navbar-item" href="#">Quarkus Logging Splunk</a>
+            <a class="navbar-item" href="#">Quarkus Micrometer Registry extensions</a>
+            <a class="navbar-item" href="#">Quarkus Mockk</a>
+            <a class="navbar-item" href="#">Quarkus MyBatis</a>
+            <a class="navbar-item" href="#">Quarkus Neo4j</a>
+            <a class="navbar-item" href="#">Quarkus Operator SDK</a>
+            <a class="navbar-item" href="#">Quarkus Prettytime</a>
+            <a class="navbar-item" href="#">Quarkus Quinoa</a>
+            <a class="navbar-item" href="#">Quarkus RabbitMQ Client</a>
+            <a class="navbar-item" href="#">Quarkus Reactive Messaging HTTP</a>
+            <a class="navbar-item" href="#">Quarkus Renarde</a>
+            <a class="navbar-item" href="#">Quarkus Tika</a>
+            <a class="navbar-item" href="#">Quarkus Unleash</a>
+            <a class="navbar-item" href="#">Quarkus Vault</a>
+          </div>
+        </div>
+        <div class="navbar-item has-dropdown is-hoverable">
+          <div class="navbar-link">Community</div>
+          <div class="navbar-dropdown is-right">
+            <a class="navbar-item" href="https://quarkusio.zulipchat.com">Chat</a>
+          </div>
+        </div>
+        <a class="navbar-item" href="https://twitter.com/quarkusio">
+          <span class="icon">
+            <svg aria-hidden="true" data-icon="twitter" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+              <path fill="#57aaee" d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path>
+            </svg>
+          </span>
+        </a>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="body">
+<div class="nav-container" data-component="quarkus-github-app" data-version="dev">
+  <aside class="nav">
+    <div class="panels">
+<div class="nav-panel-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="index.html">Quarkus GitHub App</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="index.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="register-github-app.html">Register a GitHub App</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="create-github-app.html">Create a GitHub App</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="replay-ui.html">Replay UI</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="developer-reference.html">Developer Reference</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="1">
+    <a class="nav-link" href="commands.html">Comment-based Commands</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="testing.html">Testing</a>
+  </li>
+  <li class="nav-item" data-depth="1">
+    <a class="nav-link" href="push-to-production.html">Push to Production</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="nav-panel-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">Quarkus GitHub App</span>
+    <span class="version">dev</span>
+  </div>
+  <ul class="components">
+    <li class="component">
+      <a class="title" href="../../index/index/index.html">Index</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../index/index/index.html">index</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-java-embedded-framework/dev/index.html">Quarkus - Java Embedded Framework</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-java-embedded-framework/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-amazon-alexa/dev/index.html">Quarkus Amazon Alexa</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-amazon-alexa/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-amazon-services/dev/index.html">Quarkus Amazon Services</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-amazon-services/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-artemis/dev/index.html">Quarkus Artemis</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-artemis/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-config-extensions/dev/index.html">Quarkus Config Extensions</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-config-extensions/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-cucumber/dev/index.html">Quarkus Cucumber</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-cucumber/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-cxf/dev/index.html">Quarkus CXF</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-cxf/dev/index.html">dev</a>
+        </li>
+        <li class="version">
+          <a href="../../quarkus-cxf/v1.x/index.html">v1.x</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-dapr/dev/index.html">Quarkus Dapr</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-dapr/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-file-vault/dev/index.html">Quarkus File Vault</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-file-vault/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-freemarker/dev/index.html">Quarkus Freemarker</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-freemarker/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-github-action/dev/index.html">Quarkus GitHub Action</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-github-action/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component is-current">
+      <a class="title" href="index.html">Quarkus GitHub App</a>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-google-cloud-services/main/index.html">Quarkus Google Cloud Services</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-google-cloud-services/main/index.html">main</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-helm/dev/index.html">Quarkus Helm</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-helm/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-hibernate-search-extras/dev/index.html">Quarkus Hibernate Search Extras</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-hibernate-search-extras/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-hibernate-types/dev/index.html">Quarkus Hibernate types</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-hibernate-types/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-hivemq-client/dev/index.html">Quarkus HiveMQ Client</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-hivemq-client/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-JDBC-Sqlite/dev/index.html">Quarkus JDBC Sqlite</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-JDBC-Sqlite/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-jgit/dev/index.html">Quarkus JGit</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-jgit/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-jgrapht/dev/index.html">Quarkus JGraphT</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-jgrapht/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-jsch/dev/index.html">Quarkus JSch</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-jsch/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-kerberos/dev/index.html">Quarkus Kerberos</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-kerberos/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-logging-json/dev/index.html">Quarkus Logging JSON</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-logging-json/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-logging-logback/dev/index.html">Quarkus Logging Logback</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-logging-logback/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-logging-sentry/dev/index.html">Quarkus Logging Sentry</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-logging-sentry/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-logging-splunk/dev/index.html">Quarkus Logging Splunk</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-logging-splunk/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-micrometer-registry/dev/index.html">Quarkus Micrometer Registry extensions</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-micrometer-registry/dev/index.html">dev</a>
+        </li>
+        <li class="version">
+          <a href="../../quarkus-micrometer-registry/1.x/index.html">1.x</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-mockk/dev/index.html">Quarkus Mockk</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-mockk/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-mybatis/dev/index.html">Quarkus MyBatis</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-mybatis/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-neo4j/dev/index.html">Quarkus Neo4j</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-neo4j/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-operator-sdk/dev/index.html">Quarkus Operator SDK</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-operator-sdk/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-prettytime/dev/index.html">Quarkus Prettytime</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-prettytime/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-quinoa/dev/index.html">Quarkus Quinoa</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-quinoa/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-rabbitmq-client/0.1.0/index.html">Quarkus RabbitMQ Client</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-rabbitmq-client/0.1.0/index.html">0.1.0</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-reactive-messaging-http/dev/index.html">Quarkus Reactive Messaging HTTP</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-reactive-messaging-http/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-renarde/dev/index.html">Quarkus Renarde</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-renarde/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-tika/dev/index.html">Quarkus Tika</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-tika/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-unleash/dev/index.html">Quarkus Unleash</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-unleash/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+    <li class="component">
+      <a class="title" href="../../quarkus-vault/dev/index.html">Quarkus Vault</a>
+      <ul class="versions">
+        <li class="version is-latest">
+          <a href="../../quarkus-vault/dev/index.html">dev</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+<main class="article">
+<div class="toolbar" role="navigation">
+<button class="nav-toggle"></button>
+  <a href="../../index/index/index.html" class="home-link"></a>
+<nav class="breadcrumbs" aria-label="breadcrumbs">
+  <ul>
+    <li><a href="index.html">Quarkus GitHub App</a></li>
+    <li><a href="commands.html">Comment-based Commands</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="https://github.com/quarkiverse/quarkus-github-app/edit/main/docs/modules/ROOT/pages/commands.adoc">Edit this Page</a></div>
+  </div>
+  <div class="content">
+<aside class="toc sidebar" data-title="Contents" data-levels="2">
+  <div class="toc-menu"></div>
+</aside>
+<article class="doc">
+<h1 class="page">Comment-Based Commands</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>A popular requirement for GitHub Apps is to react to comments to perform commands e.g. <code>@bot do something</code>.</p>
+</div>
+<div class="paragraph">
+<p>While you can rely on the traditional listeners presented previously and implement the parsing of the comments by yourself,
+Quarkus GitHub App comes with an additional extension called <code>quarkus-github-app-command-airline</code> which makes it extremely easy to develop comment-based commands.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>This extension is based on the popular <a href="https://rvesse.github.io/airline/">Airline library</a> and you can use all the features of the library to develop your commands.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>You can mix traditional event listeners and comment-based commands in the same GitHub App.
+They use the exact same infrastructure.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_adding_the_dependency"><a class="anchor" href="#_adding_the_dependency"></a>Adding the dependency</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>First things first, add the <code>quarkus-github-app-command-airline</code> dependency to your GitHub App <code>pom.xml</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="xml">&lt;dependency&gt;
+    &lt;groupId&gt;io.quarkiverse.githubapp&lt;/groupId&gt;
+    &lt;artifactId&gt;quarkus-github-app-command-airline&lt;/artifactId&gt;
+    &lt;version&gt;1.8.5&lt;/version&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_your_first_command"><a class="anchor" href="#_your_first_command"></a>Your first command</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Let&#8217;s say we want to implement a command to re-run a CI workflow.
+The idea is to react to users submitting a comment containing <code>@mybot retest</code> in a pull request.</p>
+</div>
+<div class="paragraph">
+<p>This is as simple as:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Cli(name = "@bot", commands = { RetestCommand.class }) <i class="conum" data-value="1"></i><b>(1)</b>
+public class MyFirstCli {
+
+    @Command(name = "retest") <i class="conum" data-value="2"></i><b>(2)</b>
+    static class RetestCommand implements Runnable { <i class="conum" data-value="3"></i><b>(3)</b>
+
+        @Override
+        public void run() { <i class="conum" data-value="4"></i><b>(4)</b>
+            // do something
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>First thing is to declare a <code>@Cli</code> class. The <code>name</code> of the <code>@Cli</code> is what will trigger the parsing of the command.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>We create a command called <code>retest</code>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>All the commands of a same <code>@Cli</code> have to implement the same interface, in this case <code>Runnable</code>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Your interface must have a <code>run(&#8230;&#8203;)</code> method. You can inject parameters as we will see later but it has to be called <code>run</code>.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>That is all that is necessary.
+Every time a comment containing <code>@bot retest</code> is posted in your project,
+the <code>run()</code> method above is called.</p>
+</div>
+<div class="paragraph">
+<p>By default, the command is run whether the comment is added to issues or pull requests
+(as far as comments are concerned a pull request is just another type of issue).
+We will see a bit later how we can configure it.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-warning" title="Warning"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Be careful about permissions when exposing commands,
+typically, in this example, we probably don&#8217;t want all the users to be able to trigger a new CI run.</p>
+</div>
+<div class="paragraph">
+<p>Make sure to implement the proper <a href="#permissions">permission checks</a>.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_injecting_parameters"><a class="anchor" href="#_injecting_parameters"></a>Injecting parameters</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_injecting_the_issuecomment_payload"><a class="anchor" href="#_injecting_the_issuecomment_payload"></a>Injecting the <code>IssueComment</code> payload</h3>
+<div class="paragraph">
+<p>To turn the command above into something actually useful, we miss a few things:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>We don&#8217;t have any context about the comment (which issue or pull request was it posted in?).</p>
+</li>
+<li>
+<p>We don&#8217;t have a <code>GitHub</code> client around.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This is a very common requirement and something you can&#8217;t do without, really.</p>
+</div>
+<div class="paragraph">
+<p>Luckily for us, we can get all this injected into the <code>run()</code> method of our commands.</p>
+</div>
+<div class="paragraph">
+<p>Let&#8217;s take a first example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Cli(name = "@bot", commands = { Command1.class, Command2.class })
+public class PayloadInjectionCli {
+
+    interface Commands { <i class="conum" data-value="1"></i><b>(1)</b>
+
+        void run(GHEventPayload.IssueComment issueCommentPayload) throws IOException; <i class="conum" data-value="2"></i><b>(2)</b>
+    }
+
+    @Command(name = "command1")
+    static class Command1 implements Commands {
+
+        @Override
+        public void run(GHEventPayload.IssueComment issueCommentPayload) throws IOException { <i class="conum" data-value="3"></i><b>(3)</b>
+            issueCommentPayload.getIssue().comment("Ack");
+        }
+    }
+
+    @Command(name = "command2")
+    static class Command2 implements Commands {
+
+        @Override
+        public void run(GHEventPayload.IssueComment issueCommentPayload) throws IOException {
+            if (issueCommentPayload.getIssue().isPullRequest()) {
+                GHPullRequest pullRequest = issueCommentPayload.getRepository()
+                        .getPullRequest(issueCommentPayload.getIssue().getNumber()); <i class="conum" data-value="4"></i><b>(4)</b>
+
+                // do something with the pull request
+            }
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>As already mentioned, we have to define a common interface for all commands with a <code>run(&#8230;&#8203;)</code> method.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>It is possible to inject the <code>IssueComment</code> payload, from which you can get the issue (or the comment).
+Keep in mind a pull request is also an issue.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Unfortunately, most of GitHub API calls throw <code>IOException</code>s in case an error occurs. It is not pretty but just throw them from your methods, the framework will handle them for you.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>This is how you can get to a <code>GHPullRequest</code> instance that represents a pull request from the pull request associated issue.</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>From the <code>GHEventPayload.IssueComment</code> instance, you can also get to the <code>GHRepository</code> via <code>issueCommentPayload.getRepository()</code>
+and so do everything you need on the repository in which the comment was posted.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_injecting_the_github_client"><a class="anchor" href="#_injecting_the_github_client"></a>Injecting the <code>GitHub</code> client</h3>
+<div class="paragraph">
+<p>You can inject a <code>GitHub</code> client as a parameter.
+It is authenticated with your GitHub App installation&#8217;s token.</p>
+</div>
+<div class="paragraph">
+<p>This is especially useful if you want to execute REST API calls that are outside of the bounds of your current <code>GHRepository</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Cli(name = "@bot", commands = { Command1.class, Command2.class })
+public class GitHubInjectionCli {
+
+    interface Commands {
+
+        void run(GHEventPayload.IssueComment issueCommentPayload, GitHub gitHub) throws IOException; <i class="conum" data-value="1"></i><b>(1)</b>
+    }
+
+    @Command(name = "command1")
+    static class Command1 implements Commands {
+
+        @Override
+        public void run(GHEventPayload.IssueComment issueCommentPayload, GitHub gitHub) throws IOException {
+            // do something with the gitHub client
+        }
+    }
+
+    @Command(name = "command2")
+    static class Command2 implements Commands {
+
+        @Override
+        public void run(GHEventPayload.IssueComment issueCommentPayload, GitHub gitHub) throws IOException {
+            // do something with the gitHub client
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>You can inject a <code>GitHub</code> instance in your <code>run()</code> method.</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_injecting_a_graphql_client"><a class="anchor" href="#_injecting_a_graphql_client"></a>Injecting a GraphQL client</h3>
+<div class="paragraph">
+<p>In a similar way, you can inject a <code>DynamicGraphQLClient</code> as a parameter if you want to execute GraphQL queries.
+It is authenticated with your GitHub App installation&#8217;s token.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_injecting_cdi_beans"><a class="anchor" href="#_injecting_cdi_beans"></a>Injecting CDI beans</h3>
+<div class="paragraph">
+<p>You can inject CDI beans as parameters but it is not a recommended practice as it makes your common command interface more cluttered.
+See <a href="#cdi-injection">CDI injection</a> for more details.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="cdi-injection"><a class="anchor" href="#cdi-injection"></a>CDI injection</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can inject any CDI bean in your commands, either via parameters of the <code>run()</code> method or via field injection.</p>
+</div>
+<div class="paragraph">
+<p>It is recommended to use field injection to avoid cluttering the <code>run()</code> method:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Cli(name = "@bot", commands = { Command1.class })
+public class CdiInjectionCli {
+
+    interface Commands {
+
+        void run(GHEventPayload.IssueComment issueCommentPayload) throws IOException;
+    }
+
+    @Command(name = "command1")
+    static class Command1 implements Commands {
+
+        @Inject
+        CdiBean cdiBean; <i class="conum" data-value="1"></i><b>(1)</b>
+
+        @Override
+        public void run(GHEventPayload.IssueComment issueCommentPayload) throws IOException {
+            cdiBean.doSomething();
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>You can inject the <code>@ApplicationScoped</code> <code>CdiBean</code> via the CDI <code>javax.inject.Inject</code> annotation.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_additional_options"><a class="anchor" href="#_additional_options"></a>Additional options</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_command_options"><a class="anchor" href="#_command_options"></a><code>@Command</code> options</h3>
+<div class="paragraph">
+<p>With the <code>@CommandOptions</code> annotation, you can fine tune the behavior of a <code>@Command</code>.</p>
+</div>
+<div class="sect3">
+<h4 id="_scope"><a class="anchor" href="#_scope"></a>Scope</h4>
+<div class="paragraph">
+<p>By default, commands are executed for both issues and pull requests.
+Some commands might only make sense for issues or pull requests.</p>
+</div>
+<div class="paragraph">
+<p>Luckily, you can limit the scope of a command using <code>@CommandOptions(scope = &#8230;&#8203;)</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">    @Command(name = "only-for-issues")
+    @CommandOptions(scope = CommandScope.ISSUES) <i class="conum" data-value="1"></i><b>(1)</b>
+    static class CommandOnlyForIssues implements Commands {
+
+        @Override
+        public void run(GHEventPayload.IssueComment issueCommentPayload) throws IOException {
+            // do something
+        }
+    }</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>This command will only be executed in the context of an issue.</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">    @Command(name = "only-for-pull-requests")
+    @CommandOptions(scope = CommandScope.PULL_REQUESTS) <i class="conum" data-value="1"></i><b>(1)</b>
+    static class CommandOnlyForPullRequests implements Commands {
+
+        @Override
+        public void run(GHEventPayload.IssueComment issueCommentPayload) throws IOException {
+            // do something
+        }
+    }</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>This command will only be executed in the context of a pull request.</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_execution_error_strategy"><a class="anchor" href="#_execution_error_strategy"></a>Execution error strategy</h4>
+<div class="paragraph">
+<p>By default, when an execution error occurs, a <a href="#reactions"><code>MINUS_ONE</code> reaction</a> is added to the comment but that&#8217;s it.
+You might want to customize this behavior and have your GitHub App post a comment:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">    @Command(name = "execution-error-strategy")
+    @CommandOptions(executionErrorStrategy = ExecutionErrorStrategy.COMMENT_MESSAGE) <i class="conum" data-value="1"></i><b>(1)</b>
+    static class CommandWithCustomExecutionErrorStrategy implements Commands {
+
+        @Override
+        public void run(GHEventPayload.IssueComment issueCommentPayload) throws IOException {
+            // do something
+        }
+    }</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>When an error occurs executing the command, a comment containing <code>:warning: An error occurred while executing command: %s</code> will be posted.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>If you want to go further, you can customize this message:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">    @Command(name = "execution-error-message")
+    @CommandOptions(executionErrorStrategy = ExecutionErrorStrategy.COMMENT_MESSAGE, executionErrorMessage = "Your custom error message") <i class="conum" data-value="1"></i><b>(1)</b>
+    static class CommandWithCustomExecutionErrorMessage implements Commands {
+
+        @Override
+        public void run(GHEventPayload.IssueComment issueCommentPayload) throws IOException {
+            // do something
+        }
+    }</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>When an error occurs executing the command, a comment containing <code>Your custom error message</code> will be posted.</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Use <code>%s</code> in your message to include the executed command.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_cli_options"><a class="anchor" href="#_cli_options"></a><code>@Cli</code> options</h3>
+<div class="paragraph">
+<p>You can fine tune the behavior of your <code>@Cli</code> via the <code>@CliOptions</code> annotation.</p>
+</div>
+<div class="sect3">
+<h4 id="_defining_aliases"><a class="anchor" href="#_defining_aliases"></a>Defining aliases</h4>
+<div class="paragraph">
+<p>The <code>name</code> attribute of the <code>@Cli</code> annotation defines how your commands will be invoked.
+For instance, <code>@Cli(name = "@bot")</code> means that your commands will be executed if a user starts their comments with <code>@bot</code>.</p>
+</div>
+<div class="paragraph">
+<p>You might want to define several aliases for this invocation (e.g. <code>@bot</code>, <code>@quarkus-bot</code>, <code>@quarkusbot</code>),
+which you can do as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Cli(name = "@quarkus-bot", commands = { AliasesCliCommand.class })
+@CliOptions(aliases = { "@quarkusbot", "@bot" }) <i class="conum" data-value="1"></i><b>(1)</b>
+public class CliOptionsAliasesCli {</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Commands will be executed for comments starting with <code>@quarkus-bot</code>, <code>@bot</code> or <code>@quarkusbot</code>.</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_default_command_options"><a class="anchor" href="#_default_command_options"></a>Default command options</h4>
+<div class="paragraph">
+<p>As seen above, you can fine tune command options with the <code>@CommandOptions</code> annotation.</p>
+</div>
+<div class="paragraph">
+<p>If you need to define common command options, you can do it at the <code>@Cli</code> level:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Cli(name = "@bot", commands = { DefaultCommandOptionsCliCommand.class })
+@CliOptions(defaultCommandOptions = @CommandOptions(scope = CommandScope.ISSUES)) <i class="conum" data-value="1"></i><b>(1)</b>
+public class CliOptionsDefaultCommandOptionsCli {</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Commands will be executed for comments starting with <code>@quarkus-bot</code>, <code>@bot</code> or <code>@quarkusbot</code>.</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>You can override the default command options by adding a <code>@CommandOptions</code> annotation to a command.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_parse_error_strategy"><a class="anchor" href="#_parse_error_strategy"></a>Parse error strategy</h4>
+<div class="paragraph">
+<p>By default, when an error occurs parsing the command, a comment is posted containing:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>:warning: We were not able to parse command: %s</code> (<code>%s</code> being the parsed command)</p>
+</li>
+<li>
+<p>the help generated by Airline for this given <code>@Cli</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>This behavior can be customized:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Cli(name = "@bot", commands = { ParseErrorStrategyCliCommand.class })
+@CliOptions(parseErrorStrategy = ParseErrorStrategy.NONE) <i class="conum" data-value="1"></i><b>(1)</b>
+public class CliOptionsParseErrorStrategyCli {</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>In this case, no comment will be added when a parse error occurs.
+A <a href="#reactions"><code>CONFUSED</code> reaction</a> will be added to the comment though.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>The following strategies are available:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>NONE</code> - Nothing is done.</p>
+</li>
+<li>
+<p><code>COMMENT_MESSAGE</code> - A comment containing the parse error message is posted.</p>
+</li>
+<li>
+<p><code>COMMENT_MESSAGE_HELP</code> - A comment containing the parse error message and the generated help is posted.</p>
+</li>
+<li>
+<p><code>COMMENT_MESSAGE_ERRORS</code> - A comment containing the parse error message and the parse errors is posted.</p>
+</li>
+<li>
+<p><code>COMMENT_MESSAGE_HELP_ERRORS</code> - A comment containing the parse error message, the generated help and the parse errors is posted.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>You can also customize the error message:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Cli(name = "@bot", commands = { ParseErrorMessageCliCommand.class })
+@CliOptions(parseErrorStrategy = ParseErrorStrategy.COMMENT_MESSAGE, parseErrorMessage = "Your custom message") <i class="conum" data-value="1"></i><b>(1)</b>
+public class CliOptionsParseErrorMessageCli {</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>A comment containing <code>Your custom message</code> is posted when a parse error occurs.</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p>Use <code>%s</code> in your message to include the parsed command.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="permissions"><a class="anchor" href="#permissions"></a>Permissions</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_permissions"><a class="anchor" href="#_permissions"></a>Permissions</h3>
+<div class="paragraph">
+<p>GitHub has 3 levels of permissions for a repository:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Read</p>
+</li>
+<li>
+<p>Write</p>
+</li>
+<li>
+<p>Admin</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The Read permission is not very useful in our case as anyone able to add a comment to an issue or pull request has the Read permission.
+But restricting some commands to users with the Write or Admin permission is a common requirement.</p>
+</div>
+<div class="paragraph">
+<p>Note that when requiring a permission, you require that the user has <em>at least</em> the given permission.
+So, if you require the Write permission, users with the Admin permission are also authorized to execute the command.</p>
+</div>
+<div class="paragraph">
+<p>Requiring a permission for a command is as easy as adding a <code>@Permission</code> annotation to your command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Cli(name = "@bot", commands = { WriteCommand.class })
+public class PermissionCli {
+
+    interface Commands {
+
+        void run() throws IOException;
+    }
+
+    @Command(name = "write-command")
+    @Permission(GHPermissionType.WRITE) <i class="conum" data-value="1"></i><b>(1)</b>
+    static class WriteCommand implements Commands {
+
+        @Override
+        public void run() throws IOException {
+            // do something
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>To execute the <code>write-command</code>, the Write permission is required.</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Note that you can also define a permission at the <code>@Cli</code> level.
+In this case, the permission will be applied to all commands,
+except if you override it with a <code>@Permission</code> annotation at the command level.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Cli(name = "@bot", commands = { WriteCommand.class, AdminCommand.class })
+@Permission(GHPermissionType.WRITE) <i class="conum" data-value="1"></i><b>(1)</b>
+public class PermissionOverrideCli {
+
+    interface Commands {
+
+        void run() throws IOException;
+    }
+
+    @Command(name = "write-command") <i class="conum" data-value="2"></i><b>(2)</b>
+    static class WriteCommand implements Commands {
+
+        @Override
+        public void run() throws IOException {
+            // do something
+        }
+    }
+
+    @Command(name = "admin-command")
+    @Permission(GHPermissionType.ADMIN) <i class="conum" data-value="3"></i><b>(3)</b>
+    static class AdminCommand implements Commands {
+
+        @Override
+        public void run() throws IOException {
+            // do something
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>For all commands in this <code>@Cli</code>, the Write permission is required if not defined otherwise.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>The <code>write-command</code> doesn&#8217;t have any <code>@Permission</code> annotation so the default one is used:
+the Write permission is required.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>The <code>admin-command</code> overrides the default permission: the Admin permission is required.</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_team_permissions"><a class="anchor" href="#_team_permissions"></a>Team permissions</h3>
+<div class="paragraph">
+<p>Team permissions behaves in exactly the same way as standard permissions,
+except for the usage of the <code>@Team</code> annotation.</p>
+</div>
+<div class="paragraph">
+<p>You can define several teams in the <code>@Team</code> annotation.
+Permission is granted if the user is part of at least one team (logical OR).</p>
+</div>
+<div class="paragraph">
+<p>Use the <code>slug</code> of the team to reference a team i.e. the team identifier in the team page URL.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Cli(name = "@bot", commands = { MyTeamCommand.class })
+public class TeamPermissionCli {
+
+    interface Commands {
+
+        void run() throws IOException;
+    }
+
+    @Command(name = "command")
+    @Team({ "my-team1", "my-team2" }) <i class="conum" data-value="1"></i><b>(1)</b>
+    static class MyTeamCommand implements Commands {
+
+        @Override
+        public void run() throws IOException {
+            // do something
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>The command will be executed only if the user is part of <code>my-team1</code> or <code>my-team2</code>.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="reactions"><a class="anchor" href="#reactions"></a>Reaction based feedback</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Feedback to commands is handled via reactions added to the comment.</p>
+</div>
+<div class="paragraph">
+<p>The following reactions can be added:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ROCKET</code> - command is executed, this reaction will be removed on command completion.</p>
+</li>
+<li>
+<p><code>PLUS_ONE</code> - command was executed successfully.</p>
+</li>
+<li>
+<p><code>MINUS_ONE</code> - the user doesn&#8217;t have the permission to execute the command or there was an error executing the command.</p>
+</li>
+<li>
+<p><code>CONFUSED</code> - there was an error parsing the command.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_providing_help"><a class="anchor" href="#_providing_help"></a>Providing help</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you propose a lot of features,
+it might be useful for the users to be able to get a description of the available commands and what they are doing.</p>
+</div>
+<div class="paragraph">
+<p>Luckily, Airline can generate a comprehensive help description from your commands.
+Obviously, the help will be more comprehensive if you describe your commands with the appropriate annotation attributes.</p>
+</div>
+<div class="paragraph">
+<p>As we already mentioned, the Quarkus extension requires all your commands to implement the same command interface.
+This is why we provide an abstract class that you can subclass to implement your help command.</p>
+</div>
+<div class="paragraph">
+<p>Providing a help command to the users would look like:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Cli(name = "@bot", commands = { Command1.class, Command2.class,
+        HelpCommand.class }, description = "Your helpful bot doing all sorts of things") <i class="conum" data-value="1"></i><b>(1)</b>
+public class HelpCli {
+
+    interface Commands {
+
+        void run(GHEventPayload.IssueComment issueCommentPayload, GitHub gitHub) throws IOException;
+    }
+
+    @Command(name = "command1", description = "Do command1 with style") <i class="conum" data-value="2"></i><b>(2)</b>
+    static class Command1 implements Commands {
+
+        @Override
+        public void run(GHEventPayload.IssueComment issueCommentPayload, GitHub gitHub) throws IOException {
+            // do something
+        }
+    }
+
+    @Command(name = "command2", description = "Do command2 with style")
+    static class Command2 implements Commands {
+
+        @Override
+        public void run(GHEventPayload.IssueComment issueCommentPayload, GitHub gitHub) throws IOException {
+            // do something
+        }
+    }
+
+    @Command(name = "help", description = "Print help")
+    static class HelpCommand extends AbstractHelpCommand implements Commands { <i class="conum" data-value="3"></i><b>(3)</b>
+
+        @Override
+        public void run(GHEventPayload.IssueComment issueCommentPayload, GitHub gitHub) throws IOException {
+            super.run(issueCommentPayload); <i class="conum" data-value="4"></i><b>(4)</b>
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Add a description to your <code>@Cli</code> annotation.
+Also add the help command to your commands.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Add descriptions to your commands so that they are included in the help.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Have your help command extend <code>AbstractHelpCommand</code>.
+<code>AbstractHelpCommand</code> adds a comment with the help when someone execute the commands.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="4"></i><b>4</b></td>
+<td>Call the <code>run()</code> method of <code>AbstractHelpCommand</code>.
+<code>AbstractHelpCommand</code> requires a <code>GHEventPayload.IssueComment</code> payload to be injected.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_some_common_examples_of_airline_usage"><a class="anchor" href="#_some_common_examples_of_airline_usage"></a>Some common examples of Airline usage</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In this section, you will find a couple of common Airline examples.</p>
+</div>
+<div class="paragraph">
+<p>For more information about what you can do with Airline, please refer to the <a href="https://rvesse.github.io/airline/guide/index.html">Airline documentation</a>.</p>
+</div>
+<div class="sect2">
+<h3 id="_arguments"><a class="anchor" href="#_arguments"></a>Arguments</h3>
+<div class="paragraph">
+<p>You can have Airline injecting command arguments to your command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Cli(name = "@bot", commands = { CommandWithArguments.class })
+public class ArgumentsCli {
+
+    interface Commands {
+
+        void run(GHEventPayload.IssueComment issueCommentPayload) throws IOException;
+    }
+
+    @Command(name = "add-users")
+    static class CommandWithArguments implements Commands {
+
+        @Arguments(description = "List of GitHub usernames") <i class="conum" data-value="1"></i><b>(1)</b>
+        List&lt;String&gt; usernames;
+
+        @Override
+        public void run(GHEventPayload.IssueComment issueCommentPayload) throws IOException {
+            issueCommentPayload.getIssue().comment("Hello " + String.join(", ", usernames)); <i class="conum" data-value="2"></i><b>(2)</b>
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Use the <code>@Arguments</code> annotation to inject the arguments.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>You can then consume them in your <code>run()</code> method.</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_group_commands"><a class="anchor" href="#_group_commands"></a>Group commands</h3>
+<div class="paragraph">
+<p>Airline support command groups.
+A popular example is how the <code>git</code> command line is architectured e.g. <code>git remote &#8230;&#8203;</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Cli(name = "@bot", groups = { @Group(name = "remote", commands = { ListCommand.class, ShowCommand.class }) }) <i class="conum" data-value="1"></i><b>(1)</b>
+public class GroupCli {
+
+    interface Commands {
+
+        void run(GHEventPayload.IssueComment issueCommentPayload) throws IOException;
+    }
+
+    @Command(name = "list") <i class="conum" data-value="2"></i><b>(2)</b>
+    static class ListCommand implements Commands {
+
+        @Override
+        public void run(GHEventPayload.IssueComment issueCommentPayload) throws IOException {
+            // do something
+        }
+    }
+
+    @Command(name = "show") <i class="conum" data-value="3"></i><b>(3)</b>
+    static class ShowCommand implements Commands {
+
+        @Override
+        public void run(GHEventPayload.IssueComment issueCommentPayload) throws IOException {
+            // do something
+        }
+    }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Define groups in the <code>@Cli</code> annotation.
+Each group has a name and is composed of a list of commands.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>To execute this command, add a comment with <code>@bot remote list</code>.</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>To execute this command, add a comment with <code>@bot remote show</code>.</td>
+</tr>
+</table>
+</div>
+</div>
+</div>
+</div>
+</article>
+  </div>
+</main>
+</div>
+<footer class="footer">
+  <p>Copyright (C) 2020-2022 <a href="https://www.redhat.com">Red Hat</a> and individual contributors to <a href="https://github.com/quarkiverse/quarkiverse-docs">Quarkiverse</a>.</p>
+</footer>
+<script src="../../_/js/site.js"></script>
+<script async src="../../_/js/vendor/highlight.js"></script>
+  </body>
+</html>

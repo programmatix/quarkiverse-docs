@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<url>
+<loc>https://quarkiverse.github.io/quarkiverse-docs/quarkus-config-extensions/dev/consul.html</loc>
+<lastmod>2022-06-10T12:25:22.207Z</lastmod>
+</url>
+<url>
+<loc>https://quarkiverse.github.io/quarkiverse-docs/quarkus-config-extensions/dev/includes/attributes.html</loc>
+<lastmod>2022-06-10T12:25:22.207Z</lastmod>
+</url>
+<url>
+<loc>https://quarkiverse.github.io/quarkiverse-docs/quarkus-config-extensions/dev/includes/quarkus-consul-config.html</loc>
+<lastmod>2022-06-10T12:25:22.207Z</lastmod>
+</url>
+<url>
+<loc>https://quarkiverse.github.io/quarkiverse-docs/quarkus-config-extensions/dev/includes/quarkus-jdbc-config.html</loc>
+<lastmod>2022-06-10T12:25:22.207Z</lastmod>
+</url>
+<url>
+<loc>https://quarkiverse.github.io/quarkiverse-docs/quarkus-config-extensions/dev/index.html</loc>
+<lastmod>2022-06-10T12:25:22.207Z</lastmod>
+</url>
+<url>
+<loc>https://quarkiverse.github.io/quarkiverse-docs/quarkus-config-extensions/dev/jdbc.html</loc>
+<lastmod>2022-06-10T12:25:22.207Z</lastmod>
+</url>
+</urlset>
